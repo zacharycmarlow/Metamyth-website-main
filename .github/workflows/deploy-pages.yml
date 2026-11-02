@@ -12,7 +12,7 @@ on:
     branches: [main]
     paths:
       - 'Metamyth Offer Deck/**'
-      - 'scripts/deploy-gh-pages.sh'
+      - 'scripts/**'
       - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
 
@@ -28,6 +28,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install optimization dependencies
+        run: pip install --quiet pillow fonttools brotli
       - name: Publish Metamyth Offer Deck to gh-pages
         run: bash scripts/deploy-gh-pages.sh
         env:

@@ -10,13 +10,15 @@
 #   - preserves deploy-only files: CNAME, .nojekyll, .image-slots.state.json
 #     (the image-slot tooling's persisted state)
 #   - excludes working files: uploads/, screenshots/, .DS_Store, .thumbnail
+#   - optimizes for fast loading (scripts/optimize-site.py): images -> WebP,
+#     fonts -> WOFF2 + font-display:swap, lazy-loading on <img> tags
 #   - creates extensionless clean-URL copies (kinship, expedition, journey,
 #     journey-map) and points internal nav links at them
 #   - commits and pushes HEAD to origin gh-pages
 #
-# NOTE: the live site was previously optimized (PNG/JPG -> WebP, unused
-# files pruned). That optimization is a separate manual step; this script
-# publishes the deck as-is, which is correct but may serve larger images.
+# Optimization needs Pillow + fontTools/brotli (pip install pillow fonttools
+# brotli); missing deps are skipped with a warning, so an unoptimized tree
+# is still published rather than failing the deploy.
 #
 # Run from the repo root:  bash scripts/deploy-gh-pages.sh
 # The GitHub Actions workflow .github/workflows/deploy-pages.yml runs this
@@ -60,6 +62,9 @@ find "$WORK" -name .DS_Store -delete
 for f in CNAME .nojekyll .image-slots.state.json; do
   [ -f "$SAVE/$f" ] && cp "$SAVE/$f" "$WORK/$f"
 done
+
+# Optimize the copied tree for fast loading (images/fonts/lazy-load).
+python3 "$REPO_ROOT/scripts/optimize-site.py" "$WORK"
 
 # Clean-URL copies (GitHub Pages serves them extensionless)
 cp "$WORK/Kinship Quest.html" "$WORK/kinship.html"
