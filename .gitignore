@@ -1,0 +1,13 @@
+# OS/editor junk (Replit and macOS produce these constantly)
+.DS_Store
+.thumbnail
+Thumbs.db
+Desktop.ini
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Local env/secrets
+.env
+.env.*
