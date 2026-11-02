@@ -1,0 +1,72 @@
+@font-face{font-family:Pherome;src:url('../fonts/Pherome Regular.otf') format('opentype');font-weight:400;font-display:swap}
+@font-face{font-family:Futura;src:url('../fonts/Futura Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:Futura;src:url('../fonts/Futura_Medium.otf') format('opentype');font-weight:500;font-display:swap}
+.community{
+  --deep:#091e14;
+  --forest:#0d3122;
+  --gold:#d4a843;
+  --line:rgba(212,168,67,.3);
+  --cream:#f0e8d0;
+  --mist:#b0c4bb;
+  margin:0;
+  background:var(--deep);
+  color:var(--cream);
+  font-family:Futura,'Trebuchet MS',sans-serif;
+  font-size:17px;
+  line-height:1.65;
+  min-height:100dvh;
+  -webkit-font-smoothing:antialiased;
+}
+.community *,.community *::before,.community *::after{box-sizing:border-box}
+.community a{color:inherit}
+.community a:focus-visible{outline:3px solid var(--cream);outline-offset:6px}
+.community .skip-link{position:absolute;top:12px;left:16px;padding:10px 18px;background:var(--gold);color:var(--deep);transform:translateY(-160%);z-index:2}
+.community .skip-link:focus{transform:none}
+.community .shell{width:min(100% - 48px,1040px);margin-inline:auto}
+.community .masthead{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:27px;border-bottom:1px solid var(--line)}
+.community .brand{display:inline-flex;align-items:center;gap:13px;text-decoration:none}
+.community .brand img{width:31px;height:31px;object-fit:contain}
+.community .brand span{font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.community .home-link{color:var(--mist);font-size:13px;text-underline-offset:5px}
+.community .intro{text-align:center;max-width:740px;margin:0 auto;padding:65px 0 49px}
+.community h1,.community h2{font-family:Pherome,Georgia,serif;font-weight:400;margin:0;line-height:1.12;text-wrap:balance}
+.community h1{font-size:clamp(43px,6.8vw,76px);color:var(--gold);letter-spacing:-.02em}
+.community .intro p{max-width:550px;margin:23px auto 0;color:var(--mist);font-size:18px;line-height:1.65;text-wrap:pretty}
+.community .memberships{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.community .tier{border:1px solid var(--line);background:var(--forest);padding:31px 32px 28px;display:flex;flex-direction:column}
+.community .eyebrow{margin:0 0 14px;color:var(--gold);font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+.community h2{font-size:36px}
+.community .price{font-family:Pherome,Georgia,serif;font-size:42px;line-height:1.2;color:var(--gold);margin:24px 0 7px}
+.community .price span{font-family:Futura,'Trebuchet MS',sans-serif;font-size:16px;color:var(--mist)}
+.community .note{margin:0;color:var(--mist);font-size:14px}
+.community .description{margin:24px 0 29px;line-height:1.75}
+.community .actions{margin-top:auto;display:grid;gap:12px}
+.community .button{display:flex;align-items:center;justify-content:center;min-height:51px;padding:12px 16px;border:1px solid var(--gold);background:var(--gold);color:var(--deep);text-align:center;text-decoration:none;font-size:15px;font-weight:500;line-height:1.5}
+.community .button:hover{background:var(--cream);border-color:var(--cream)}
+.community .button.secondary{background:transparent;color:var(--gold)}
+.community .button.secondary:hover{background:var(--deep);color:var(--cream)}
+.community .saving{margin:0;text-align:center;color:var(--mist);font-size:12px}
+.community .session{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:center;padding:37px 32px;margin-top:22px;border:1px solid var(--line)}
+.community .session .description{max-width:570px;margin-bottom:0}
+.community .session-purchase .price{margin-top:0}
+.community .session-purchase .note{margin-bottom:21px}
+.community .contact{text-align:center;max-width:610px;padding:59px 0 50px;margin:0 auto}
+.community .contact h2{font-size:32px}
+.community .contact p{color:var(--mist);margin:17px 0}
+.community .contact a{display:inline-block;padding:5px 0;color:var(--gold);text-underline-offset:6px}
+.community .contact a:hover,.community .home-link:hover{color:var(--cream)}
+.community .footer{text-align:center;padding:25px 0 29px;border-top:1px solid var(--line);color:var(--mist);font-size:11px;letter-spacing:.1em}
+@media(max-width:767px){
+  .community .shell{width:calc(100% - 36px)}
+  .community .masthead{padding-block:21px;gap:14px}
+  .community .brand{gap:9px}
+  .community .brand span{font-size:9px;letter-spacing:.12em}
+  .community .home-link{font-size:12px}
+  .community .intro{padding:44px 0 35px}
+  .community .intro p{font-size:17px}
+  .community .memberships,.community .session{grid-template-columns:minmax(0,1fr)}
+  .community .tier,.community .session{padding:27px 24px}
+  .community .session{gap:27px}
+  .community .session-purchase .price{margin-bottom:7px}
+  .community .contact{padding-block:45px 37px}
+}
