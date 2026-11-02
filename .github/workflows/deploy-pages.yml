@@ -1,0 +1,35 @@
+name: Publish site to GitHub Pages
+
+# Rebuilds the gh-pages branch from "Metamyth Offer Deck/" whenever it
+# changes on main, so www.metamyth.quest stays in sync with the source.
+#
+# Requires Settings > Pages to remain on "Deploy from a branch: gh-pages".
+# Replit publishes the same directory independently — this workflow is the
+# only thing that updates the custom domain.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Metamyth Offer Deck/**'
+      - 'scripts/deploy-gh-pages.sh'
+      - '.github/workflows/deploy-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gh-pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish Metamyth Offer Deck to gh-pages
+        run: bash scripts/deploy-gh-pages.sh
+        env:
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
