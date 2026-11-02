@@ -61,8 +61,8 @@ const panel=root.querySelector('.mp-panel');
 panel.innerHTML=`<div class="mp-body"></div><div class="nav3"><button data-d="-1">← Back</button><span class="cnt"></span><button data-d="1">Onward →</button></div>`;
 const body=panel.querySelector('.mp-body'),back=panel.querySelector('[data-d="-1"]'),fwd=panel.querySelector('[data-d="1"]'),cnt=panel.querySelector('.cnt');
 let cur=-1;
-function render(){const n=N[cur];if(!n){panel.style.setProperty('--c','#d4a843');body.innerHTML=`<img class="ic intro-ic" src="${IC}map.png" alt=""><div class="label">The Map</div><h3>The map is still a sketch.</h3><p>Every stop you open bleeds into color. Clear a land and the whole of it comes alive.</p><p class="who">Tap any stop, or walk it in order.</p>`;cnt.textContent=`00 / ${N.length}`;back.disabled=true;fwd.disabled=false;return}
- const a=ARC[n.arc];panel.style.setProperty('--c',a.c);body.innerHTML=`<img class="ic" src="${IC}${n.ic}.png" alt=""><div class="label">${a.region} · ${a.chip}</div><h3>${n.t}</h3><div class="tag">${n.tag}</div><div class="who">${n.who}</div><p>${n.d}</p>`;
+function render(){const n=N[cur];if(!n){panel.style.setProperty('--c','#d4a843');body.innerHTML=`<img class="ic intro-ic" src="${IC}map.webp" alt=""><div class="label">The Map</div><h3>The map is still a sketch.</h3><p>Every stop you open bleeds into color. Clear a land and the whole of it comes alive.</p><p class="who">Tap any stop, or walk it in order.</p>`;cnt.textContent=`00 / ${N.length}`;back.disabled=true;fwd.disabled=false;return}
+ const a=ARC[n.arc];panel.style.setProperty('--c',a.c);body.innerHTML=`<img class="ic" src="${IC}${n.ic}.webp" alt=""><div class="label">${a.region} · ${a.chip}</div><h3>${n.t}</h3><div class="tag">${n.tag}</div><div class="who">${n.who}</div><p>${n.d}</p>`;
  cnt.textContent=`${String(cur+1).padStart(2,'0')} / ${N.length}`;back.disabled=cur<=0;fwd.disabled=cur>=N.length-1}
 function select(i){if(i===cur)return;cur=i;hs.forEach((h,k)=>h.classList.toggle('on',k===i));reveal(i);camTo(i);
  const a=N[i].arc;hs.forEach(h=>h.classList.toggle('inarc',h.dataset.arc===a));

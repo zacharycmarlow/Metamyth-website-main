@@ -6,20 +6,23 @@
   <title>The Journey — Metamyth</title>
   <style>
     @font-face {
+      font-display: swap;
       font-family: 'Pherome';
-      src: url('fonts/Pherome Regular.otf') format('opentype');
+      src: url('fonts/Pherome Regular.woff2') format('woff2'), url('fonts/Pherome Regular.otf') format('opentype');
       font-weight: 400;
       font-style: normal;
     }
     @font-face {
+      font-display: swap;
       font-family: 'Futura';
-      src: url('fonts/Futura Regular.ttf') format('truetype');
+      src: url('fonts/Futura Regular.woff2') format('woff2'), url('fonts/Futura Regular.ttf') format('truetype');
       font-weight: 400;
       font-style: normal;
     }
     @font-face {
+      font-display: swap;
       font-family: 'Futura';
-      src: url('fonts/Futura_Medium.otf') format('opentype');
+      src: url('fonts/Futura_Medium.woff2') format('woff2'), url('fonts/Futura_Medium.otf') format('opentype');
       font-weight: 500;
       font-style: normal;
     }
@@ -275,7 +278,7 @@
     const { useState } = React;
 
     const MAPN={seedling:'sprout',star:'north-star',crystal:'crystal-ball',portal:'gate',shell:'pearl',orb:'landscape',goblet:'chalice',people:'council'};
-    const I = name => `offer-deck/assets/icons/${MAPN[name]||name}.png`;
+    const I = name => `offer-deck/assets/icons/${MAPN[name]||name}.webp`;
     const PURPLE = '#c090c8';
 
     const journeyData = [
@@ -465,7 +468,7 @@
             </div>
 
             {/* Arc icon */}
-            <img
+            <img decoding="async"
               src={data.arcIcon}
               className="arc-icon"
               alt=""
@@ -501,7 +504,7 @@
               <div style={{ paddingTop: '8px' }}>
                 {data.deliverables.map((d, i) => (
                   <div key={i} className="deliverable-row">
-                    <img src={d.icon} className="deliverable-icon" alt="" />
+                    <img decoding="async" src={d.icon} className="deliverable-icon" alt="" />
                     <span className="deliverable-text">{d.text}</span>
                   </div>
                 ))}
@@ -547,8 +550,8 @@
             {/* Header */}
             <div style={{ textAlign: 'center', marginBottom: '40px' }}>
               <div style={{ marginBottom: '18px' }}>
-                <img
-                  src="assets/logo-butterfly.png"
+                <img decoding="async" loading="lazy"
+                  src="assets/logo-butterfly.webp"
                   alt="Metamyth"
                   style={{ width: '56px', height: '56px', objectFit: 'contain', filter: 'drop-shadow(0 0 14px rgba(46,196,176,0.45))' }}
                 />

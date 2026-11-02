@@ -35,7 +35,7 @@ for(let i=0;i<P.length-1;i++){const p0=P[i-1]||P[i],p1=P[i],p2=P[i+1],p3=P[i+2]|
 segD.forEach((d,i)=>{const a=N[i+1].arc;s+=`<g class="mp-seg" data-arc="${a}" style="--c:${ARC[a].c}"><path class="base" d="${d}"/><path class="lit" d="${d}"/></g>`});
 s+=`<path class="mp-main" d="${segD.map((d,i)=>i?d.replace(/^M[^C]+/,''):d).join(' ')}" fill="none" stroke="none"/>`;
 N.forEach(n=>{const c=ARC[n.arc].c;const lx={r:[48,4,'start'],l:[-48,4,'end'],t:[0,-60,'middle'],b:[0,68,'middle']}[n.lab];
- s+=`<g class="mp-node mp-pop" data-i="${n.i}" data-arc="${n.arc}" style="--c:${c};--d:${(n.i*.06).toFixed(2)}s" tabindex="0" role="button" aria-label="${n.t}"><circle class="halo" cx="${n.x}" cy="${n.y}" r="52"/><circle class="ring" cx="${n.x}" cy="${n.y}" r="36"/><image href="${IC}${n.ic}.png" x="${n.x-27}" y="${n.y-27}" width="54" height="54"/><text x="${n.x+lx[0]}" y="${n.y+lx[1]-(n.lab==='t'?22:(n.lab==='b'?0:10))}" text-anchor="${lx[2]}" class="num">${String(n.i+1).padStart(2,'0')}</text><text x="${n.x+lx[0]}" y="${n.y+lx[1]+(n.lab==='t'?0:(n.lab==='b'?24:14))}" text-anchor="${lx[2]}">${n.t}</text></g>`});
+ s+=`<g class="mp-node mp-pop" data-i="${n.i}" data-arc="${n.arc}" style="--c:${c};--d:${(n.i*.06).toFixed(2)}s" tabindex="0" role="button" aria-label="${n.t}"><circle class="halo" cx="${n.x}" cy="${n.y}" r="52"/><circle class="ring" cx="${n.x}" cy="${n.y}" r="36"/><image href="${IC}${n.ic}.webp" x="${n.x-27}" y="${n.y-27}" width="54" height="54"/><text x="${n.x+lx[0]}" y="${n.y+lx[1]-(n.lab==='t'?22:(n.lab==='b'?0:10))}" text-anchor="${lx[2]}" class="num">${String(n.i+1).padStart(2,'0')}</text><text x="${n.x+lx[0]}" y="${n.y+lx[1]+(n.lab==='t'?0:(n.lab==='b'?24:14))}" text-anchor="${lx[2]}">${n.t}</text></g>`});
 s+=`<circle class="mp-trav" r="6" cx="${P[0][0]}" cy="${P[0][1]}"/><circle r="26" fill="url(#mpG)" class="mp-trav-g" cx="${P[0][0]}" cy="${P[0][1]}"/></svg>`;
 const map=root.querySelector('.mp-map');map.innerHTML=s;
 const svg=map.querySelector('svg'),main=svg.querySelector('.mp-main'),trav=svg.querySelector('.mp-trav'),travG=svg.querySelector('.mp-trav-g');
@@ -51,7 +51,7 @@ function select(i){if(i===cur)return;cur=i;const n=N[i],a=ARC[n.arc];
  nodes.forEach((g,k)=>{g.classList.toggle('on',k===i);g.classList.toggle('done',k<i)});
  lits.forEach((p,k)=>p.style.strokeDashoffset=k<i?0:segLen[k]);travel(cum[i]);
  panel.style.setProperty('--c',a.c);const body=panel.querySelector('.mp-body');body.classList.add('swap');
- setTimeout(()=>{body.innerHTML=`<img class="ic" src="${IC}${n.ic}.png" alt=""><div class="label">Arc ${n.arc} · ${a.name}</div><h3>${n.t}</h3><div class="tag">${n.tag}</div><div class="who">${n.who}</div><p>${n.d}</p>`;body.classList.remove('swap')},180);
+ setTimeout(()=>{body.innerHTML=`<img class="ic" src="${IC}${n.ic}.webp" alt=""><div class="label">Arc ${n.arc} · ${a.name}</div><h3>${n.t}</h3><div class="tag">${n.tag}</div><div class="who">${n.who}</div><p>${n.d}</p>`;body.classList.remove('swap')},180);
  panel.querySelector('[data-d="-1"]').disabled=i===0;panel.querySelector('[data-d="1"]').disabled=i===N.length-1;panel.querySelector('.cnt').textContent=`${String(i+1).padStart(2,'0')} / ${N.length}`}
 panel.innerHTML=`<div class="mp-body"></div><div class="nav3"><button data-d="-1">← Back</button><span class="cnt"></span><button data-d="1">Onward →</button></div>`;
 panel.querySelectorAll('.nav3 button').forEach(b=>b.onclick=()=>select(Math.max(0,Math.min(N.length-1,cur+ +b.dataset.d))));
