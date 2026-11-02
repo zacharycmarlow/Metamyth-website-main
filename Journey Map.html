@@ -501,7 +501,7 @@
               <div style={{ paddingTop: '8px' }}>
                 {data.deliverables.map((d, i) => (
                   <div key={i} className="deliverable-row">
-                    <img loading="lazy" decoding="async" src={d.icon} className="deliverable-icon" alt="" />
+                    <img src={d.icon} className="deliverable-icon" alt="" />
                     <span className="deliverable-text">{d.text}</span>
                   </div>
                 ))}
@@ -548,7 +548,7 @@
             <div style={{ textAlign: 'center', marginBottom: '40px' }}>
               <div style={{ marginBottom: '18px' }}>
                 <img
-                  src="assets/logo-butterfly.webp"
+                  src="assets/logo-butterfly.png"
                   alt="Metamyth"
                   style={{ width: '56px', height: '56px', objectFit: 'contain', filter: 'drop-shadow(0 0 14px rgba(46,196,176,0.45))' }}
                 />
