@@ -9,11 +9,19 @@
 #   - replaces the published tree with a copy of "Metamyth Offer Deck/"
 #   - preserves deploy-only files: CNAME, .nojekyll, .image-slots.state.json
 #     (the image-slot tooling's persisted state)
+#   - preserves live-only directories that are not the Offer Deck:
+#     legend/ (the company vision), fund-archive/ (the old fund packet),
+#     and fund/ (on the live site this is a small redirect to /legend/,
+#     not the Offer Deck fund packet). They are restored after the copy
+#     and optimization so a publish cannot delete or replace them.
 #   - excludes working files: uploads/, screenshots/, .DS_Store, .thumbnail
 #   - optimizes for fast loading (scripts/optimize-site.py): images -> WebP,
 #     fonts -> WOFF2 + font-display:swap, lazy-loading on <img> tags
-#   - creates extensionless clean-URL copies (kinship, expedition, journey,
-#     journey-map) and points internal nav links at them
+#   - creates extensionless clean-URL copies (kinship, adventure, expedition,
+#     journey, journey-map). adventure.html is already the /adventure page;
+#     Expedition.html is only the redirect, copied to expedition.html.
+#   - writes name/index.html redirects so /kinship/ and the other clean
+#     URLs with a trailing slash do not 404.
 #   - commits and pushes HEAD to origin gh-pages
 #
 # Optimization needs Pillow + fontTools/brotli (pip install pillow fonttools
@@ -50,6 +58,16 @@ fi
 for f in CNAME .nojekyll .image-slots.state.json; do
   [ -f "$WORK/$f" ] && cp "$WORK/$f" "$SAVE/$f"
 done
+# Live-only trees. legend/ is the company vision. fund/ on the live site is
+# a 544-byte redirect to /legend/, not the Offer Deck packet. fund-archive/
+# keeps that packet. Restore them after the copy and optimization so they
+# win over whatever the Offer Deck tree contains.
+for d in legend fund-archive fund; do
+  if [ -d "$WORK/$d" ]; then
+    rm -rf "$SAVE/$d"
+    cp -a "$WORK/$d" "$SAVE/$d"
+  fi
+done
 
 # Clean the published tree but keep .git
 find "$WORK" -mindepth 1 -maxdepth 1 -not -name .git -exec rm -rf {} +
@@ -66,11 +84,17 @@ done
 # Optimize the copied tree for fast loading (images/fonts/lazy-load).
 python3 "$REPO_ROOT/scripts/optimize-site.py" "$WORK"
 
-# Clean-URL copies (GitHub Pages serves them extensionless)
+# Clean-URL copies (GitHub Pages serves them extensionless).
+# /adventure is adventure.html itself. /expedition and /Expedition.html
+# are the redirect (Expedition.html copied to expedition.html).
 cp "$WORK/Kinship Quest.html" "$WORK/kinship.html"
 cp "$WORK/Expedition.html"    "$WORK/expedition.html"
 cp "$WORK/Journey.html"       "$WORK/journey.html"
 cp "$WORK/Journey Map.html"   "$WORK/journey-map.html"
+if [ ! -f "$WORK/adventure.html" ]; then
+  echo "adventure.html missing; /adventure would 404" >&2
+  exit 1
+fi
 
 # Point internal nav links at the clean URLs
 for f in "$WORK"/*.html; do
@@ -78,6 +102,42 @@ for f in "$WORK"/*.html; do
   sed -i 's|href="Journey Map.html"|href="journey-map"|g' "$f"
   sed -i 's|href="Journey.html"|href="journey"|g' "$f"
   sed -i 's|href="Expedition.html"|href="expedition"|g' "$f"
+done
+
+# Trailing-slash URLs (/kinship/ and the rest) 404 on GitHub Pages unless a
+# directory index exists. Redirect to the extensionless page so relative
+# assets on that page are not resolved from inside the slash directory.
+# Do not create these inside legend/, fund/, or fund-archive/.
+write_slash_redirect() {
+  local name="$1"
+  mkdir -p "$WORK/$name"
+  cat > "$WORK/$name/index.html" <<EOF
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="0; url=/${name}">
+<link rel="canonical" href="https://www.metamyth.quest/${name}">
+<title>Metamyth</title>
+<script>location.replace("/${name}");</script>
+</head>
+<body>
+<p><a href="/${name}">Continue</a></p>
+</body>
+</html>
+EOF
+}
+for name in kinship adventure expedition journey journey-map; do
+  write_slash_redirect "$name"
+done
+
+# Put the live-only trees back last, so optimization and the slash
+# redirects cannot replace or rewrite them.
+for d in legend fund-archive fund; do
+  if [ -d "$SAVE/$d" ]; then
+    rm -rf "$WORK/$d"
+    cp -a "$SAVE/$d" "$WORK/$d"
+  fi
 done
 
 [ -f "$WORK/CNAME" ] || echo metamyth.quest > "$WORK/CNAME"

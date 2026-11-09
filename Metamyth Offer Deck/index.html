@@ -3,327 +3,667 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Metamyth — The Kinship Quest</title>
-<link rel="stylesheet" href="site/site.css?v=profile-circles-2">
-<link rel="stylesheet" href="site/v2.css">
-<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0d3122"/><text x="50" y="64" text-anchor="middle" font-family="serif" font-size="44" fill="#d4a843">M</text></svg></template>
+<meta name="theme-color" content="#091e14">
+<title>Origin — Metamyth</title>
+<link rel="preload" as="image" href="new/stills/origin.webp">
+<style>
+@font-face{font-family:'Pherome';src:url('fonts/Pherome Regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Futura';src:url('fonts/Futura Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Futura';src:url('fonts/Futura_Medium.otf') format('opentype');font-weight:500;font-style:normal;font-display:swap}
+:root{
+  --deep:#091e14;--gold:#d4a843;--teal:#2ec4b0;--cream:#f0e8d0;
+  --serif:'Pherome',Georgia,serif;--sans:'Futura','Trebuchet MS',sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--deep);color-scheme:dark}
+body{margin:0;background:var(--deep);color:var(--cream);font-family:var(--sans);font-size:clamp(17px,1.15vw,20px);line-height:1.6;-webkit-font-smoothing:antialiased}
+button,a{font:inherit}
+button{color:inherit;background:none;border:0;padding:0;cursor:pointer}
+a{color:var(--gold)}
+:focus{outline:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:absolute;left:12px;top:-48px;z-index:20;background:var(--deep);color:var(--cream);padding:10px 14px}
+.skip:focus{top:8px}
+.frames{position:fixed;inset:0;z-index:0;background:var(--deep)}
+.frame{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 260ms var(--ease)}
+.frame.is-on{opacity:1}
+.frame[data-frame="origin"]{object-position:48% 58%}
+.frame[data-frame="calling"]{object-position:30% 42%}
+.frame[data-frame="calling-kindness"]{object-position:50% 42%}
+.frame[data-frame="mission-strike"]{object-position:50% 45%}
+.frame[data-frame="mission-hands"]{object-position:50% 42%}
+.frame[data-frame="mission-growth"]{object-position:50% 58%}
+.frame[data-frame="quest"]{object-position:42% 48%}
+.frame[data-frame="vision-city"]{object-position:46% 42%}
+.frame[data-frame="vision-river"]{object-position:50% 62%}
+.frame[data-frame="mission"]{object-position:28% 40%}
+.frame[data-frame="request"]{object-position:50% 46%}
+.frame[data-frame="legacy"]{object-position:50% 28%}
+.frame.liminal{z-index:2;opacity:0;transition:none}
+body.is-crossing .frame.liminal{animation:wash 260ms var(--ease) forwards}
+@keyframes wash{0%{opacity:0}40%{opacity:.5}100%{opacity:0}}
+.nav{position:sticky;top:0;z-index:5;display:flex;align-items:stretch;gap:8px;min-height:56px;padding:0 8px 0 16px;background:rgba(9,30,20,.92);border-bottom:1px solid rgba(212,168,67,.35)}
+.brand{flex:0 0 auto;display:flex;align-items:center;min-height:44px;color:var(--cream);text-decoration:none;font-weight:500;font-size:12px;letter-spacing:.28em;text-transform:uppercase}
+.offer-nav{display:flex;align-items:center}
+.offer-nav a{display:flex;align-items:center;min-height:44px;padding:0 10px;color:rgba(240,232,208,.78);text-decoration:none;font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.offer-nav a:hover{color:var(--gold)}
+.names{flex:1;min-width:0;display:flex;justify-content:flex-end;overflow-x:auto;scrollbar-width:none}
+.names::-webkit-scrollbar{display:none}
+.names button{flex:0 0 auto;min-height:44px;padding:0 12px;color:rgba(240,232,208,.78);font-weight:500;font-size:12px;letter-spacing:.14em;text-transform:uppercase;border-bottom:2px solid transparent}
+.names button[aria-selected="true"]{color:var(--gold);border-bottom-color:var(--gold)}
+.stage{position:relative;z-index:1;height:100dvh;pointer-events:none}
+.still-line{position:absolute;z-index:2;right:5%;bottom:11%;max-width:7.4em;margin:0;font-family:var(--serif);font-size:clamp(26px,2.5vw,40px);line-height:1.05;color:var(--cream);text-shadow:0 2px 18px #091e14;pointer-events:auto}
+.still-line-shelf{display:none;font-family:var(--serif);font-size:clamp(32px,9vw,44px);line-height:1.05;margin:0 0 18px}
+.growth-line{display:none;position:absolute;z-index:2;top:12%;left:6%;max-width:8em;margin:0;font-family:var(--serif);font-size:clamp(22px,2.2vw,34px);line-height:1.08;color:var(--cream);text-shadow:0 2px 16px #091e14}
+body.growth-on .growth-line{display:block}
+.shelf{position:relative;z-index:2;background:var(--deep);padding:clamp(28px,5vh,64px) clamp(18px,4.6vw,72px) clamp(48px,8vh,96px)}
+.shelf[hidden]{display:none}
+.shelf h1,.spell{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;line-height:1.08;margin:0}
+.spell{font-size:clamp(32px,4vw,64px);max-width:16em}
+.spell.quiet{font-size:clamp(26px,2.6vw,40px)}
+.lead{font-family:var(--serif);font-size:clamp(22px,2vw,32px);line-height:1.25;margin:0 0 .8em;max-width:36em}
+p{margin:0 0 .9em;max-width:40em}
+.gold{color:var(--gold)}.teal{color:var(--teal)}
+s,.strike{text-decoration:line-through;text-decoration-thickness:2px;color:rgba(240,232,208,.55)}
+.stops{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:22px 0 18px;padding-bottom:4px}
+.stops::-webkit-scrollbar{display:none}
+.stops button{flex:0 0 auto;min-height:44px;padding:8px 12px;text-align:left;color:rgba(240,232,208,.78);border-bottom:2px solid transparent;font-size:15px;max-width:16em}
+.stops button[aria-selected="true"]{color:var(--gold);border-bottom-color:var(--gold)}
+.stops.sub button{font-size:14px;letter-spacing:.04em}
+.beat{transition:opacity 260ms var(--ease)}
+.beat.is-out{opacity:0}
+.look{min-height:44px;margin:0 0 8px;color:var(--teal);border-bottom:1px solid rgba(46,196,176,.75);font-weight:500;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.look[aria-pressed="true"]{color:var(--gold);border-bottom-color:var(--gold)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,3vw,40px);margin-top:8px}
+.pair h2{margin:0 0 10px;font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+.pair .old h2{color:rgba(240,232,208,.55)}
+.pair .new h2{color:var(--teal)}
+.pair p{font-family:var(--serif);font-size:clamp(22px,2.2vw,34px);line-height:1.2;margin:0}
+.walker-face{margin-top:8px}
+.walker-face .who{font-family:var(--serif);font-size:clamp(28px,3vw,44px);line-height:1.05;margin:0}
+.walker-face .result{margin:.35em 0 0;font-size:18px}
+.story{margin-top:16px;padding-top:12px;border-top:1px solid rgba(212,168,67,.35)}
+.story[hidden]{display:none}
+.quote{font-family:var(--serif);font-size:clamp(20px,1.8vw,28px);line-height:1.3}
+.cite{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,48px);margin:18px 0 28px}
+.fit h2{margin:0 0 10px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500}
+.fit .away h2{color:rgba(240,232,208,.55)}
+.fit .toward h2{color:var(--teal)}
+.fit li{margin:0 0 .55em}
+.fit ul{margin:0;padding-left:1.1em}
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.door{display:flex;flex-direction:column;gap:8px;min-height:44px;padding:18px;text-decoration:none;color:var(--cream);border:1px solid rgba(212,168,67,.55);background:transparent}
+.door.quiet{border-color:rgba(240,232,208,.28)}
+.door strong{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.6vw,38px);line-height:1.05}
+.guides{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:12px}
+.guides h3{margin:0;font-family:var(--serif);font-weight:400;font-size:28px}
+.kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 4px}
+.footer-line{margin-top:28px;font-family:var(--serif);font-size:clamp(22px,2vw,32px)}
+.beside{display:grid;gap:18px}
+@media (min-width:900px){
+  .beside{grid-template-columns:1fr 1fr;align-items:start}
+}
+@media (max-width:800px){
+  .nav{flex-wrap:wrap;padding-top:4px}
+  .offer-nav{margin-left:auto}
+  .names{order:3;flex:1 0 100%;justify-content:flex-start}
+  .pair,.fit,.doors,.guides{grid-template-columns:1fr}
+  .still-line{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+  .still-line-shelf{display:block}
+  .frame[data-frame="calling-kindness"]{object-fit:contain;object-position:center center;background:#091e14}
+  .growth-line{top:8%;left:16px;max-width:7em;font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){
+  .frame,.beat{transition:none !important}
+  body.is-crossing .frame.liminal{animation:none !important}
+}
+</style>
 </head>
 <body>
-<div class="progress"></div>
-<nav class="nav"><a class="brand" href="#top"><img src="assets/logo-butterfly.png" alt=""><span>Metamyth</span></a><div class="nav-r"><div class="nav-ch"></div><div class="nav-links"><a href="/Kinship%20Quest.html?v=kq-20261026-1">The Kinship Quest</a><a href="Journey.html">The Journey</a><a href="Expedition.html">The Expedition</a><a class="apply" href="#invitation">Apply</a></div></div></nav>
+<a class="skip" href="#shelf">Skip to the writing</a>
+<div class="frames">
+  <img class="frame is-on" data-frame="origin" src="new/stills/origin.webp" alt="People in white gathered on a cliff above the sea, trees overhead and tall cactus beside them." fetchpriority="high" loading="eager">
+  <img class="frame" data-frame="calling" src="new/stills/calling.webp" alt="A person in a hat and denim jacket hitchhiking beside a highway curve, thumb raised." loading="eager" aria-hidden="true">
+  <img class="frame" data-frame="calling-kindness" src="new/stills/calling-kindness.webp" alt="Hands holding a cardboard sign that reads Seeking Human Kindness." loading="eager" aria-hidden="true">
+  <img class="frame" data-frame="quest" src="new/stills/quest.webp" alt="Riders on a motorbike with the headlight on, coming up a narrow jungle track, another bike behind." loading="eager" aria-hidden="true">
+  <img class="frame" data-frame="vision-city" src="new/stills/vision-city.webp" alt="Two people on a stone wall looking across the water toward a port city and mountains." loading="eager" aria-hidden="true">
+  <img class="frame" data-frame="vision-river" src="new/stills/vision-river.webp" alt="Two children running through the shallow mouth of a river, forest and a mountain behind them." loading="eager" aria-hidden="true">
+  <img class="frame" data-frame="mission" src="new/stills/mission.webp" alt="A person speaking into a megaphone beside a banner that reads Chase fuels the crisis." loading="eager" aria-hidden="true">
+  <img class="frame" data-frame="mission-strike" src="legend/assets/art/n-strike.jpg" alt="A climate strike crowd holding handmade signs." loading="eager" aria-hidden="true">
+  <img class="frame" data-frame="mission-hands" src="legend/assets/art/n-hands.jpg" alt="A crowd with hands raised." loading="eager" aria-hidden="true">
+  <img class="frame" data-frame="mission-growth" src="legend/assets/art/n-growth.jpg" alt="Green shoots coming up through burned ground." loading="eager" aria-hidden="true">
+  <img class="frame" data-frame="request" src="new/stills/request.webp" alt="Hands passing a woven bag between two people." loading="eager" aria-hidden="true">
+  <img class="frame" data-frame="legacy" src="new/stills/legacy.webp" alt="A person in a hat with three children in orange shirts, arms around each other." loading="eager" aria-hidden="true">
+  <img class="frame liminal" data-frame="liminal" src="new/stills/liminal-forest.webp" alt="" aria-hidden="true">
+</div>
+<header class="nav">
+  <a class="brand" href="#origin">Metamyth</a>
+  <nav class="offer-nav" aria-label="Offers">
+    <a href="kinship">The Kinship Quest</a>
+    <a href="adventure">The Adventure</a>
+    <a href="#request">Apply</a>
+  </nav>
+  <nav class="names" role="tablist" aria-label="The seven movements">
+    <button type="button" role="tab" id="tab-origin" data-room-tab="origin" aria-selected="true" aria-controls="shelf-origin">Origin</button>
+    <button type="button" role="tab" id="tab-calling" data-room-tab="calling" aria-selected="false" aria-controls="shelf-calling" tabindex="-1">Calling</button>
+    <button type="button" role="tab" id="tab-quest" data-room-tab="quest" aria-selected="false" aria-controls="shelf-quest" tabindex="-1">Quest</button>
+    <button type="button" role="tab" id="tab-vision" data-room-tab="vision" aria-selected="false" aria-controls="shelf-vision" tabindex="-1">Vision</button>
+    <button type="button" role="tab" id="tab-mission" data-room-tab="mission" aria-selected="false" aria-controls="shelf-mission" tabindex="-1">Mission</button>
+    <button type="button" role="tab" id="tab-request" data-room-tab="request" aria-selected="false" aria-controls="shelf-request" tabindex="-1">Request</button>
+    <button type="button" role="tab" id="tab-legacy" data-room-tab="legacy" aria-selected="false" aria-controls="shelf-legacy" tabindex="-1">Legacy</button>
+  </nav>
+</header>
+<div class="stage" id="stage">
+  <h1 class="still-line" id="origin-line">The world is made of stories.</h1>
+  <p class="growth-line" id="growth-line">The old story is collapsing in real time.</p>
+</div>
+<main id="shelf">
+  <section class="shelf" id="shelf-origin" data-room="origin" aria-labelledby="tab-origin">
+    <p class="still-line-shelf">The world is made of stories.</p>
+    <div class="walk">
+      <div class="stops" role="tablist" aria-label="Origin">
+        <button type="button" role="tab" aria-selected="true">The future you dream is one story away.</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1">See that, and everything changes.</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1">You are already creating reality with story.</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1">The old story is ending</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1">Ancient wisdom</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1">Neuroscience</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1">Modern magic</button>
+      </div>
+      <div class="beat">
+        <div role="tabpanel"><p class="spell">The future you dream is one story away.</p></div>
+        <div role="tabpanel" hidden>
+          <p class="lead">See that, and everything changes.</p>
+          <p>The same narrative structure that runs your nervous system runs the global economy. Empires rise on it. Cult brands hypnotize millions with it. It has been running you on autopilot since before you could speak.</p>
+          <p>Most of our problems are stories we forgot we could rewrite. The suffering lives in the gap between the stories we're told and the lives we actually live, and you can feel that gap in your body.</p>
+        </div>
+        <div role="tabpanel" hidden>
+          <p class="lead">You are already creating reality with story. You have been doing it unconsciously your whole life. <span class="teal">The metamyth is the conscious version of what you are already doing.</span></p>
+        </div>
+        <div role="tabpanel" hidden>
+          <p class="spell quiet">The old story is ending whether we like it or not.<br>Will you author what comes next?</p>
+        </div>
+        <div role="tabpanel" hidden>
+          <p class="kicker">Ancient wisdom</p>
+          <p>I learned the most important things I know about story sitting by fires with elders in the Sierra Nevada de Santa Marta and beyond on five different continents. Nobody there called it transformation work. They told the old origin stories again and again until the young ones remembered who they were.</p>
+        </div>
+        <div role="tabpanel" hidden>
+          <p class="kicker">Neuroscience</p>
+          <p>Years later I went looking for why it worked, and seemingly the science had caught up. Turns out your brain processes a story told vividly much like a lived experience. Memories become editable each time you recall them. That’s why retelling your story, with witnesses, changes how you carry it.</p>
+        </div>
+        <div role="tabpanel" hidden>
+          <p class="kicker">Modern magic</p>
+          <p>MythOS, our AI story guide, learns your journey, voice and values so you can keep working on your story anytime, with the full picture in view. It’s ready whenever you are to help you write the next chapter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section class="scene hero" id="top" data-screen-label="01 Hero" data-chapter="">
-<div class="bg" data-par="0.15" data-scale="1"><img src="site/img/butterfly-nebula.png" alt=""></div>
-<div class="wrap">
-<div class="label rv" style="--d:.2s">Metamyth</div>
-<h1 data-split="" style="--d:.5s">The future you dream is one <span class="gold">story</span> away.</h1>
-<p class="lede rv blur" style="--d:1.3s">A mythic journey where your real story becomes the engine of your mission. It’s time to end the old story, make purpose pay, and build what’s possible alongside a fellowship of visionaries.</p>
-<div class="hero-lines" data-stagger=".18" style="--d:1.7s"><span>You become the author of your life.</span><span>Your mission becomes a quest the world wants to join.</span><span>You become an essential character in a community writing the future together.</span></div>
-<p class="tagline rv" style="--d:2.1s;font-size:clamp(24px,2.4vw,36px);text-align:center">The old story is ending whether we like it or not.<br>Will you author what comes next?</p>
-<a class="cta rv" style="--d:2.4s" href="#invitation">Author My Future <span>→</span></a>
-</div>
-<div class="cue">Begin</div>
-</section>
+  <section class="shelf" id="shelf-calling" data-room="calling" aria-labelledby="tab-calling" hidden>
+    <h1 class="sr">Calling</h1>
+    <button type="button" class="look" id="second-look" aria-pressed="false">A second look</button>
+    <div class="walk">
+      <div class="stops" role="tablist" aria-label="The old game and the new game">
+        <button type="button" role="tab" aria-selected="true">Everything they told you about business is a lie.</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1">You have to sell out to make a living.</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1">Purpose is a luxury you earn after the money.</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1">The system is fixed, and you're lucky to have a seat.</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1">Agencies make you a shopkeeper in their empire.</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1">Even the winners burn out optimizing a game that was never worth winning.</button>
+      </div>
+      <div class="beat">
+        <div role="tabpanel"><div class="pair"><div class="old"><h2>The old game</h2><p>Everything they told you about business is a lie.</p></div><div class="new"><h2>The new game</h2><p>The system is broken, and that is exactly why purpose wins.</p></div></div></div>
+        <div role="tabpanel" hidden><div class="pair"><div class="old"><h2>The old game</h2><p>You have to sell out to make a living.</p></div><div class="new"><h2>The new game</h2><p>Real stories of purpose are going to win.</p></div></div></div>
+        <div role="tabpanel" hidden><div class="pair"><div class="old"><h2>The old game</h2><p>Purpose is a luxury you earn after the money.</p></div><div class="new"><h2>The new game</h2><p>You hold the value the world is starving for.</p></div></div></div>
+        <div role="tabpanel" hidden><div class="pair"><div class="old"><h2>The old game</h2><p>The system is fixed, and you're lucky to have a seat.</p></div><div class="new"><h2>The new game</h2><p>Money is a story too, and we rewrite it to work for yours.</p></div></div></div>
+        <div role="tabpanel" hidden><div class="pair"><div class="old"><h2>The old game</h2><p>Agencies make you a shopkeeper in their empire. Consultants hand you ChatGPT. Coaches coach coaches.</p></div><div class="new"><h2>The new game</h2><p>Business on purpose becomes the most fun game there is.</p></div></div></div>
+        <div role="tabpanel" hidden><div class="pair"><div class="old"><h2>The old game</h2><p>Even the winners burn out optimizing a game that was never worth winning.</p></div><div class="new"><h2>The new game</h2><p>And it gets easier the more people play.</p></div></div></div>
+      </div>
+    </div>
+  </section>
 
-<section class="cast" data-screen-label="02 New story" data-chapter="">
-<div class="wrap" style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px">
-<div class="label rv">The new story is already unfolding</div>
-<p class="big-quote rv blur" style="font-size:clamp(26px,2.8vw,42px);max-width:22em">We traveled the world seeking solutions, and found them everywhere, <span class="gold">waiting for a story big enough to connect them.</span></p>
-</div>
-<div class="cast-band rv" style="--d:.4s"><div class="cast-track"><img src="site/logos/holochain.png" alt="holochain" class="lg-holochain"><img src="site/logos/dose-of-hope.png" alt="dose of hope" class="lg-dose-of-hope"><img src="site/logos/antidote.png" alt="antidote" class="lg-antidote"><img src="site/logos/unexia.png" alt="unexia" class="lg-unexia"><img src="site/logos/evolutesix.png" alt="evolutesix" class="lg-evolutesix"><img src="site/logos/bloom.png" alt="bloom" class="lg-bloom"><img src="site/logos/hylo.png" alt="hylo" class="lg-hylo"><img src="site/logos/regen-network.png" alt="regen network" class="lg-regen-network"><img src="site/logos/economic-space-agency.png" alt="economic space agency" class="lg-economic-space-agency"><img src="site/logos/coasys.png" alt="coasys" class="lg-coasys"><img src="site/logos/age-of-union.png" alt="age of union" class="lg-age-of-union"><img src="site/logos/masterminding-eden.png" alt="masterminding eden" class="lg-masterminding-eden"><img src="site/logos/ecoversity.png" alt="ecoversity" class="lg-ecoversity"><img src="site/logos/holochain.png" alt="" aria-hidden="true" class="lg-holochain"><img src="site/logos/dose-of-hope.png" alt="" aria-hidden="true" class="lg-dose-of-hope"><img src="site/logos/antidote.png" alt="" aria-hidden="true" class="lg-antidote"><img src="site/logos/unexia.png" alt="" aria-hidden="true" class="lg-unexia"><img src="site/logos/evolutesix.png" alt="" aria-hidden="true" class="lg-evolutesix"><img src="site/logos/bloom.png" alt="" aria-hidden="true" class="lg-bloom"><img src="site/logos/hylo.png" alt="" aria-hidden="true" class="lg-hylo"><img src="site/logos/regen-network.png" alt="" aria-hidden="true" class="lg-regen-network"><img src="site/logos/economic-space-agency.png" alt="" aria-hidden="true" class="lg-economic-space-agency"><img src="site/logos/coasys.png" alt="" aria-hidden="true" class="lg-coasys"><img src="site/logos/age-of-union.png" alt="" aria-hidden="true" class="lg-age-of-union"><img src="site/logos/masterminding-eden.png" alt="" aria-hidden="true" class="lg-masterminding-eden"><img src="site/logos/ecoversity.png" alt="" aria-hidden="true" class="lg-ecoversity"></div></div>
-<div class="marquee"><div class="marquee-track">
-<span>How do you describe a process that reorganizes you on a cellular level?</span><span>Holy f*cking guacamole. You made sense of the madness.</span><span>It shook me literally, it felt like a real regenesis.</span><span>I just didn't realize that I was the missing piece.</span><span>It was almost like a miniature death, and then coming back super energized and alive again.</span><span>You do what psychologists won't do: see the problems as meaningful.</span><span>I knew as soon as you approached, this guy is the storytelling wizard.</span><span>Wow.</span>
-<span>How do you describe a process that reorganizes you on a cellular level?</span><span>Holy f*cking guacamole. You made sense of the madness.</span><span>It shook me literally, it felt like a real regenesis.</span><span>I just didn't realize that I was the missing piece.</span><span>It was almost like a miniature death, and then coming back super energized and alive again.</span><span>You do what psychologists won't do: see the problems as meaningful.</span><span>I knew as soon as you approached, this guy is the storytelling wizard.</span><span>Wow.</span>
-</div></div>
-</section>
+  <section class="shelf" id="shelf-quest" data-room="quest" aria-labelledby="tab-quest" hidden>
+    <h1 class="sr">Quest</h1>
+    <div class="walk">
+      <div class="stops sub" role="tablist" aria-label="Quest">
+        <button type="button" role="tab" aria-selected="true">Turn the story you’ve lived</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1">The same seven arcs</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1">You already have a story</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1">I · Self</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1">II · Mission</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1">III · Organization</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1">IV · World</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1">The pen that rewrites a childhood memory</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1">You forge your Sword</button>
+      </div>
+      <div class="beat">
+        <div role="tabpanel">
+          <p class="spell quiet">Turn the story you’ve lived into the mission people pay to join.</p>
+          <p class="lead">Chances are, your life already holds <span class="gold">the story that will move the world.</span></p>
+          <p>Now, it’s time to <span class="teal">let it work for you.</span></p>
+          <p>The metamyth is a living story that rewrites your reality around a purpose so much greater than you.</p>
+        </div>
+        <div role="tabpanel" hidden>
+          <p>The way we see it, every story that changed the world moved through the same seven arcs: I · Origin, II · Calling, III · Quest, IV · Vision, V · Mission, VI · Request, VII · Legacy.</p>
+          <p>We walk you through each one using the real material of your life. The wins, the wreckage, and the turning points you’ve never quite known how to talk about. By the end, the story you tell about yourself, your work and your mission is one story.</p>
+        </div>
+        <div role="tabpanel" hidden>
+          <p class="lead">You already have a story. <span class="gold">The metamyth is the system that helps you tell it and live it with ease.</span></p>
+          <p>Together we reveal the story you have always been living, and turn it into the power that runs your <span class="gold">mission, your community, your offer and your future.</span></p>
+          <p>Your transformation becomes your brand, your marketing and your path forward.</p>
+          <p>It moves fast because nothing has to be invented. Some of our clients’ biggest breakthroughs have come in a single session, because the meaning was already sitting in what they had lived. <span class="teal">Everything you lived was already meaningful.</span></p>
+        </div>
+        <div role="tabpanel" hidden>
+          <p class="kicker">I · Self</p>
+          <p class="lead">Write the book of your life.</p>
+          <p>End the old story running you. You can't change what happened. You decide what it means.</p>
+        </div>
+        <div role="tabpanel" hidden>
+          <p class="kicker">II · Mission</p>
+          <p class="lead">Forge the myth of your future.</p>
+          <p>Dream forward until the vision draws people and funding before you chase them.</p>
+        </div>
+        <div role="tabpanel" hidden>
+          <p class="kicker">III · Organization</p>
+          <p class="lead">Turn business into the ultimate game.</p>
+          <p>Your business is a story too. Strategy, marketing, community and fundraising become one thing.</p>
+        </div>
+        <div role="tabpanel" hidden>
+          <p class="kicker">IV · World</p>
+          <p class="lead">Change the story of the world.</p>
+          <p>As the old myths collapse, someone writes the new ones. Lead people into the world you built.</p>
+        </div>
+        <div role="tabpanel" hidden>
+          <p class="lead">The pen that rewrites a childhood memory is the same pen that architects a regenerative civilization.</p>
+          <p>If you have a solution and can't communicate it, you have a very expensive obsession.</p>
+        </div>
+        <div role="tabpanel" hidden>
+          <p class="lead">You forge your Sword and travel to the future, because the same power that worries about it creates it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section class="scene" data-screen-label="03 Premise" data-chapter="I · The Premise">
-<div class="bg" data-par="0.2" data-scale="1"><img src="site/img/forest-path.png" alt=""></div>
-<div class="wrap">
-<div class="chapter-head" style="margin-bottom:0">
-<div class="label rv">I · The Premise</div>
-<h2 data-split="">The world is made of stories.<br><span class="gold">See that, and everything changes.</span></h2>
-<p class="lede rv" style="--d:.6s">The same narrative structure that runs your nervous system runs the global economy. Empires rise on it. Cult brands hypnotize millions with it. It has been running you on autopilot since before you could speak.</p>
-</div>
-</div>
-</section>
-<section class="chapter">
-<div class="wrap">
-<p class="beat rv" style="margin-bottom:clamp(64px,10vh,120px);font-style:normal">Most of our problems are stories we forgot we could rewrite. The suffering lives in the gap between the stories we're told and the lives we actually live, and <span class="gold">you can feel that gap in your body.</span></p>
-<p class="lede rv" style="text-align:center;margin-left:auto;margin-right:auto;margin-bottom:clamp(72px,11vh,130px)">You are already creating reality with story. You have been doing it unconsciously your whole life. <span class="teal">The metamyth is the conscious version of what you are already doing.</span></p>
-<p class="big-quote rv blur" style="margin-bottom:clamp(64px,10vh,120px)">Together we reveal the story you have always been living, and turn it into the power that runs your <span class="gold">mission, your community, your offer and your future.</span></p>
-<div class="cols3" data-stagger=".15">
-<div class="pillar"><div class="label">✦ Ancient wisdom</div><p>I learned the most important things I know about story sitting by fires with elders in the Sierra Nevada de Santa Marta and beyond on five different continents. Nobody there called it transformation work. They told the old origin stories again and again until the young ones remembered who they were.</p></div>
-<div class="pillar"><div class="label">✦ Neuroscience</div><p>Years later I went looking for why it worked, and seemingly the science had caught up. Turns out your brain processes a story told vividly much like a lived experience. Memories become editable each time you recall them. That’s why retelling your story, with witnesses, changes how you carry it.</p></div>
-<div class="pillar"><div class="label">✦ Modern magic</div><p>MythOS, our AI story guide, learns your journey, voice and values so you can keep working on your story anytime, with the full picture in view. It’s ready whenever you are to help you write the next chapter.</p></div>
-</div>
-</div>
-</section>
+  <section class="shelf" id="shelf-vision" data-room="vision" aria-labelledby="tab-vision" hidden>
+    <h1 class="sr">Vision</h1>
+    <div class="stops" role="tablist" aria-label="Vision" id="vision-switch">
+      <button type="button" role="tab" id="vision-port" aria-selected="true" aria-controls="vision-feels">What the new game feels like</button>
+      <button type="button" role="tab" id="vision-river" aria-selected="false" tabindex="-1" aria-controls="vision-opens">What opens up</button>
+    </div>
+    <div id="vision-feels">
+      <p class="spell quiet">You become the author of your life.</p>
+      <p class="spell quiet">Your mission becomes a quest the world wants to join.</p>
+      <p class="spell quiet">You become an essential character in a community writing the future together.</p>
+      <div class="walk">
+        <div class="stops sub" role="tablist" aria-label="What the new game feels like">
+          <button type="button" role="tab" aria-selected="true">Your clients arrive already excited</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">Sales feels like inviting a friend</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">Your dream community</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">Your integrity becomes your edge</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">Business as play</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">Become so dangerously authentic</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">Coming home to your own nature</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">All of it is one story away</button>
+        </div>
+        <div class="beat">
+          <div role="tabpanel"><p>Your clients arrive already excited, because your story found them first.</p></div>
+          <div role="tabpanel" hidden><p>Sales feels like inviting a friend on an adventure. Fundraising feels like casting a film.</p></div>
+          <div role="tabpanel" hidden><p>Your dream community joins your mission and pays you to lead it.</p></div>
+          <div role="tabpanel" hidden><p>Your integrity becomes your edge. You take capital without losing your soul.</p></div>
+          <div role="tabpanel" hidden><p class="lead">Business as play. Imagination as strategy. The creative joy of building something real, with people you actually love, in a game that rewards you for giving a damn.</p></div>
+          <div role="tabpanel" hidden><p class="lead">Become so dangerously authentic you literally get paid to be yourself.</p></div>
+          <div role="tabpanel" hidden><p class="lead">Turns out the best way to beat the old system is to <span class="strike">get rich</span> <span class="teal">create wealth</span> coming home to your own nature.</p></div>
+          <div role="tabpanel" hidden><p class="lead">All of it is one story away.<br>Or an infinite number of excuses.</p></div>
+        </div>
+      </div>
+      <div class="walk">
+        <div class="stops sub" role="tablist" aria-label="Port shifts">
+          <button type="button" role="tab" aria-selected="true">Money · runs you</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">Scarcity · the rule</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">Selling · pushing</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">Grinding · the price</button>
+        </div>
+        <div class="beat">
+          <div role="tabpanel"><div class="pair"><div class="old"><h2>The old game</h2><p>Money · runs you</p></div><div class="new"><h2>The new game</h2><p>Works for your story.</p></div></div></div>
+          <div role="tabpanel" hidden><div class="pair"><div class="old"><h2>The old game</h2><p>Scarcity · the rule</p></div><div class="new"><h2>The new game</h2><p>A plot device.</p></div></div></div>
+          <div role="tabpanel" hidden><div class="pair"><div class="old"><h2>The old game</h2><p>Selling · pushing</p></div><div class="new"><h2>The new game</h2><p>Inviting.</p></div></div></div>
+          <div role="tabpanel" hidden><div class="pair"><div class="old"><h2>The old game</h2><p>Grinding · the price</p></div><div class="new"><h2>The new game</h2><p>Playing.</p></div></div></div>
+        </div>
+      </div>
+    </div>
+    <div id="vision-opens" hidden>
+      <p class="spell quiet">You are the hero of this story.</p>
+      <p class="spell quiet">And the guide in someone else's.</p>
+      <div class="walk">
+        <div class="stops sub" role="tablist" aria-label="What opens up">
+          <button type="button" role="tab" aria-selected="true">The return</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">The game gets bigger</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">And you cross over with us</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">A world around your solution</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">The community</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">The venture ecosystem</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">Partnership</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">The bigger the dragon</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">We become the movies</button>
+        </div>
+        <div class="beat">
+          <div role="tabpanel"><p class="kicker">The return.</p><p>At the end of the quest your inner story and your outer story become one. People can feel it before you speak. You walk into any room as yourself, pitch without pitching, and people start asking what your story is.</p></div>
+          <div role="tabpanel" hidden><p class="kicker">The game gets bigger.</p><p>You run your organization as a story. Customers become community and community becomes co-creators, in a game that gets easier the more people play. You hold the power of a for-profit with the purpose of a nonprofit, and the harder the problem you carry, the more effortlessly people rush to join you.</p></div>
+          <div role="tabpanel" hidden><p class="kicker">And you cross over with us.</p><p>A planetary community of the most brilliant motherlovers on the planet, working at the bleeding edge of regenerative economics, AI, venture building, capital, culture and consciousness. The people who walk their story join us and guide the next ones across. We partner on launches, raises and campaigns, and share in the treasure. We proved that purpose is the competitive advantage in a world starving for meaning.</p></div>
+          <div role="tabpanel" hidden><p class="kicker">A world around your solution</p><p>Your brand becomes a destination people want to live in.</p></div>
+          <div role="tabpanel" hidden><p class="kicker">The community</p><p>The most brilliant people on the planet, building the future beside you.</p></div>
+          <div role="tabpanel" hidden><p class="kicker">The venture ecosystem</p><p>An accelerator for the ventures creating what comes next.</p></div>
+          <div role="tabpanel" hidden><p class="kicker">Partnership</p><p>We go in on outcomes with you and share in the treasure.</p></div>
+          <div role="tabpanel" hidden><p class="lead">The bigger the dragon, the greater the treasure.<br>The more meaning you create, the more abundance you build.</p></div>
+          <div role="tabpanel" hidden><p class="lead">We become the movies people watch to escape the old world, and then they come live in ours.</p></div>
+        </div>
+      </div>
+      <div class="walk">
+        <div class="stops sub" role="tablist" aria-label="River shifts">
+          <button type="button" role="tab" aria-selected="true">Customers · buyers</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">Your story · marketing</button>
+          <button type="button" role="tab" aria-selected="false" tabindex="-1">Your mission · alone</button>
+        </div>
+        <div class="beat">
+          <div role="tabpanel"><div class="pair"><div class="old"><h2>The old game</h2><p>Customers · buyers</p></div><div class="new"><h2>The new game</h2><p>Co-creators.</p></div></div></div>
+          <div role="tabpanel" hidden><div class="pair"><div class="old"><h2>The old game</h2><p>Your story · marketing</p></div><div class="new"><h2>The new game</h2><p>Living proof.</p></div></div></div>
+          <div role="tabpanel" hidden><div class="pair"><div class="old"><h2>The old game</h2><p>Your mission · alone</p></div><div class="new"><h2>The new game</h2><p>A movement.</p></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section class="scene dark" data-screen-label="04 Turning" data-chapter="II · The Turning">
-<div class="bg" data-par="0.25" data-scale="1"><img src="site/img/earth-dying.png" alt=""></div>
-<div class="wrap">
-<div class="chapter-head" style="margin-bottom:0">
-<div class="label rv">II · The Turning</div>
-<h2 data-split="">The old story is collapsing <span class="gold">in real time.</span></h2>
-<p class="lede rv" style="--d:.6s">The institutions, the economy, the promises we were raised on. The stories that held them together are breaking, and you can feel it.</p>
-<p class="lede rv" style="--d:.9s"><span class="teal">The people who see it are having the time of their lives writing what comes next.</span></p>
-</div>
-</div>
-</section>
-<section class="chapter" style="--c:var(--teal)">
-<div class="wrap">
-<p class="beat rv">For a decade we escaped the system, or died inside succeeding within it.<br>Today it ends, and we write what comes next.</p>
-<p class="lede rv" style="text-align:center;margin-left:auto;margin-right:auto;margin-top:clamp(48px,7vh,80px)">We got tired of seeing brilliant people with world-changing solutions starving on the wrong side of a bad story. The solutions are out there. <span class="teal">The people carrying them just can't be seen, heard, or funded inside a narrative none of us wrote.</span></p>
-<div class="cols2" style="margin-top:clamp(72px,11vh,130px);align-items:center">
-<p class="lede rv" style="font-family:var(--serif);font-size:clamp(24px,2.3vw,34px);line-height:1.3;color:var(--cream)">Mythology is how the collective dreams. It's how movements rise, cult brands are born and histories get written.</p>
-<p class="lede rv" style="--d:.2s">Every era runs on a story. The old one no longer holds, and the new one hasn't been written yet. <span class="teal">We're living in the time between stories.</span></p>
-</div>
-<p class="big-quote rv blur" style="margin-top:clamp(72px,11vh,130px)"><span class="gold">Will you author what comes next?</span></p>
-<div class="rule rv line" style="margin:clamp(56px,9vh,100px) auto;width:120px"></div>
-<div class="game">
-<div class="game-h old rv"><div class="label">The old game</div><h3>Everything they told you about business is a lie.</h3></div>
-<div class="game-h new rv" style="--d:.15s"><div class="label">The new game</div><h3>The system is broken, and that is exactly why <span class="teal">purpose wins.</span></h3></div>
-<div class="game-r old rv">You have to sell out to make a living.</div><div class="game-r new rv" style="--d:.1s">Real stories of purpose are going to win.</div>
-<div class="game-r old rv">Purpose is a luxury you earn after the money.</div><div class="game-r new rv" style="--d:.1s">You hold the value the world is starving for.</div>
-<div class="game-r old rv">The system is fixed, and you're lucky to have a seat.</div><div class="game-r new rv" style="--d:.1s">Money is a story too, and we rewrite it to work for yours.</div>
-<div class="game-r old rv">Agencies make you a shopkeeper in their empire. Consultants hand you ChatGPT. Coaches coach coaches.</div><div class="game-r new rv" style="--d:.1s">Business on purpose becomes the most fun game there is.</div>
-<div class="game-f old rv">Even the winners burn out optimizing a game that was never worth winning.</div><div class="game-f new rv" style="--d:.1s">And it gets easier the more people play.</div>
-</div>
-<div class="feel">
-<div class="label rv" style="text-align:center">What the new game feels like</div>
-<div class="cols4" data-stagger=".14">
-<div class="pillar"><p>Your clients arrive already excited, because your story found them first.</p></div>
-<div class="pillar"><p>Sales feels like inviting a friend on an adventure. Fundraising feels like casting a film.</p></div>
-<div class="pillar"><p>Your dream community joins your mission and pays you to lead it.</p></div>
-<div class="pillar"><p>Your integrity becomes your edge. You take capital without losing your soul.</p></div>
-</div>
-</div>
-<p class="lede rv" style="text-align:center;margin-left:auto;margin-right:auto;margin-top:clamp(64px,10vh,110px)"><span class="gold">Business as play. Imagination as strategy.</span> The creative joy of building something real, with people you actually love, in a game that rewards you for giving a damn.</p>
-<p class="big-quote rv blur" style="margin-top:clamp(72px,11vh,130px)">Become so dangerously authentic <span class="gold">you literally get paid to be yourself.</span></p>
-<div class="shifts four"><div class="shift"><s>Money · runs you</s><span>Works for your story.</span></div><div class="shift"><s>Scarcity · the rule</s><span>A plot device.</span></div><div class="shift"><s>Selling · pushing</s><span>Inviting.</span></div><div class="shift"><s>Grinding · the price</s><span>Playing.</span></div></div>
-<p class="big-quote rv" style="margin-top:clamp(80px,12vh,140px);font-size:clamp(28px,3vw,46px)">Turns out the best way to beat the old system is to <span class="strike">get rich</span> <span class="teal">create wealth</span> coming home to your own nature.</p>
-<p class="lede rv" style="margin:28px auto 0;text-align:center">All of it is <span class="gold">one story away.</span><br>Or an infinite number of excuses.</p>
-<div style="text-align:center;margin-top:clamp(40px,6vh,64px)"><a class="cta rv" href="#invitation">Author My Future <span>→</span></a></div>
-</div>
-</section>
+  <section class="shelf" id="shelf-mission" data-room="mission" aria-labelledby="tab-mission" hidden>
+    <h1 class="sr">Mission</h1>
+    <div class="walk">
+      <div class="stops sub" role="tablist" aria-label="The old story is collapsing">
+        <button type="button" role="tab" aria-selected="true" data-still="mission">The old story is collapsing in real time.</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-still="mission">The institutions, the economy</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-still="mission-strike">The people who see it</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-still="mission-strike">For a decade</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-still="mission-hands">We got tired</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-still="mission-hands">Mythology is how the collective dreams</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-still="mission-growth">Every era runs on a story</button>
+      </div>
+      <div class="beat">
+        <div role="tabpanel"><p class="spell quiet">The old story is collapsing in real time.</p></div>
+        <div role="tabpanel" hidden><p>The institutions, the economy, the promises we were raised on. The stories that held them together are breaking, and you can feel it.</p></div>
+        <div role="tabpanel" hidden><p class="lead"><span class="teal">The people who see it are having the time of their lives writing what comes next.</span></p></div>
+        <div role="tabpanel" hidden><p>For a decade we escaped the system, or died inside succeeding within it.<br>Today it ends, and we write what comes next.</p></div>
+        <div role="tabpanel" hidden><p>We got tired of seeing brilliant people with world-changing solutions starving on the wrong side of a bad story. The solutions are out there. The people carrying them just can't be seen, heard, or funded inside a narrative none of us wrote.</p></div>
+        <div role="tabpanel" hidden><p>Mythology is how the collective dreams. It's how movements rise, cult brands are born and histories get written.</p></div>
+        <div role="tabpanel" hidden><p>Every era runs on a story. The old one no longer holds, and the new one hasn't been written yet. We're living in the time between stories.</p></div>
+      </div>
+    </div>
+    <div class="walk" id="walkers">
+      <div class="stops" role="tablist" aria-label="Proof">
+        <button type="button" role="tab" aria-selected="true" data-story="story-steve">Steve Keen</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-story="story-michael">Michael Haupt</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-story="story-gareth">Gareth Thompson</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-story="story-jess">Jess Friday</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-story="story-jessica">Jessica · Dose of Hope</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-story="story-kevin">Kevin Howard</button>
+      </div>
+      <div class="beat">
+        <div role="tabpanel"><div class="walker-face"><p class="who">Steve Keen</p><p class="result">After one session: $18k from his audience, a million views in a week.</p></div><div class="story" id="story-steve" hidden><p>The economist who predicted 2008 and was ignored. After one session: $18k from his audience, a million views in a week, and conversations with every major UK party.</p></div></div>
+        <div role="tabpanel" hidden><div class="walker-face"><p class="who">Michael Haupt</p><p class="result">He wrote a 30,000-word book in 28 days.</p></div><div class="story" id="story-michael" hidden><p>Decades studying collapse with no way to make it land. He wrote a 30,000-word book in 28 days and launched a new brand. Hundreds of views became thousands.</p><p class="quote">Zachary got me at a moment of despair. Less than four months later I had written the book, launched a paid program, and readers told me a chapter brought them to tears.</p><p class="cite">Michael Haupt · Author</p></div></div>
+        <div role="tabpanel" hidden><div class="walker-face"><p class="who">Gareth Thompson</p><p class="result">Solved the problem that beat him for five years.</p></div><div class="story" id="story-gareth" hidden><p>A doctor who saw the system itself was sick. After one conversation he slept ten hours and woke having solved the problem that beat him for five years.</p><p class="quote">I feel like I have a new nervous system. The story is real. I am a scientist. I am a doctor. If anyone with an analytical mind is doubting this, stop and listen. This is how it is done.</p><p class="cite">Gareth Thompson · Doctor</p></div></div>
+        <div role="tabpanel" hidden><div class="walker-face"><p class="who">Jess Friday</p><p class="result">Went viral and shifted Scottish government policy.</p></div><div class="story" id="story-jess" hidden><p>Homeless, with a dream of community wealth no one would hear. Once she took the pen she went viral, shifted Scottish government policy, and became a top voice on Substack.</p></div></div>
+        <div role="tabpanel" hidden><div class="walker-face"><p class="who">Jessica · Dose of Hope</p><p class="result">Pulled out the brand narrative and spiritual technology to guide others.</p></div><div class="story" id="story-jessica" hidden><p>Uncovered childhood trauma she had never remembered, saw it as her connection to source, and pulled out the brand narrative and spiritual technology to guide others through the same journey.</p></div></div>
+        <div role="tabpanel" hidden><div class="walker-face"><p class="who">Kevin Howard</p><p class="result">After his first session</p></div><div class="story" id="story-kevin" hidden><p class="quote">I am undone. To read my highest purpose, and see how it will manifest, can only be described as fulfillment. Our quest has begun.</p><p class="cite">Kevin Howard · After his first session</p></div></div>
+      </div>
+    </div>
+    <p class="lead">Everyone who committed walked out transformed.</p>
+    <p>The story works fast because it was always there, waiting to be discovered.</p>
+  </section>
 
-<section class="chapter" data-screen-label="05 The Metamyth" data-chapter="III · The Metamyth">
-<div class="wrap">
-<div class="chapter-head">
-<div class="label rv">III · The Metamyth</div>
-<h2 data-split="">Turn the story you’ve lived <span class="gold">into the mission people pay to join.</span></h2>
-<p class="big-quote rv blur" style="text-align:left;margin:0;font-size:clamp(28px,3vw,46px)">Chances are, your life already holds <span class="gold">the story that will move the world.</span></p>
-<p class="lede rv" style="font-family:var(--serif);font-size:clamp(22px,2vw,30px);line-height:1.3;color:var(--cream)">Now, it’s time to <span class="teal">let it work for you.</span></p>
-<p class="lede rv"><span class="gold">The metamyth</span> is a living story that rewrites your reality around a purpose so much greater than you.</p>
-<p class="lede rv">The way we see it, every story that changed the world moved through the same seven arcs: I · Origin, II · Calling, III · Quest, IV · Vision, V · Mission, VI · Request, VII · Legacy.</p>
-<p class="lede rv">We walk you through each one using the real material of your life. <em>The wins, the wreckage, and the turning points you’ve never quite known how to talk about.</em> By the end, the story you tell about yourself, your work and your mission is one story.</p>
-<p class="lede rv"><span class="gold">Your transformation becomes your brand, your marketing and your path forward.</span></p>
-<p class="lede rv">It moves fast because nothing has to be invented. Some of our clients’ biggest breakthroughs have come in a single session, because the meaning was already sitting in what they had lived. <span class="teal">Everything you lived was already meaningful.</span></p>
-<p class="lede rv" style="font-family:var(--serif);font-size:clamp(22px,2vw,30px);line-height:1.3;color:var(--cream)">You already have a story. <span class="gold">The metamyth is the system that helps you tell it and live it with ease.</span></p>
-</div>
-<div class="cols4" data-stagger=".18">
-<div class="scale" style="--c:var(--a1)"><img src="offer-deck/assets/icons/sprout.png" alt=""><div class="label">I · Self</div><div class="bar"></div><h3>Write the book of your life.</h3><p>End the old story running you. You can't change what happened. You decide what it means.</p></div>
-<div class="scale" style="--c:var(--a2)"><img src="offer-deck/assets/icons/north-star.png" alt=""><div class="label">II · Mission</div><div class="bar"></div><h3>Forge the myth of your future.</h3><p>Dream forward until the vision draws people and funding before you chase them.</p></div>
-<div class="scale" style="--c:var(--a3)"><img src="offer-deck/assets/icons/sword.png" alt=""><div class="label">III · Organization</div><div class="bar"></div><h3>Turn business into the ultimate game.</h3><p>Your business is a story too. Strategy, marketing, community and fundraising become one thing.</p></div>
-<div class="scale" style="--c:var(--a4)"><img src="offer-deck/assets/icons/butterfly.png" alt=""><div class="label">IV · World</div><div class="bar"></div><h3>Change the story of the world.</h3><p>As the old myths collapse, someone writes the new ones. Lead people into the world you built.</p></div>
-</div>
-<p class="big-quote rv blur" style="margin-top:clamp(90px,14vh,160px);font-size:clamp(26px,2.8vw,42px)">The pen that rewrites a childhood memory is the same pen that <span class="gold">architects a regenerative civilization.</span></p>
-<p class="lede rv" style="text-align:center;margin-left:auto;margin-right:auto;margin-top:clamp(40px,6vh,64px)">If you have a solution and can't communicate it, <span class="teal">you have a very expensive obsession.</span></p>
-<div style="text-align:center;margin-top:clamp(40px,6vh,64px)"><a class="cta rv" href="#invitation">Author My Future <span>→</span></a></div>
-</div>
-</section>
+  <section class="shelf" id="shelf-request" data-room="request" aria-labelledby="tab-request" hidden>
+    <h1 class="spell quiet">Who do you have to become to live your story?</h1>
+    <p>If you're open, it works in hours. If you're performing openness, your excuses will eat you alive.</p>
+    <p>This ain't for everyone. We're looking for changemakers with a purpose so big that fully expressing your story would change the big story.</p>
+    <p>We are looking for walking contradictions who are spiritual and entrepreneurial, heart-led investors, artists in business, as wise as they are smart, brave enough to break through. People who don't fit in the old world because they are here to create a new one.</p>
+    <div class="fit">
+      <div class="away">
+        <h2>Walk away if</h2>
+        <ul>
+          <li>You are waiting for the world to change before you do.</li>
+          <li>You expect others to invest in your future and won't invest in your own story.</li>
+          <li>Shame has you playing a background character in someone else's world.</li>
+          <li>You believe scarcity more than the world's need for your solution.</li>
+          <li>You're afraid to lead, to wield abundance, to stop playing small.</li>
+          <li>You want change, but you are not ready to be changed.</li>
+        </ul>
+      </div>
+      <div class="toward">
+        <h2>But if</h2>
+        <ul>
+          <li>You know you are here for a reason and you are done pretending otherwise.</li>
+          <li>You have a world-size solution that needs building and spreading.</li>
+          <li>You won an old game that is killing you, and you are ready for a new one.</li>
+          <li>Your own power scares you more than failing does.</li>
+          <li>You have something to say and you're done hiding from the world that needs to hear it.</li>
+          <li>You know another world is possible, and you are crazy enough to make it real.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="lead">Then you're already in the new story.<br>So take up the pen.</p>
+    <p class="lead">For too long, money has ruled the world.</p>
+    <p>Now we make it a plot device in our story, and use it to build the new one.</p>
+    <p class="spell quiet">Choose your door.</p>
+    <div class="doors">
+      <a class="door" href="kinship"><strong>The Kinship Quest</strong><span>Nine weeks of live guided journeying, in community.</span></a>
+      <a class="door" href="adventure"><strong>The Adventure</strong><span>For visionaries and ventures already in motion.</span></a>
+    </div>
+    <p>The old story is probably speaking right now, with some version of money, timing or not quite the right moment. It knows its days are numbered, so it makes just enough fog to keep you standing still. Write down exactly what it said. That threshold is the one you're here to help other people cross.</p>
+    <p class="kicker">Your guides.</p>
+    <p>An adventure decades in the making, guided by those who walked the path and came back to bring you with them.</p>
+    <div class="guides">
+      <div><p class="kicker">Authorship</p><h3>Zachary Marlow</h3><p>Envision your future.</p></div>
+      <div><p class="kicker">Embodiment</p><h3>Cataleya Morgan</h3><p>Embody your mission.</p></div>
+    </div>
+  </section>
 
-<section class="scene" data-screen-label="06 Proof" data-chapter="Proof" style="min-height:80vh">
-<div class="bg" data-par="0.2" data-scale="1"><img src="site/img/photo-3.jpg" alt=""></div>
-<div class="wrap">
-<div class="chapter-head" style="margin-bottom:0">
-<div class="label rv">Proof</div>
-<h2 data-split="">Everyone who committed <span class="gold">walked out transformed.</span></h2>
-<p class="lede rv" style="--d:.6s">This runs on the magic of belief. The more powerfully you commit, the more conviction you carry, and the more everything can change, so fast you'll ask <span class="teal">"Why didn't I do this ten years ago?"</span></p>
-</div>
-</div>
-</section>
-<section class="chapter" style="padding-top:clamp(60px,8vh,100px)">
-<div class="wrap">
-<div class="proof5" data-stagger=".12">
-<div class="proof"><div class="num">$<span data-count="18">0</span>k<small>/wk</small></div><div class="label">1M views</div><img class="proof-avatar" src="site/img/steve-keen.png" alt="Portrait of Steve Keen"><h3>Steve Keen</h3><p>The economist who predicted 2008 and was ignored. After one session: $18k from his audience, a million views in a week, and conversations with every major UK party.</p></div>
-<div class="proof"><div class="num"><span data-count="28">0</span><small>days</small></div><div class="label">Book, brand, mission</div><img class="proof-avatar" src="site/img/michael-haupt.png" alt="Portrait of Michael Haupt"><h3>Michael Haupt</h3><p>Decades studying collapse with no way to make it land. He wrote a 30,000-word book in 28 days and launched a new brand. Hundreds of views became thousands.</p></div>
-<div class="proof"><div class="num">5<small>yrs</small> → 3<small>hrs</small></div><div class="label">A planetary breakthrough</div><img class="proof-avatar" src="site/img/gareth-thompson.jpg" alt="Portrait of Gareth Thompson"><h3>Gareth Thompson</h3><p>A doctor who saw the system itself was sick. After one conversation he slept ten hours and woke having solved the problem that beat him for five years.</p></div>
-<div class="proof"><div class="num teal" style="text-shadow:0 0 30px rgba(46,196,176,.4)">→ policy</div><div class="label">Homeless to fulfillionaire</div><img class="proof-avatar" src="site/img/j-friday.jpg" alt="Portrait of J Friday"><h3>J Friday</h3><p>Homeless, with a dream of community wealth no one would hear. Once she took the pen she went viral, shifted Scottish government policy, and became a top voice on Substack.</p></div>
-<div class="proof"><div class="num teal" style="text-shadow:0 0 30px rgba(46,196,176,.4)">trauma → ROI</div><div class="label">Spiritual transformation, straight into ROI</div><img class="proof-avatar" src="site/img/jessica-arburn.jpeg" alt="Portrait of Jessica Arburn" style="object-position:50% 20%"><h3>Jessica · Dose of Hope</h3><p>Uncovered childhood trauma she had never remembered, saw it as her connection to source, and pulled out the brand narrative and spiritual technology to guide others through the same journey.</p></div>
-</div>
-<div class="kq-meta rv" style="margin-top:clamp(72px,11vh,120px);font-size:12px"><span>Transformed 30+ lives this year</span><span>Killed the myth of scarcity</span><span>Proved that purpose is the competitive advantage</span></div>
-<p class="big-quote rv" style="margin-top:clamp(64px,10vh,110px);font-size:clamp(26px,2.8vw,42px)">The story works fast because it was <em class="gold" style="font-style:italic">always</em> there,<br><span class="gold">waiting to be discovered.</span></p>
-<div style="text-align:center;margin-top:clamp(40px,6vh,64px)"><a class="cta rv" href="#invitation">Author My Future <span>→</span></a></div>
-</div>
-</section>
+  <section class="shelf" id="shelf-legacy" data-room="legacy" aria-labelledby="tab-legacy" hidden>
+    <h1 class="sr">Legacy</h1>
+    <p class="spell quiet">Personal transformation is a myth.<br>We transform together, on a journey.</p>
+    <div class="doors">
+      <a class="door quiet" href="kinship"><strong>The Kinship Quest</strong><span>Nine weeks of live guided journeying, in community.</span></a>
+      <a class="door quiet" href="adventure"><strong>The Adventure</strong><span>For visionaries and ventures already in motion.</span></a>
+    </div>
+    <div class="beside">
+      <p class="spell quiet">If you stopped hiding from your own power,<br>what story would you write?</p>
+      <p class="lead">Travel to the future. Become the person you need to be to get there. Watch reality rearrange itself around that prophecy. That is the power of myth.</p>
+    </div>
+    <p class="footer-line">The future we dream is one story away.</p>
+  </section>
+</main>
+<p class="sr" id="live" aria-live="polite"></p>
+<script>
+(function () {
+  var ROOMS = ['origin', 'calling', 'quest', 'vision', 'mission', 'request', 'legacy'];
+  var STILL = { origin: 'origin', calling: 'calling', quest: 'quest', vision: 'vision-city', mission: 'mission', request: 'request', legacy: 'legacy' };
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[data-room-tab]'));
+  var shelves = Array.prototype.slice.call(document.querySelectorAll('.shelf'));
+  var frames = Array.prototype.slice.call(document.querySelectorAll('.frame:not(.liminal)'));
+  var originLine = document.getElementById('origin-line');
+  var live = document.getElementById('live');
+  var current = 'origin';
+  var gen = 0;
+  var booted = false;
 
-<section class="chapter" data-screen-label="07 Together" style="padding:clamp(90px,14vh,170px) 0">
-<div class="wrap"><p class="big-quote rv blur">Personal transformation is a myth.<br><span class="gold">We transform together, on a journey.</span></p></div>
-</section>
+  function roomFromHash() {
+    var name = (location.hash || '').replace('#', '');
+    return ROOMS.indexOf(name) === -1 ? 'origin' : name;
+  }
+  function showFrame(name) {
+    frames.forEach(function (frame) {
+      var on = frame.getAttribute('data-frame') === name;
+      frame.classList.toggle('is-on', on);
+      frame.setAttribute('aria-hidden', on ? 'false' : 'true');
+    });
+  }
+  function centerTab(tab) {
+    var scroller = tab.parentElement;
+    scroller.scrollTo({ left: Math.max(0, tab.offsetLeft - (scroller.clientWidth - tab.offsetWidth) / 2), behavior: 'auto' });
+  }
+  function apply(room, silent) {
+    current = room;
+    shelves.forEach(function (shelf) { shelf.hidden = shelf.getAttribute('data-room') !== room; });
+    tabs.forEach(function (tab) {
+      var on = tab.getAttribute('data-room-tab') === room;
+      tab.setAttribute('aria-selected', on ? 'true' : 'false');
+      tab.tabIndex = on ? 0 : -1;
+    });
+    showFrame(STILL[room]);
+    document.body.classList.remove('growth-on');
+    if (room === 'vision') showVision('port');
+    if (room === 'mission') {
+      var collapse = document.querySelector('#shelf-mission .stops [aria-selected="true"][data-still]');
+      if (collapse) {
+        showFrame(collapse.getAttribute('data-still'));
+        document.body.classList.toggle('growth-on', collapse.getAttribute('data-still') === 'mission-growth');
+      }
+    }
+    if (room !== 'calling') {
+      second.setAttribute('aria-pressed', 'false');
+      second.textContent = 'A second look';
+    }
+    originLine.hidden = room !== 'origin';
+    document.title = document.getElementById('tab-' + room).textContent.trim() + ' — Metamyth';
+    if (!silent) live.textContent = document.getElementById('tab-' + room).textContent.trim();
+    centerTab(document.getElementById('tab-' + room));
+    document.querySelector('.skip').setAttribute('href', '#shelf-' + room);
+  }
+  function showRoom(room, opts) {
+    opts = opts || {};
+    if (ROOMS.indexOf(room) === -1) room = 'origin';
+    if (room === current && booted && !opts.force) return;
+    var instant = opts.instant || reduce.matches;
+    var token = ++gen;
+    var go = function () { apply(room, opts.silent); if (!opts.keepScroll) window.scrollTo(0, 0); };
+    if (instant) { document.body.classList.remove('is-crossing'); go(); booted = true; return; }
+    document.body.classList.add('is-crossing');
+    showFrame(STILL[room]);
+    window.setTimeout(function () {
+      if (token !== gen) return;
+      go();
+      requestAnimationFrame(function () { document.body.classList.remove('is-crossing'); });
+    }, 140);
+    booted = true;
+  }
+  function writeUrl(room) {
+    var base = location.pathname + location.search;
+    var url = room === 'origin' ? base : base + '#' + room;
+    if (location.pathname + location.search + location.hash !== url) history.pushState({ room: room }, '', url);
+  }
+  function go(room) {
+    if (room === current) { document.getElementById('tab-' + room).focus(); return; }
+    showRoom(room);
+    writeUrl(room);
+  }
+  tabs.forEach(function (tab, index) {
+    tab.addEventListener('click', function () { go(tab.getAttribute('data-room-tab')); });
+    tab.addEventListener('keydown', function (event) {
+      var next = null;
+      if (event.key === 'ArrowRight') next = tabs[(index + 1) % tabs.length];
+      if (event.key === 'ArrowLeft') next = tabs[(index - 1 + tabs.length) % tabs.length];
+      if (event.key === 'Home') next = tabs[0];
+      if (event.key === 'End') next = tabs[tabs.length - 1];
+      if (!next) return;
+      event.preventDefault();
+      go(next.getAttribute('data-room-tab'));
+      next.focus();
+    });
+  });
 
-<section class="scene" data-screen-label="08 Kinship Quest" data-chapter="IV · The Kinship Quest">
-<div class="bg" data-par="0.22" data-scale="1"><img src="site/img/horizon.png" alt=""></div>
-<div class="wrap">
-<div class="chapter-head" style="margin-bottom:0">
-<div class="label rv">IV · The Kinship Quest</div>
-<h2 data-split="">We are the ones <span class="gold">we've been waiting for.</span></h2>
-<p class="lede rv" style="--d:.6s">A community of visionaries from around the planet carrying missions as big as yours, co-creating the future together over nine weeks of live guided journeying. <span class="teal">You work on yourself by working on other people.</span></p>
-<p class="lede rv" style="--d:.8s">Turn someone else's wound into a gift three times and your hands know the move before you point it at your own material.</p>
-</div>
-</div>
-</section>
-<section class="chapter" style="padding-top:clamp(60px,8vh,100px)">
-<div class="wrap">
-<div class="cols2" style="align-items:start">
-<div class="rv" style="display:flex;flex-direction:column;gap:22px"><div class="label">✦ Nobody is an audience</div><p class="lede">Every session rotates roles. You direct, you witness, you receive. The passive seat does not exist.</p><p class="lede">You travel in fellowship pods and rotate through a cast of characters you will come to know and love. Your pod holds what the room cannot hold. <span class="teal">The rotation surfaces what your pod cannot see.</span></p></div>
-<p class="rv" style="--d:.2s;font-family:var(--serif);font-size:clamp(26px,2.6vw,40px);line-height:1.22;color:var(--cream);margin-top:44px">Where you can talk about your startup, your ayahuasca stories and your wildest plans for the world <span class="gold">while leaving room for laughter.</span></p>
-</div>
-<p class="big-quote rv blur" style="margin-top:clamp(80px,12vh,140px)">Come as you are, leave transformed, <span class="gold">or stay and build another world with us.</span></p>
-<p class="beat rv" style="margin-top:clamp(40px,6vh,64px);margin-bottom:clamp(72px,11vh,120px)">This whole thing has been a radical experiment in running a company on pure purpose, beyond organic marketing, where the living system transforms the life of everyone it touches.</p>
-<div class="cols3 weeks" data-stagger=".15">
-<div class="proof"><div class="num"><small>Week</small><span data-count="3">0</span></div><p>Your life story becomes an origin story people get hooked on, and the old story loses its grip on your body.</p></div>
-<div class="proof"><div class="num"><small>Week</small><span data-count="6">0</span></div><p>You have a quest people pay to join, a Sword to guide them, and a vision clear enough to fund.</p></div>
-<div class="proof"><div class="num"><small>Week</small><span data-count="9">0</span></div><p>You get paid to live your story, with a community walking theirs beside you.</p></div>
-</div>
-<div class="cta-row rv" style="margin-top:clamp(64px,10vh,110px)"><a class="cta fill" href="/Kinship%20Quest.html?v=kq-20261026-1">Explore the Kinship Quest <span>→</span></a><a class="cta" href="Journey.html">See the journey map <span>→</span></a></div>
-</div>
-</section>
+  document.querySelectorAll('.walk').forEach(function (walk) {
+    var list = walk.querySelector('[role="tablist"]');
+    if (!list) return;
+    var buttons = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+    var panels = Array.prototype.slice.call(walk.querySelector('.beat').children);
+    var beat = walk.querySelector('.beat');
+    function select(i, toggleStory) {
+      var same = buttons[i].getAttribute('aria-selected') === 'true';
+      if (same && toggleStory && buttons[i].getAttribute('data-story')) {
+        var story = document.getElementById(buttons[i].getAttribute('data-story'));
+        story.hidden = !story.hidden;
+        return;
+      }
+      var swap = function () {
+        buttons.forEach(function (button, n) {
+          var on = n === i;
+          button.setAttribute('aria-selected', on ? 'true' : 'false');
+          button.tabIndex = on ? 0 : -1;
+          if (on && button.getAttribute('data-still') && current === 'mission') {
+            showFrame(button.getAttribute('data-still'));
+            document.body.classList.toggle('growth-on', button.getAttribute('data-still') === 'mission-growth');
+          }
+        });
+        panels.forEach(function (panel, n) { panel.hidden = n !== i; });
+      };
+      if (reduce.matches) { swap(); return; }
+      beat.classList.add('is-out');
+      window.setTimeout(function () { swap(); beat.classList.remove('is-out'); }, 260);
+    }
+    buttons.forEach(function (button, i) {
+      button.addEventListener('click', function () { select(i, true); });
+      button.addEventListener('keydown', function (event) {
+        var next = null;
+        if (event.key === 'ArrowRight') next = (i + 1) % buttons.length;
+        if (event.key === 'ArrowLeft') next = (i - 1 + buttons.length) % buttons.length;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = buttons.length - 1;
+        if (next === null) return;
+        event.preventDefault();
+        buttons[next].focus();
+        select(next, false);
+      });
+    });
+  });
 
-<section class="scene arc-hero" style="--c:var(--a4)" data-screen-label="09 New World" data-chapter="V · The New World">
-<div class="bg" data-par="0.22" data-scale="1"><img src="site/img/cosmic-city.png" alt=""></div>
-<div class="wrap">
-<img class="arc-icon-lg rv blur" src="offer-deck/assets/icons/butterfly.png" alt="">
-<div class="label rv">V · The New World</div>
-<h2 data-split="" style="font-size:clamp(52px,7.4vw,124px)">You are the hero of this story.</h2>
-<p class="sub rv" style="--d:.5s">And the guide in someone else's.</p>
-</div>
-</section>
-<section class="arc-body" style="--c:var(--a4)">
-<div class="wrap">
-<div class="arc-grid">
-<div class="nw">
-<div class="nw-block rv"><h3>The return.</h3><p>At the end of the quest your inner story and your outer story become one. People can feel it before you speak. You walk into any room as yourself, pitch without pitching, and people start asking what your story is.</p></div>
-<div class="nw-block rv"><h3>The game gets bigger.</h3><p>You run your organization as a story. Customers become community and community becomes co-creators, in a game that gets easier the more people play. You hold the power of a for-profit with the purpose of a nonprofit, and the harder the problem you carry, the more effortlessly people rush to join you.</p></div>
-<div class="nw-block rv"><h3>And you cross over with us.</h3><p>A planetary community of the most brilliant motherlovers on the planet, working at the bleeding edge of regenerative economics, AI, venture building, capital, culture and consciousness. The people who walk their story join us and guide the next ones across. We partner on launches, raises and campaigns, and share in the treasure. <span class="teal">We proved that purpose is the competitive advantage in a world starving for meaning.</span></p></div>
-</div>
-<div class="carry">
-<div class="label rv">What opens up</div>
-<div data-stagger=".12">
-<div class="item"><img src="offer-deck/assets/icons/landscape.png" alt=""><div><h4>A world around your solution</h4><p>Your brand becomes a destination people want to live in.</p></div></div>
-<div class="item"><img src="offer-deck/assets/icons/globe.png" alt=""><div><h4>The community</h4><p>The most brilliant people on the planet, building the future beside you.</p></div></div>
-<div class="item"><img src="offer-deck/assets/icons/compass.png" alt=""><div><h4>The venture ecosystem</h4><p>An accelerator for the ventures creating what comes next.</p></div></div>
-<div class="item"><img src="offer-deck/assets/icons/chalice.png" alt=""><div><h4>Partnership</h4><p>We go in on outcomes with you and share in the treasure.</p></div></div>
-</div>
-</div>
-</div>
-<p class="big-quote rv blur" style="margin-top:clamp(80px,12vh,140px);font-size:clamp(28px,3vw,46px)">The bigger the dragon, the greater the treasure.<br><span class="gold">The more meaning you create, the more abundance you build.</span></p>
-<div class="shifts"><div class="shift"><s>Customers · buyers</s><span>Co-creators.</span></div><div class="shift"><s>Your story · marketing</s><span>Living proof.</span></div><div class="shift"><s>Your mission · alone</s><span>A movement.</span></div></div>
-<p class="capstone rv">We become the movies people watch to escape the old world, <span>and then they come live in ours.</span></p>
-</div>
-</section>
+  var visionButtons = Array.prototype.slice.call(document.querySelectorAll('#vision-switch [role="tab"]'));
+  function showVision(which) {
+    var port = which === 'port';
+    document.getElementById('vision-feels').hidden = !port;
+    document.getElementById('vision-opens').hidden = port;
+    visionButtons.forEach(function (button) {
+      var on = (port && button.id === 'vision-port') || (!port && button.id === 'vision-river');
+      button.setAttribute('aria-selected', on ? 'true' : 'false');
+      button.tabIndex = on ? 0 : -1;
+    });
+    showFrame(port ? 'vision-city' : 'vision-river');
+  }
+  visionButtons.forEach(function (button, i) {
+    button.addEventListener('click', function () { showVision(button.id === 'vision-port' ? 'port' : 'river'); });
+    button.addEventListener('keydown', function (event) {
+      if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+      event.preventDefault();
+      var next = visionButtons[(i + 1) % visionButtons.length];
+      next.focus();
+      showVision(next.id === 'vision-port' ? 'port' : 'river');
+    });
+  });
 
-<section class="scene dark" data-screen-label="10 Fit" data-chapter="The Fit" style="min-height:80vh">
-<div class="bg" data-par="0.2" data-scale="1"><img src="site/img/wizard.png" alt=""></div>
-<div class="wrap">
-<div class="chapter-head" style="margin-bottom:0">
-<div class="label rv">The Fit</div>
-<h2 data-split="">Who do you have to <span class="gold">become</span> to live your story?</h2>
-<p class="lede rv" style="--d:.6s">If you're open, it works in hours. <span class="teal">If you're performing openness, your excuses will eat you alive.</span></p>
-<p class="lede rv" style="--d:.9s">This ain't for everyone. We're looking for changemakers with a purpose so big that fully expressing your story <span class="gold">would change the big story.</span></p>
-</div>
-</div>
-</section>
-<section class="chapter" style="padding-top:clamp(60px,8vh,100px)">
-<div class="wrap">
-<p class="lede rv" style="text-align:center;margin-left:auto;margin-right:auto;margin-bottom:clamp(64px,10vh,110px);max-width:40em">We are looking for walking contradictions who are spiritual and entrepreneurial, heart-led investors, artists in business, as wise as they are smart, brave enough to break through. <span class="gold">People who don't fit in the old world because they are here to create a new one.</span></p>
-<div class="cols2">
-<div><div class="label mist rv" style="margin-bottom:12px">Walk away if</div><ul class="fit-list fit-no" data-stagger=".08"><li>You are waiting for the world to change before you do.</li><li>You expect others to invest in your future and won't invest in your own story.</li><li>Shame has you playing a background character in someone else's world.</li><li>You believe scarcity more than the world's need for your solution.</li><li>You're afraid to lead, to wield abundance, to stop playing small.</li><li>You want change, but you are not ready to be changed.</li></ul></div>
-<div><div class="label teal rv" style="margin-bottom:12px">But if</div><ul class="fit-list fit-yes" data-stagger=".08"><li>You know you are here for a reason and you are done pretending otherwise.</li><li>You have a world-size solution that needs building and spreading.</li><li>You won an old game that is killing you, and you are ready for a new one.</li><li>Your own power scares you more than failing does.</li><li>You have something to say and you're done hiding from the world that needs to hear it.</li><li>You know another world is possible, and you are crazy enough to make it real.</li></ul></div>
-</div>
-<p class="big-quote rv" style="margin-top:clamp(80px,12vh,140px)">Then you're already in the new story.<br><span class="gold">So take up the pen.</span></p>
-<div style="text-align:center;margin-top:clamp(40px,6vh,64px)"><a class="cta rv" href="#invitation">Author My Future <span>→</span></a></div>
-</div>
-</section>
+  var second = document.getElementById('second-look');
+  second.addEventListener('click', function () {
+    if (current !== 'calling') return;
+    var on = second.getAttribute('aria-pressed') === 'true';
+    second.setAttribute('aria-pressed', on ? 'false' : 'true');
+    showFrame(on ? 'calling' : 'calling-kindness');
+  });
 
-<section class="chapter" data-screen-label="11 Council" data-chapter="The Council">
-<div class="wrap">
-<div class="chapter-head">
-<div class="label rv">The Council</div>
-<h2 data-split="">Your <span class="gold">guides.</span></h2>
-<p class="lede rv">An adventure decades in the making, <span class="teal">guided by those who walked the path and came back to bring you with them.</span></p>
-</div>
-<div class="cols3" data-stagger=".15">
-<div class="guide"><div class="ph"><img class="council-avatar" src="site/img/zachary.jpg" alt="Zachary Marlow"></div><div class="label">Authorship</div><h3>Zachary Marlow</h3><div class="role">Envision your future.</div><p>On the threshold of suicide, he killed the character and woke up to the power that this is all a story and he could write it. That night turned his life into an epic adventure across five continents, turning every crisis into the next chapter, learning to wield all the arts of story, taking the system apart as an activist, dreaming the new one as a worldbuilder.</p><p>Went from homeless visionary to futurist entrepreneur with the team and community of his dreams, on an adventure that gets crazier by the day and more fun. His life is the metamyth. <span class="gold">He walked it back so you can build worlds and get paid to live yours.</span></p></div>
-<div class="guide"><div class="ph"><img class="council-avatar" src="site/img/cataleya.jpg" alt="Cataleya Morgan"></div><div class="label">Embodiment</div><h3>Cataleya Morgan</h3><div class="role">Embody your mission.</div><p>Worked deep inside the system for startups like Tesla and tech giants with impossible missions that changed the world, until hundreds of ceremonies with indigenous elders showed her it is us who need to change. Packed up the apartment, never looked back, and walked into the jungle to remember what value actually means.</p><p>Grounds you so deeply in your vision that selling becomes serving and leading becomes ceremony. <span class="gold">Embodiment runs through every week, because a story that stays on the page changes nothing.</span></p></div>
-<div class="guide"><div class="ph"><img src="site/img/community-call.jpg" alt="" style="width:100%;height:100%;object-fit:cover"></div><div class="label">Kinship</div><h3>The community</h3><p>Spiritual entrepreneurs, heart-led investors, artists in business, regenerative economists, venture builders, embodiment practitioners, capital architects, storytellers, systems thinkers, and solutionaries from every corner of the planet.</p><p><span class="gold">People who made it to the heights of the old system and those on the fringes building impossible visions beyond it.</span></p></div>
-</div>
-<p class="big-quote rv" style="margin-top:clamp(80px,12vh,140px);font-size:clamp(26px,2.8vw,42px)">We are going to love you and believe in you more than anyone ever has, <span class="gold">which will challenge you to the core of all your excuses.</span></p>
-</div>
-</section>
-
-<section class="chapter" id="invitation" data-screen-label="12 Invitation" data-chapter="VI · The Invitation" style="background:linear-gradient(to bottom,var(--deep),var(--forest) 50%,var(--deep))">
-<div class="wrap">
-<div class="chapter-head">
-<div class="label rv">VI · The Invitation</div>
-<h2 data-split="" style="font-size:clamp(36px,4.4vw,68px)">For too long, money has ruled the world.</h2>
-<p class="lede rv" style="--d:.6s">Now we make it a plot device in our story, <span class="gold">and use it to build the new one.</span></p>
-<h2 data-split="" style="margin-top:clamp(40px,6vh,72px)">Choose your <span class="gold">door.</span></h2>
-</div>
-<div class="doors">
-<div class="door primary rv" style="--c:var(--gold)">
-<div class="label">Door one</div><h3>The Kinship Quest</h3><p class="sub">Nine weeks of live guided journeying, in community.</p>
-<div>
-<div class="item"><img src="offer-deck/assets/icons/shield-leaf.png" alt=""><div><h4>The guarantee</h4><p>Show up, do the work, and you walk out getting paid to live your story. If you do the work and it hasn't landed, we keep working with you until it does.</p></div></div>
-<div class="item"><img src="offer-deck/assets/icons/pearl.png" alt=""><div><h4>The investment</h4><p>A fiction called money shaped the entire world. You expect people to invest in your future, so the new story starts with you investing in yours.</p></div></div>
-<div class="item"><img src="offer-deck/assets/icons/bridge.png" alt=""><div><h4>Radically inclusive</h4><p>A sliding scale from the homeless entrepreneur to the founder raising millions, plus a small number of scholarships. We bet on visionaries and move at the speed of trust.</p></div></div>
-</div>
-<a class="cta fill" href="/Kinship%20Quest.html?v=kq-20261026-1#apply">Apply for the Kinship Quest <span>→</span></a>
-</div>
-<div class="door rv" style="--c:var(--teal);--d:.15s">
-<div class="label">Door two</div><h3>The Expedition</h3><p class="sub">For visionaries and ventures already in motion. A one-to-one initiation that ascends you into the community of worldbuilders creating the future together.</p>
-<div>
-<div class="item"><img src="offer-deck/assets/icons/crystal-ball.png" alt=""><div><h4>Time travel into the new story</h4><p>We step into the future where you already did it, the world your mission built, and see it so vividly it starts pulling you forward.</p></div></div>
-<div class="item"><img src="offer-deck/assets/icons/map.png" alt=""><div><h4>Walk the path back</h4><p>One-to-one with Zachary and Cataleya, we trace every step from that future to today, so everyone else can see it too.</p></div></div>
-<div class="item"><img src="offer-deck/assets/icons/council.png" alt=""><div><h4>Guides for the results you need</h4><p>An array of kinship coaches in embodiment, expression, sales, capital and leadership, matched to the specific transformation you came for.</p></div></div>
-</div>
-<a class="cta fill" href="Expedition.html" style="background:var(--teal);border-color:var(--teal)">Explore the Expedition <span>→</span></a>
-</div>
-</div>
-<p class="big-quote rv" style="margin:clamp(72px,11vh,120px) auto clamp(56px,8vh,90px);font-size:clamp(24px,2.4vw,36px)">A decade of death and rebirth across the planet built this, so you get to <span class="gold">go straight to the gold.</span></p>
-<p class="cheat rv"><b>✦ Cheat code</b>The old story is probably speaking right now, with some version of money, timing or not quite the right moment. It knows its days are numbered, so it makes just enough fog to keep you standing still. Write down exactly what it said. That threshold is the one you're here to help other people cross.</p>
-</div>
-</section>
-
-<section class="chapter" data-screen-label="13 Voices" data-chapter="Voices">
-<div class="wrap">
-<div class="chapter-head">
-<div class="label rv">Voices</div>
-<h2 data-split="">The story <span class="gold">speaks for itself.</span></h2>
-</div>
-<div class="cols3" data-stagger=".15">
-<div class="voice"><blockquote>I feel like I have a new nervous system. <span class="gold">The story is real.</span> I am a scientist. I am a doctor. If anyone with an analytical mind is doubting this, stop and listen. This is how it is done.</blockquote><cite>Gareth Thompson · Doctor</cite></div>
-<div class="voice"><blockquote>Zachary got me at a moment of despair. Less than four months later I had written the book, launched a paid program, and readers told me <span class="gold">a chapter brought them to tears.</span></blockquote><cite>Michael Haupt · Author</cite></div>
-<div class="voice"><blockquote>I am undone. To read my highest purpose, and see how it will manifest, can only be described as <span class="gold">fulfillment.</span> Our quest has begun.</blockquote><cite>Kevin Howard · After his first session</cite></div>
-</div>
-</div>
-</section>
-
-<section class="scene close" data-screen-label="14 Close" data-chapter="The Threshold">
-<div class="bg" data-par="0.18" data-scale="1"><img src="site/img/zun.png" alt=""></div>
-<div class="wrap">
-<div class="close-pre"><p class="rv">Travel to the future. Become the person you need to be to get there. Watch reality rearrange itself around that prophecy. <span class="gold">That is the power of myth.</span></p></div>
-<div class="label rv">The Threshold</div>
-<p class="lede rv" style="text-align:center;font-family:var(--serif);font-size:clamp(24px,2.4vw,36px)">If you stopped hiding from your own power,</p>
-<h2 data-split="">what <span class="teal">story</span> would you write?</h2>
-<a class="cta rv" style="--d:.8s" href="#invitation">Author My Future <span>→</span></a>
-</div>
-</section>
-<footer><span>Metamyth Story Systems</span><span>The future we dream is one story away</span><a href="https://metamyth.quest">metamyth.quest</a></footer>
-
-<script src="offer-deck/image-slot.js"></script>
-<script src="site/site.js"></script>
-<script src="site/cast.js"></script>
+  window.addEventListener('hashchange', function () { showRoom(roomFromHash(), { force: true }); });
+  window.addEventListener('popstate', function () {
+    showRoom((history.state && history.state.room) || roomFromHash(), { force: true });
+  });
+  var start = roomFromHash();
+  showRoom(start, { instant: true, silent: true, force: true });
+  history.replaceState({ room: start }, '', start === 'origin' ? location.pathname + location.search : '#' + start);
+})();
+</script>
 </body>
 </html>
