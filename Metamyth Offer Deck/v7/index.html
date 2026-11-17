@@ -6,8 +6,8 @@
 <title>Metamyth — The world is made of stories</title>
 <meta name="description" content="The world is made of stories. Take back yours to change the world.">
 <link rel="icon" href="../v6/img/logo.webp">
-<link rel="preload" as="image" href="img/vault/hero-cliff.webp">
-<link rel="stylesheet" href="v7.css?v=1">
+<link rel="preload" as="image" href="img/nebula.webp">
+<link rel="stylesheet" href="v7.css?v=2">
 <script>(function(d){d.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('reduced')})(document.documentElement)</script>
 </head>
 <body>
@@ -15,7 +15,10 @@
 
 <canvas id="stage" aria-hidden="true"></canvas>
 <div class="scrim" aria-hidden="true"></div>
+<canvas id="book3d" aria-hidden="true"></canvas>
+<div class="whiteout" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
+<svg class="defs" aria-hidden="true" width="0" height="0"><defs id="melt-defs"></defs></svg>
 
 <header class="nav">
   <a class="brand" href="#top" aria-label="Metamyth home"><img src="../v6/img/logo.webp" alt="" width="30" height="30"><span>Metamyth</span></a>
@@ -27,197 +30,174 @@
 <main id="main">
 
 <!-- ═════════ 01 · ORIGIN ═════════ -->
-<section class="beat hero" id="top" data-scene="hero-cliff" data-chapter="I · Origin">
-  <div class="hero-in">
-    <p class="kicker rv">Metamyth</p>
-    <h1 class="mega rv" style="--d:.15s">The world is<br>made of stories.</h1>
-    <p class="sub rv" style="--d:.5s">Take back yours to change the world.</p>
+<section class="beat hero" id="top" data-chapter="I · Origin">
+  <div class="hero-in m">
+    <p class="kicker">Metamyth</p>
+    <h1 class="mega">The world is made<br>of <span class="alt">stories.</span></h1>
+    <p class="sub">Take back yours to change the world.</p>
   </div>
   <div class="cue" aria-hidden="true"><span>Scroll</span></div>
 </section>
 
-<div class="tx" data-a="hero-cliff" data-b="refinery" data-mode="tear"></div>
+<div class="tx" data-a="nebula" data-b="red-earth" data-mode="melt"></div>
 
-<section class="beat split" data-chapter="I · Origin">
-  <p class="split-a rv">The old story</p>
-  <h2 class="split-b rv" style="--d:.2s">is ending.</h2>
-</section>
-<section class="beat left" data-chapter="I · Origin">
-  <p class="lede big rv">Money, work, the economy, what a life is even for: it all runs on stories, and almost none of us chose the ones we're living in.</p>
+<section class="beat compose" data-chapter="I · Origin">
+  <p class="corner-a m">The old story</p>
+  <h2 class="corner-b m">is ending.</h2>
+  <p class="lede big corner-c m">Money, work, the economy, what a life is even for: it all runs on stories, and almost none of us chose the ones we're living in.</p>
 </section>
 
-<div class="tx" data-a="refinery" data-b="dollar-red" data-mode="tear"></div>
+<div class="tx" data-a="red-earth" data-b="dollar-red" data-mode="melt"></div>
 
-<section class="beat right" data-chapter="I · Origin">
-  <p class="lede big rv">The systems we built to serve humanity have become systems humanity serves, rewarding extraction over regeneration, spectacle over substance, and the accumulation of wealth over the creation of actual value.</p>
-</section>
-<section class="beat left" data-chapter="I · Origin">
-  <p class="lede rv">We live in an economy where fortunes can be made from speculation, attention and promises about futures that may never arrive, while the systems sustaining life are pushed toward collapse.</p>
-  <p class="lede accent rv" style="--d:.2s">And people are losing faith in the stories they've been sold.</p>
-</section>
-
-<div class="tx" data-a="dollar-red" data-b="fake-mascots" data-mode="tear"></div>
-
-<section class="beat center tall" data-chapter="I · Origin">
-  <p class="statement rv">When everything fake becomes infinite,</p>
-  <p class="statement gold rv" style="--d:.3s">everything real becomes priceless.</p>
+<section class="beat pair" data-chapter="I · Origin">
+  <p class="lede big m">The systems we built to serve humanity have become systems humanity serves, rewarding extraction over regeneration, spectacle over substance, and the accumulation of wealth over the creation of actual value.</p>
+  <div class="m">
+    <p class="lede">We live in an economy where fortunes can be made from speculation, attention and promises about futures that may never arrive, while the systems sustaining life are pushed toward collapse.</p>
+    <p class="lede accent">And people are losing faith in the stories they've been sold.</p>
+  </div>
 </section>
 
-<div class="tx" data-a="fake-mascots" data-b="women-circle" data-mode="tear"></div>
+<div class="tx" data-a="dollar-red" data-b="fake-mascots" data-mode="melt"></div>
 
-<section class="beat left" data-chapter="I · Origin">
-  <p class="lede big rv">All over the world, people are already carrying real solutions, building things that matter, and imagining futures worth living in.</p>
+<section class="beat center" data-chapter="I · Origin">
+  <p class="statement m">When everything fake becomes <span class="huge">infinite,</span></p>
+  <p class="statement gold m">everything real becomes <span class="huge">priceless.</span></p>
 </section>
 <section class="beat center" data-chapter="I · Origin">
-  <p class="statement rv">The world is hungry for<br><span class="teal">something real to believe in.</span></p>
+  <p class="lede big center m">All over the world, people are already carrying real solutions, building things that matter, and imagining futures worth living in.</p>
+  <p class="statement m">The world is hungry for <span class="teal">something real to believe in.</span></p>
 </section>
 
 <!-- ═════════ 02 · CALLING ═════════ -->
-<div class="tx" data-a="women-circle" data-b="cops-tower" data-mode="tear"></div>
+<div class="tx" data-a="fake-mascots" data-b="cops-tower" data-mode="tear"></div>
+
+<section class="beat pair" data-chapter="II · Calling">
+  <h2 class="display m">The ones destroying the world know something <span class="gold">most of us forgot.</span></h2>
+  <div class="m">
+    <p class="lede">Fascists wield fear and capital follows. Billionaires narrate the future and the money materializes. The most powerful people on earth tell a story about what happens next.</p>
+    <p class="lede">It does, because whoever controls the story controls what people believe is possible, and what people believe is possible is the only thing that has ever determined what actually happens.</p>
+  </div>
+</section>
+
+<div class="tx" data-a="cops-tower" data-b="oculus" data-mode="melt"></div>
 
 <section class="beat center" data-chapter="II · Calling">
-  <p class="kicker rv">II · Calling</p>
-  <h2 class="display rv" style="--d:.15s">The ones destroying the world know something <em class="gold">most of us forgot.</em></h2>
-</section>
-<section class="beat left" data-chapter="II · Calling">
-  <p class="lede rv">Fascists wield fear and capital follows. Billionaires narrate the future and the money materializes. The most powerful people on earth tell a story about what happens next.</p>
-  <p class="lede rv" style="--d:.2s">It does, because whoever controls the story controls what people believe is possible, and what people believe is possible is the only thing that has ever determined what actually happens.</p>
+  <p class="statement m">The people running this world don't have the truth.</p>
+  <h2 class="giant m">They have <span class="gold">the <span class="alt">story.</span></span></h2>
 </section>
 
-<div class="tx" data-a="cops-tower" data-b="oculus" data-mode="tear"></div>
+<div class="tx" data-a="oculus" data-b="cash-grid" data-mode="melt"></div>
 
-<section class="beat center tall" data-chapter="II · Calling">
-  <p class="statement rv">The people running this world don't have the truth.</p>
-  <h2 class="giant rv" style="--d:.35s">They have<br><span class="gold">the story.</span></h2>
+<section class="beat pair" data-chapter="II · Calling">
+  <div class="m">
+    <p class="statement left">Look at what this economy has already proved.</p>
+    <p class="lede">People can summon fortunes by convincing others to believe in a future that doesn't exist yet.</p>
+  </div>
+  <div class="m">
+    <p class="lede">Meanwhile, all over the planet, people are carrying real solutions, building things that matter, and imagining futures worth living in.</p>
+    <p class="lede">And too many of them are still playing small, hiding their voices, underpricing their medicine, or waiting for the old system to give them permission.</p>
+  </div>
 </section>
 
-<div class="tx" data-a="oculus" data-b="cash-grid" data-mode="tear"></div>
-
-<section class="beat left" data-chapter="II · Calling">
-  <p class="statement left rv">Look at what this economy has already proved.</p>
-  <p class="lede rv" style="--d:.15s">People can summon fortunes by convincing others to believe in a future that doesn't exist yet.</p>
-</section>
-<section class="beat right" data-chapter="II · Calling">
-  <p class="lede rv">Meanwhile, all over the planet, people are carrying real solutions, building things that matter, and imagining futures worth living in.</p>
-  <p class="lede rv" style="--d:.15s">And too many of them are still playing small, hiding their voices, underpricing their medicine, or waiting for the old system to give them permission.</p>
-</section>
-
-<div class="tx short" data-a="cash-grid" data-b="megaphone" data-mode="tear"></div>
+<div class="tx short" data-a="cash-grid" data-b="megaphone" data-mode="cut"></div>
 
 <section class="beat center rupture" data-chapter="II · Calling">
-  <p class="giant xl rv">Fuck that.</p>
-</section>
-<section class="beat left" data-chapter="II · Calling">
-  <p class="lede big rv">If an economy built on speculation can conjure fortunes out of a story, imagine what becomes possible when the story is true, the vision is real, and the people telling it actually have something the world needs.</p>
-  <p class="lede rv" style="--d:.2s">The more the old promises fail, the more people search for something real to believe in.</p>
+  <p class="giant xl m">Fuck that.</p>
 </section>
 
-<div class="tx" data-a="megaphone" data-b="sunset-hat" data-mode="tear"></div>
+<div class="tx" data-a="megaphone" data-b="dollar-burn" data-mode="melt"></div>
 
-<section class="beat center xtall" data-chapter="II · Calling">
-  <p class="display xl rv">And that could be<br><span class="gold">your story.</span></p>
+<section class="beat pair" data-chapter="II · Calling">
+  <p class="lede big m">If an economy built on speculation can conjure fortunes out of a story, imagine what becomes possible when the story is true, the vision is real, and the people telling it actually have something the world needs.</p>
+  <p class="lede accent m">The more the old promises fail, the more people search for something real to believe in.</p>
 </section>
 
-<div class="tx" data-a="sunset-hat" data-b="ritual" data-mode="tear"></div>
+<div class="tx long" data-a="dollar-burn" data-b="earthrise" data-mode="burn"></div>
 
 <section class="beat center" data-chapter="II · Calling">
-  <h2 class="display xl rv">We forgot we were<br>the storytellers.</h2>
-</section>
-<section class="beat left" data-chapter="II · Calling">
-  <p class="lede rv">We forgot we wrote these systems, built these worlds, authored everything that ever rose and everything that fell, and that every civilization in human history was first a story someone decided to live completely enough that the world had no choice but to reorganize around it.</p>
-</section>
-<section class="beat right" data-chapter="II · Calling">
-  <p class="lede rv">And the stories shaping the world are the same force shaping our lives: what we believe about who we are, what we're worth, what's possible for us, and what happens when we dare to ask for it.</p>
-  <p class="lede rv" style="--d:.15s">The old story lives in our institutions, our identities, and the ways we've learned to survive.</p>
-  <p class="lede rv" style="--d:.3s">We can imagine another world while still living inside the story that built this one.</p>
+  <p class="display xl m">And that could be <span class="gold">your <span class="alt">story.</span></span></p>
 </section>
 
-<div class="tx" data-a="ritual" data-b="dark" data-mode="tear"></div>
+<div class="tx" data-a="earthrise" data-b="origin-cave" data-mode="melt"></div>
 
-<section class="beat center tall" data-chapter="II · Calling">
-  <p class="statement rv">The old story is ending whether we like it or not,<br><span class="gold">and we author what comes next.</span></p>
+<section class="beat pair" data-chapter="II · Calling">
+  <div class="m">
+    <h2 class="display">We forgot we were the storytellers.</h2>
+    <p class="lede">We forgot we wrote these systems, built these worlds, authored everything that ever rose and everything that fell, and that every civilization in human history was first a story someone decided to live completely enough that the world had no choice but to reorganize around it.</p>
+  </div>
+  <div class="m">
+    <p class="lede">And the stories shaping the world are the same force shaping our lives: what we believe about who we are, what we're worth, what's possible for us, and what happens when we dare to ask for it.</p>
+    <p class="lede">The old story lives in our institutions, our identities, and the ways we've learned to survive.</p>
+    <p class="lede">We can imagine another world while still living inside the story that built this one.</p>
+  </div>
+</section>
+
+<div class="tx" data-a="origin-cave" data-b="dark" data-mode="melt"></div>
+
+<section class="beat center" data-chapter="II · Calling">
+  <p class="statement m">The old story is ending whether we like it or not, <span class="gold">and we author what comes next.</span></p>
 </section>
 
 <!-- ═════════ 03 · THRESHOLD ONE ═════════ -->
-<div class="tx" data-a="dark" data-b="book" data-mode="bloom"></div>
-
 <section class="beat center threshold" id="threshold" data-chapter="Threshold">
-  <p class="statement rv">The old story is ending.</p>
-  <h2 class="display rv" style="--d:.2s">Do you want to see how deep it goes?</h2>
-  <button class="open-book rv" style="--d:.4s" type="button" id="open-book" aria-controls="book" aria-expanded="false"><span>Open the Book</span></button>
-  <a class="skip-link rv" style="--d:.5s" href="#question">Skip to the question</a>
+  <div class="m threshold-in">
+    <p class="statement">The old story is ending.</p>
+    <h2 class="display">Do you want to see how deep it goes?</h2>
+  </div>
+  <button class="open-book" type="button" id="open-book" aria-controls="book" aria-expanded="false"><span>Open the Book</span></button>
+  <a class="skip-link" href="#question">Skip to the question</a>
 </section>
 
-<!-- ═════════ 04 · THE BOOK ═════════ -->
-<div id="book" class="book" data-chapter="The Book">
-  <div class="tx long" data-a="book" data-b="page-1" data-mode="open"></div>
-  <section class="read" aria-labelledby="pg1">
-    <div class="sr-page">
-      <p>Page I</p>
-      <h3 id="pg1" tabindex="-1">The Stories We Tell Ourselves</h3>
-      <p>The story you believe becomes the life you live.</p>
-      <p>Who you are. What you're worth. What you're allowed to want. What you believe is possible.</p>
-      <p>The old story doesn't only live in the world around us.</p>
-      <p>It lives in us.</p>
-      <p>In the identities we've inherited, the limits we've accepted, and the futures we've stopped allowing ourselves to imagine.</p>
-      <p>And stories can change.</p>
-    </div>
-  </section>
-  <div class="tx long" data-a="page-1" data-b="page-2" data-mode="burn"></div>
-  <section class="read" aria-labelledby="pg2">
-    <div class="sr-page">
-      <p>Page II</p>
-      <h3 id="pg2">The Stories We Tell Each Other</h3>
-      <p>A story becomes powerful when others find themselves inside it.</p>
-      <p>The relationships we form, the communities we build, the organizations we create, the movements we join.</p>
-      <p>Every shared future begins with a story people recognize as their own.</p>
-      <p>This is how one person's vision becomes a shared quest.</p>
-    </div>
-  </section>
-  <div class="tx long" data-a="page-2" data-b="page-3" data-mode="burn"></div>
-  <section class="read" aria-labelledby="pg3">
-    <div class="sr-page">
-      <p>Page III</p>
-      <h3 id="pg3">The Stories We Believe Together</h3>
-      <p>Reality is story-shaped.</p>
-      <p>Money. Markets. Institutions. Civilizations.</p>
+<!-- ═════════ 04 · THE BOOK (3D, scroll-scrubbed) ═════════ -->
+<section id="book" class="book" data-chapter="The Book" aria-label="Three revelations">
+  <div class="sr-pages">
+    <article aria-labelledby="pg1"><p>Page I</p><h3 id="pg1" tabindex="-1">The Stories We Tell Ourselves</h3>
+      <p>The story you believe becomes the life you live.</p><p>Who you are. What you're worth. What you're allowed to want. What you believe is possible.</p>
+      <p>The old story doesn't only live in the world around us.</p><p>It lives in us.</p>
+      <p>In the identities we've inherited, the limits we've accepted, and the futures we've stopped allowing ourselves to imagine.</p><p>And stories can change.</p></article>
+    <article aria-labelledby="pg2"><p>Page II</p><h3 id="pg2">The Stories We Tell Each Other</h3>
+      <p>A story becomes powerful when others find themselves inside it.</p><p>The relationships we form, the communities we build, the organizations we create, the movements we join.</p>
+      <p>Every shared future begins with a story people recognize as their own.</p><p>This is how one person's vision becomes a shared quest.</p></article>
+    <article aria-labelledby="pg3"><p>Page III</p><h3 id="pg3">The Stories We Believe Together</h3>
+      <p>Reality is story-shaped.</p><p>Money. Markets. Institutions. Civilizations.</p>
       <p>The structures we experience as reality are shaped by the meanings and agreements we share.</p>
-      <p>The world we inherited was built by people who believed in a story strongly enough to organize their lives around it.</p>
-      <p>And what was written can be rewritten.</p>
-    </div>
-  </section>
-  <div class="tx long" data-a="page-3" data-b="star" data-mode="burn"></div>
-  <section class="read short" aria-hidden="true"></section>
-  <div class="tx" data-a="star" data-b="white" data-mode="bloom"></div>
+      <p>The world we inherited was built by people who believed in a story strongly enough to organize their lives around it.</p><p>And what was written can be rewritten.</p></article>
+  </div>
   <a class="book-skip" href="#question">Skip</a>
-</div>
-<div class="tx" id="skip-tx" data-a="book" data-b="white" data-mode="bloom"></div>
+</section>
+<div class="tx" id="skip-tx" data-a="dark" data-b="white" data-mode="bloom"></div>
 
 <!-- ═════════ 05 · THE WHITE PAGE ═════════ -->
 <section class="beat center white-page" id="question" data-chapter="The Question">
-  <p class="question rv">If the crises destroying our world are stories we forgot we wrote, can we wield the most ancient technology, backed by science, powered by modern magic, to rewrite them?</p>
+  <p class="question m">
+    <span class="q1">If the crises destroying our world are stories we forgot we wrote,</span>
+    <span class="q2">can we wield the most ancient technology,</span>
+    <span class="q3">backed by science, powered by modern magic,</span>
+    <span class="q4">to <span class="alt">rewrite</span> them?</span>
+  </p>
 </section>
 
-<!-- ═════════ 06 · QUEST (descent) ═════════ -->
-<div class="tx long" data-a="white" data-b="arhuaco-cliff" data-mode="tear"></div>
+<!-- ═════════ 06 · QUEST (descent into the real) ═════════ -->
+<div class="tx" data-a="white" data-b="arhuaco-cliff" data-mode="tear"></div>
 
 <section class="beat center" data-chapter="III · Quest">
-  <p class="statement rv">We didn't invent this.</p>
-  <p class="giant rv" style="--d:.3s">We remembered it.</p>
+  <p class="statement m">We didn't invent this.</p>
+  <p class="giant m">We remembered it.</p>
 </section>
 <section class="beat center" data-chapter="III · Quest">
-  <p class="lede big center rv">Story is the original technology, the ancient pattern behind the movements that have changed the world.</p>
-  <p class="lede big center teal rv" style="--d:.2s">And we've forged it into a system so anyone can use it.</p>
+  <p class="lede big center m">Story is the original technology, the ancient pattern behind the movements that have changed the world.</p>
+  <p class="lede big center teal m">And we've forged it into a system so anyone can use it.</p>
 </section>
 
 <section class="proto-end" data-chapter="III · Quest">
-  <p class="kicker">Prototype · Chapters I–III</p>
+  <p class="kicker">Working draft · Chapters I–III</p>
   <p>The Metamyth, Vision, the Adventure, Proof, Request and Legacy continue from here.</p>
 </section>
 </main>
 
-<noscript><style>#book{display:block}</style></noscript>
+<noscript><style>.sr-pages{position:static!important;width:auto!important;height:auto!important;clip:auto!important}</style></noscript>
 <script src="vendor/lenis.min.js"></script>
-<script src="stage.js?v=1"></script>
+<script src="stage.js?v=2"></script>
+<script type="module" src="book3d.js?v=1"></script>
 </body>
 </html>
