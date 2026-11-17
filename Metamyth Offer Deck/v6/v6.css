@@ -2,9 +2,9 @@
    METAMYTH v6 — Layer 1 prototype
    Tokens from colors_and_type.css / site.css (V5). Pherome + Futura only.
    ============================================================ */
-@font-face{font-family:'Pherome';src:url('../fonts/Pherome%20Regular.otf') format('opentype');font-weight:400;font-display:swap}
-@font-face{font-family:'Futura';src:url('../fonts/Futura%20Regular.ttf') format('truetype');font-weight:400;font-display:swap}
-@font-face{font-family:'Futura';src:url('../fonts/Futura_Medium.otf') format('opentype');font-weight:500;font-display:swap}
+@font-face{font-family:'Pherome';src:url('../fonts/Pherome%20Regular.woff2') format('woff2'),url('../fonts/Pherome%20Regular.otf') format('opentype');font-weight:400;font-display:swap}
+@font-face{font-family:'Futura';src:url('../fonts/Futura%20Regular.woff2') format('woff2'),url('../fonts/Futura%20Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Futura';src:url('../fonts/Futura_Medium.woff2') format('woff2'),url('../fonts/Futura_Medium.otf') format('opentype');font-weight:500;font-display:swap}
 
 :root{
   --deep:#091e14;--forest:#0d3122;--mid:#123d2a;--surface:#1a4d34;
