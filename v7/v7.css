@@ -99,8 +99,9 @@ body.hide-pill .pill{opacity:0;pointer-events:none;transform:translate(-50%,24px
 .tx.short{height:40svh}
 .tx.long{height:110svh}
 
-.hero{position:relative;align-items:center;text-align:center}
-.hero-in{display:flex;flex-direction:column;align-items:center;gap:24px}
+.hero{position:relative;display:block;min-height:210svh;padding:0;text-align:center}
+.hero-in{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:120px var(--pad)}
+.hero .cue{top:calc(100svh - 160px);bottom:auto}
 .cue{position:absolute;left:50%;bottom:96px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:var(--mist)}
 .cue::after{content:'';width:1px;height:52px;background:linear-gradient(var(--gold),transparent);animation:cue 2.4s ease-in-out infinite;transform-origin:top}
 @keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
