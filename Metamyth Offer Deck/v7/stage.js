@@ -12,7 +12,7 @@
   var sstep = function (a, b, x) { var t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
 
   var IMG = {
-    'nebula': 'img/nebula.webp', 'red-earth': 'img/red-earth.webp',
+    'nebula': 'img/seq/neb-00.webp', 'red-earth': 'img/red-earth.webp',
     'dollar-red': 'img/vault/dollar-red.webp', 'fake-mascots': 'img/vault/fake-mascots.webp',
     'cops-tower': 'img/vault/cops-tower.webp', 'oculus': 'img/vault/oculus.webp',
     'cash-grid': 'img/vault/cash-grid.webp', 'megaphone': 'img/vault/megaphone.webp',
@@ -168,6 +168,22 @@
   }
   function coverScale(w, h) { var r = (w / h) / (W / H); return r > 1 ? [1 / r, 1] : [1, r]; }
   function upload(id) { if (!gl || !sources[id]) return; if (tex[id]) gl.deleteTexture(tex[id].t); tex[id] = makeTex(sources[id], false); }
+  /* the opening: Kling clip (nebula push-in, cut before the flare) scrubbed by scroll */
+  var SEQN = 59, seq = [], seqIdx = 0, heroEl = document.getElementById('top');
+  function seqUrl(i) { return 'img/seq/neb-' + (i < 10 ? '0' : '') + i + '.webp'; }
+  function swapTex(id, src) {
+    sources[id] = src;
+    if (gl && tex[id]) { gl.bindTexture(gl.TEXTURE_2D, tex[id].t); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, src); tex[id].w = src.width; tex[id].h = src.height; }
+    else upload(id);
+  }
+  function seqFrame() {
+    if (!txs.length || !seq[0]) return;
+    var t0r = txs[0].getBoundingClientRect(), txTop = t0r.top + scrollY;
+    var end = Math.max(1, txTop - innerHeight + t0r.height * .42);   // the rush lands as the melt into the red earth takes over
+    var f = clamp(scrollY / end, 0, 1), i = Math.round(Math.pow(f, 1.15) * (SEQN - 1));
+    while (i > 0 && !seq[i]) i--;
+    if (i !== seqIdx) { seqIdx = i; swapTex('nebula', seq[i]); dirty = true; }
+  }
   function loadImg(url) { return new Promise(function (res) { var im = new Image(); im.decoding = 'async'; im.onload = function () { res(im); }; im.onerror = function () { res(null); }; im.src = url; }); }
 
   /* ───── scroll → stage ───── */
@@ -237,6 +253,7 @@
   /* ───── frame loop ───── */
   var bookEl = document.getElementById('book');
   function frame(now) {
+    seqFrame();
     var s = compute(), changed = s.a !== state.a || s.b !== state.b || Math.abs(s.p - state.p) > 1e-4;
     state = s;
     if (changed || dirty || (s.p > 0 && s.p < 1)) { render(now); dirty = false; }
@@ -276,7 +293,8 @@
   size(); if (gl) initGL(); else ctx2d = cv.getContext('2d');
   sources.white = flat('#ffffff'); sources.dark = darkQuiet(); upload('white'); upload('dark');
   collect();
-  loadImg(IMG[first]).then(function (im) { if (im) { sources[first] = im; upload(first); dirty = true; } })
+  loadImg(IMG[first]).then(function (im) { if (im) { seq[0] = im; sources[first] = im; upload(first); dirty = true; } })
+    .then(function () { var loads = []; for (var i = 1; i < SEQN; i++) (function (i) { loads.push(loadImg(seqUrl(i)).then(function (im) { seq[i] = im; })); })(i); })
     .then(function () { return Promise.all(Object.keys(IMG).filter(function (k) { return k !== first; }).map(function (k) { return loadImg(IMG[k]).then(function (im) { if (im) { sources[k] = im; upload(k); dirty = true; } }); })); });
   requestAnimationFrame(frame);
   var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { size(); collect(); dirty = true; }, 160); });
