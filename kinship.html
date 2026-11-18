@@ -9,152 +9,189 @@
 <link rel="stylesheet" href="site/v2.css">
 <style>
 /* ── Kinship page layer on the site design system ── */
+.kq{--night:#06140e;--paper:#efe6cf;--ink:#132a1e;--ink-2:#3d5547;--gold-ink:#8a6516}
 .kq h3,.kq h4{font-weight:400;letter-spacing:0}
-.kq-hero-sub{text-align:center;max-width:34em;margin:0 auto;font-family:var(--sans);font-size:clamp(18px,1.6vw,24px);line-height:1.5;color:var(--cream)}
-.kq-note{text-align:center;max-width:38em;margin:22px auto 0;font-size:16px;line-height:1.7;color:var(--mist)}
+.kq p{font-size:clamp(18px,1.3vw,20px)}
+.kq-hero-sub{text-align:center;max-width:34em;margin:0 auto;font-size:clamp(19px,1.6vw,24px)!important;line-height:1.5;color:var(--cream)}
+.kq-note{text-align:center;max-width:38em;margin:22px auto 0;font-size:16px!important;line-height:1.7;color:var(--mist)}
 .kq-ctas{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:34px}
-.kq-story p{font-size:clamp(19px,1.7vw,24px);line-height:1.75;margin:0 0 1.4em;color:var(--cream)}
 
-/* slow drift on scene images */
+/* tones and smooth seams between them */
+.t-deep{background:var(--deep)}
+.t-forest{background:linear-gradient(to bottom,var(--deep),var(--forest) 18%,var(--forest) 82%,var(--deep))}
+.t-night{background:linear-gradient(to bottom,var(--deep),var(--night) 16%,var(--night) 84%,var(--deep))}
+.t-paper{background:var(--paper);color:var(--ink)}
+.seam{height:clamp(140px,22vh,260px)}
+.seam.to-paper{background:linear-gradient(to bottom,var(--deep),#3a4a3a 45%,var(--paper))}
+.seam.from-paper{background:linear-gradient(to bottom,var(--paper),#3a4a3a 55%,var(--deep))}
 .scene:not(.hero) .bg img{animation:kqDrift 28s ease-in-out infinite alternate}
 @keyframes kqDrift{from{transform:scale(1)}to{transform:scale(1.07)}}
 
-/* quotes */
-.kq-quote{border-left:2px solid var(--gold);padding:4px 0 4px 26px;margin:clamp(48px,7vh,80px) 0 0;max-width:46em}
-.kq-quote p{font-family:var(--serif);font-size:clamp(21px,1.9vw,28px);line-height:1.45;margin:0;color:var(--cream)}
-.kq-quote cite{display:block;margin-top:14px;font-style:normal;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+/* split layouts */
+.kq-split{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(40px,6vw,100px);align-items:center}
+.kq-split.flip>:first-child{order:2}
+.kq-split figure{margin:0;position:relative}
+.kq-split figure img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover;border-radius:10px}
+.kq-split figure .back{position:absolute;width:52%;aspect-ratio:1;right:-6%;bottom:-8%;object-fit:cover;border:6px solid var(--deep);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.kq-story p{font-size:clamp(19px,1.55vw,23px);line-height:1.75;margin:0 0 1.3em;color:var(--cream)}
 
-/* thesis lines */
-.kq-thesis{font-family:var(--serif);font-size:clamp(26px,3vw,44px);line-height:1.25;text-align:center;margin:clamp(48px,7vh,80px) auto;max-width:22em;padding:clamp(28px,4vh,44px) 0;border-top:1px solid var(--gold-faint);border-bottom:1px solid var(--gold-faint);color:var(--cream)}
-.kq-thesis small{display:block;margin-top:18px;font-family:var(--sans);font-size:clamp(17px,1.4vw,20px);line-height:1.7;color:var(--ivory)}
+/* big unframed quotes */
+.kq-quote{margin:clamp(56px,8vh,96px) auto 0;max-width:30em;text-align:center}
+.kq-quote p{font-family:var(--serif);font-size:clamp(25px,2.4vw,36px)!important;line-height:1.35;margin:0;color:var(--cream)}
+.kq-quote cite{display:block;margin-top:20px;font-style:normal;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
 
-/* photo strip */
-.kq-strip{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:10px;margin-top:clamp(56px,8vh,96px)}
-.kq-strip figure{margin:0;overflow:hidden;aspect-ratio:4/3;border:1px solid var(--gold-faint)}
-.kq-strip img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
-.kq-strip figure:hover img{transform:scale(1.04)}
+/* centered statements */
+.kq-statement{font-family:var(--serif);font-size:clamp(30px,3.6vw,56px);line-height:1.2;text-align:center;margin:0 auto;max-width:18em;color:var(--cream)}
+.kq-statement small{display:block;margin:24px auto 0;max-width:30em;font-family:var(--sans);font-size:clamp(18px,1.4vw,21px);line-height:1.7;color:var(--ivory)}
 
-/* outcomes with icons */
-.kq-outcomes{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,3.5vw,48px)}
-.kq-outcomes>div{display:grid;grid-template-columns:56px 1fr;gap:18px;align-items:start}
-.kq-outcomes img{width:56px;height:56px;transition:transform .6s var(--ease)}
+/* zoom frame */
+.kq-zoom{max-width:980px;margin:0 auto clamp(64px,9vh,110px);position:relative}
+.kq-zoom img{width:100%;display:block;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+
+/* outcomes */
+.kq-outcomes{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,4vw,64px) clamp(36px,5vw,80px)}
+.kq-outcomes>div{display:grid;grid-template-columns:64px 1fr;gap:20px;align-items:start}
+.kq-outcomes img{width:64px;height:64px;transition:transform .6s var(--ease)}
 .kq-outcomes>div:hover img{transform:rotate(-6deg) scale(1.08)}
-.kq-outcomes h3{font-family:var(--serif);font-size:clamp(24px,2.2vw,32px);margin:0 0 10px;color:var(--gold);line-height:1.1}
-.kq-outcomes p{margin:0;line-height:1.7;color:var(--ivory);font-size:17px}
+.kq-outcomes h3{font-family:var(--serif);font-size:clamp(25px,2.2vw,33px);margin:0 0 10px;color:var(--gold);line-height:1.1}
+.kq-outcomes p{margin:0;line-height:1.7;color:var(--ivory)}
 
-/* games */
-.kq-games{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:28px}
-.kq-games div{padding:22px 24px;border:1px solid var(--gold-faint);background:rgba(255,255,255,.025);font-family:var(--serif);font-size:clamp(19px,1.5vw,22px);line-height:1.3;color:var(--cream);transition:border-color .3s,transform .5s var(--ease),background .3s}
-.kq-games div:hover{border-color:var(--gold-line);transform:translateY(-3px);background:rgba(212,168,67,.05)}
-.kq-games b{display:block;font-family:var(--sans);font-weight:400;color:var(--gold);font-size:12px;letter-spacing:.3em;margin-bottom:10px}
+/* games as a numbered list */
+.kq-games{list-style:none;padding:0;margin:0;counter-reset:g}
+.kq-games li{display:grid;grid-template-columns:3.2em 1fr;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(212,168,67,.14);font-family:var(--serif);font-size:clamp(21px,1.7vw,26px);line-height:1.3;color:var(--cream);transition:padding .5s var(--ease),color .3s}
+.kq-games li:before{counter-increment:g;content:counter(g,decimal-leading-zero);font-family:var(--sans);font-size:13px;letter-spacing:.2em;color:var(--gold)}
+.kq-games li:hover{padding-left:10px;color:var(--gold)}
 
-/* journey arcs */
-.kq-arc{display:grid;grid-template-columns:72px 1fr;gap:24px}
-.kq-arc>img{width:72px;height:72px}
-.kq-arc h3{font-family:var(--serif);font-size:clamp(30px,3vw,44px);margin:8px 0 18px}
-.kq-arc p{font-size:clamp(17px,1.4vw,20px);line-height:1.75;margin:0 0 1.2em;color:var(--ivory)}
-.kq-arc+.kq-arc{margin-top:clamp(48px,7vh,80px);padding-top:clamp(48px,7vh,80px);border-top:1px solid var(--gold-faint)}
+/* journey arcs with a line that draws as you scroll */
+.kq-arcs{position:relative;padding-left:clamp(84px,9vw,120px)}
+.kq-line{position:absolute;left:clamp(35px,4vw,49px);top:36px;bottom:36px;width:2px;background:rgba(212,168,67,.15)}
+.kq-line i{position:absolute;inset:0;background:linear-gradient(to bottom,var(--teal),var(--gold));transform-origin:top;transform:scaleY(0)}
+.kq-arc{position:relative}
+.kq-arc>img{position:absolute;left:calc(-1 * clamp(84px,9vw,120px));top:0;width:clamp(72px,8vw,100px);height:clamp(72px,8vw,100px);background:var(--forest);border-radius:50%;padding:8px}
+.kq-arc .label{display:block}
+.kq-arc h3{font-family:var(--serif);font-size:clamp(32px,3.2vw,48px);margin:8px 0 18px}
+.kq-arc p{line-height:1.75;margin:0 0 1.2em;color:var(--ivory)}
+.kq-arc+.kq-arc{margin-top:clamp(64px,9vh,110px)}
 
-/* week tabs */
-.kq-tabbar{display:flex;border-bottom:1px solid var(--gold-faint);margin:clamp(64px,9vh,100px) 0 16px}
+/* week tabs, panels turn like pages */
+.kq-tabbar{display:flex;border-bottom:1px solid var(--gold-faint);margin:clamp(72px,10vh,120px) 0 16px}
 .kq-tabbar button{flex:1;min-height:52px;background:none;border:0;border-bottom:2px solid transparent;color:var(--mist);font-family:var(--sans);font-size:13px;letter-spacing:.24em;text-transform:uppercase;padding:18px 10px;cursor:pointer;transition:color .3s,border-color .3s}
 .kq-tabbar button:hover{color:var(--cream)}
 .kq-tabbar button[aria-selected="true"]{color:var(--gold);border-bottom-color:var(--gold)}
-.kq-panel{animation:kqFade .5s var(--ease)}
-@keyframes kqFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.kq-panels{perspective:1600px}
+.kq-panel{transform-origin:left center;animation:kqTurn .7s var(--ease)}
+@keyframes kqTurn{from{opacity:0;transform:rotateY(-10deg) translateX(14px)}to{opacity:1;transform:none}}
 .kq-week{display:grid;grid-template-columns:6.5em 1fr;gap:18px;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.07)}
-.kq-week span{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);padding-top:7px}
-.kq-week h4{font-family:var(--serif);font-weight:400;font-size:clamp(22px,1.8vw,27px);line-height:1.15;margin:0 0 6px;color:var(--cream)}
-.kq-week p{margin:0;line-height:1.65;color:var(--ivory);font-size:17px}
-.kq-week.kq-threshold{border:1px solid var(--gold-line);padding:24px 20px;margin:12px 0;background:rgba(212,168,67,.05)}
+.kq-week span{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);padding-top:8px}
+.kq-week h4{font-family:var(--serif);font-weight:400;font-size:clamp(23px,1.9vw,28px);line-height:1.15;margin:0 0 6px;color:var(--cream)}
+.kq-week p{margin:0;line-height:1.65;color:var(--ivory)}
+.kq-week.kq-threshold{border:0;border-radius:10px;padding:26px 22px;margin:12px 0;background:rgba(212,168,67,.08)}
+
+/* proof */
+.kq-proof{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,80px);margin-top:clamp(64px,9vh,110px)}
+.kq-proof blockquote{margin:0}
+.kq-proof p{font-family:var(--serif);font-size:clamp(24px,2.1vw,32px)!important;line-height:1.35;margin:0;color:var(--cream)}
+.kq-proof footer{display:flex;align-items:center;gap:14px;margin-top:20px;padding:0;border:0;background:none}
+.kq-proof footer img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.kq-proof cite{font-style:normal;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
 
 /* guides */
-.kq-guides{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
-.kq-guide{border:1px solid var(--gold-faint);background:rgba(255,255,255,.025);padding:30px;transition:border-color .3s,transform .5s var(--ease)}
-.kq-guide:hover{border-color:var(--gold-line);transform:translateY(-3px)}
-.kq-guide header{display:flex;align-items:center;gap:18px;margin-bottom:18px}
-.kq-guide img{width:84px;height:84px;object-fit:cover;border-radius:50%;border:1px solid var(--gold-line);flex-shrink:0}
-.kq-guide h3{font-family:var(--serif);font-size:clamp(25px,2vw,31px);margin:0;line-height:1.05}
-.kq-guide .label{margin:8px 0 0}
-.kq-guide p{margin:0;line-height:1.7;font-size:16.5px;color:var(--ivory)}
+.kq-guides{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(36px,4vw,56px) clamp(20px,2.4vw,36px)}
+.kq-guide figure{margin:0 0 20px;overflow:hidden;border-radius:10px}
+.kq-guide img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;filter:saturate(.9);transition:filter .6s,transform .8s var(--ease)}
+.kq-guide:hover img{filter:saturate(1.05);transform:scale(1.03)}
+.kq-guide h3{font-family:var(--serif);font-size:clamp(26px,2vw,32px);margin:0;line-height:1.05}
+.kq-guide .label{margin:10px 0 14px;display:block}
+.kq-guide p{margin:0;line-height:1.7;font-size:17px!important;color:var(--ivory)}
 
 /* week rows */
-.kq-rows>div{display:grid;grid-template-columns:44px 15em 1fr;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--gold-faint)}
-.kq-rows img{width:40px;height:40px}
-.kq-rows b{font-weight:500;color:var(--cream);font-size:17px}
-.kq-rows span{color:var(--mist);font-size:16px}
+.kq-rows>div{display:grid;grid-template-columns:52px 14em 1fr;gap:18px;align-items:center;padding:16px 0;border-bottom:1px solid var(--gold-faint)}
+.kq-rows img{width:46px;height:46px;transition:transform .5s var(--ease)}
+.kq-rows>div:hover img{transform:scale(1.12) rotate(-5deg)}
+.kq-rows b{font-weight:500;color:var(--cream);font-size:18px}
+.kq-rows span{color:var(--mist);font-size:17px}
 
 /* fit */
 .kq-fit{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px)}
 .kq-fit ul{list-style:none;padding:0;margin:18px 0 0}
-.kq-fit li{position:relative;padding:0 0 14px 22px;line-height:1.6;color:var(--ivory);font-size:17px}
-.kq-fit li:before{content:"·";position:absolute;left:4px;font-weight:700}
+.kq-fit li{position:relative;padding:0 0 16px 24px;line-height:1.6;color:var(--ivory);font-size:18px}
+.kq-fit li:before{content:"◆";position:absolute;left:0;top:.35em;font-size:9px}
 .kq-fit .in .label,.kq-fit .in li:before{color:var(--teal)}
 .kq-fit .out .label,.kq-fit .out li:before{color:#e35a4d}
 
-/* proof */
-.kq-proof{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:clamp(40px,6vh,64px)}
-.kq-proof .kq-quote{margin:0;border:1px solid var(--gold-faint);padding:28px;background:rgba(255,255,255,.025);max-width:none}
-.kq-proof .kq-quote img{width:60px;height:60px;border-radius:50%;object-fit:cover;float:right;margin:0 0 10px 16px;border:1px solid var(--gold-line)}
-.kq-proof .kq-quote p{font-size:clamp(19px,1.5vw,23px)}
-
-/* return / values */
-.kq-return{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:clamp(40px,6vh,64px)}
-.kq-return>div{padding:30px;border-top:2px solid var(--gold);background:rgba(255,255,255,.02)}
-.kq-return img{width:52px;height:52px;margin-bottom:16px}
-.kq-return h3{font-family:var(--serif);font-size:clamp(23px,1.9vw,28px);margin:0 0 12px;color:var(--gold);line-height:1.15}
-.kq-return p{margin:0 0 .9em;line-height:1.7;color:var(--ivory);font-size:16.5px}
-
-/* seats */
-.kq-seats{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:clamp(40px,6vh,64px)}
-.kq-seat{border:1px solid var(--gold-line);padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;background:rgba(212,168,67,.035);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
-.kq-seat:hover{transform:translateY(-4px);box-shadow:0 18px 50px rgba(0,0,0,.35)}
-.kq-seat.builder{border-color:rgba(46,196,176,.5);background:rgba(46,196,176,.035)}
+/* ── the paper section (investment) ── */
+.t-paper .label{color:var(--gold-ink)}
+.t-paper h2{color:var(--ink)}
+.t-paper h2 .gold{color:var(--gold-ink)}
+.t-paper .lede{color:var(--ink-2)}
+.t-paper .kq-statement{color:var(--ink)}
+.t-paper .kq-statement .gold{color:var(--gold-ink)}
+.kq-return{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,3vw,48px);margin-top:clamp(48px,7vh,80px)}
+.kq-return img{width:60px;height:60px;margin-bottom:18px}
+.kq-return h3{font-family:var(--serif);font-size:clamp(25px,2vw,30px);margin:0 0 14px;color:var(--ink);line-height:1.15}
+.kq-return p{margin:0 0 .9em;line-height:1.7;color:var(--ink-2)}
+.kq-seats{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:clamp(48px,7vh,80px)}
+.kq-seat{background:#fbf7ec;border-radius:14px;padding:clamp(30px,3vw,44px);display:flex;flex-direction:column;box-shadow:0 2px 0 rgba(19,42,30,.06),0 24px 60px rgba(19,42,30,.12);transition:transform .5s var(--ease),box-shadow .5s var(--ease);border-top:4px solid var(--gold)}
+.kq-seat:hover{transform:translateY(-5px);box-shadow:0 2px 0 rgba(19,42,30,.06),0 34px 70px rgba(19,42,30,.18)}
+.kq-seat.builder{border-top-color:var(--teal)}
 .kq-seat-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.kq-seat-top img{width:52px;height:52px}
-.kq-seat .label{color:var(--gold)}
-.kq-seat.builder .label{color:var(--teal)}
-.kq-seat h3{font-family:var(--serif);font-size:clamp(22px,1.9vw,27px);margin:12px 0 18px;line-height:1.25;color:var(--cream)}
-.kq-seat .price{font-family:var(--serif);font-size:clamp(30px,2.6vw,38px);line-height:1;color:var(--cream)}
-.kq-seat .plan{font-size:15px;color:var(--mist);margin:6px 0 20px}
-.kq-seat p,.kq-seat li{line-height:1.65;font-size:16.5px;color:var(--ivory)}
+.kq-seat-top img{width:56px;height:56px}
+.kq-seat.builder .label{color:#17806f}
+.kq-seat h3{font-family:var(--serif);font-size:clamp(23px,1.9vw,28px);margin:12px 0 20px;line-height:1.25;color:var(--ink)}
+.kq-seat .price{font-family:var(--serif);font-size:clamp(30px,2.6vw,38px);line-height:1;color:var(--ink)}
+.kq-seat .plan{font-size:15px;color:var(--ink-2);margin:8px 0 22px}
+.kq-seat p,.kq-seat li{line-height:1.65;font-size:17px!important;color:var(--ink-2)}
 .kq-seat ul{padding-left:18px;margin:6px 0 0}
 .kq-seat li{margin-bottom:10px}
-.kq-seat .kq-pay{display:flex;flex-direction:column;gap:10px;margin-top:auto;padding-top:26px}
-.kq-seat .kq-pay .cta{justify-content:center;align-self:stretch}
+.kq-pay{display:flex;flex-direction:column;gap:10px;margin-top:auto;padding-top:28px}
+.t-paper .cta{align-self:stretch;justify-content:center;color:var(--ink);border-color:rgba(19,42,30,.35)}
+.t-paper .cta:hover{border-color:var(--ink)}
+.t-paper .cta.fill{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.kq-seat.builder .cta.fill{background:#17806f;border-color:#17806f}
+.t-paper .kq-quote p{color:var(--ink)}
+.t-paper .kq-quote cite{color:var(--gold-ink)}
+.kq-upgrade{margin-top:22px;color:var(--ink-2);font-size:16px!important;text-align:center}
 
 /* mentor / scholarships / guarantee: three distinct treatments */
-.kq-ways{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:clamp(56px,8vh,90px)}
-.kq-way{padding:30px;position:relative;transition:transform .5s var(--ease)}
+.kq-ways{display:grid;grid-template-columns:1.1fr 1fr;gap:22px;margin-top:clamp(64px,9vh,110px)}
+.kq-way{padding:clamp(28px,3vw,40px);border-radius:14px;transition:transform .5s var(--ease)}
 .kq-way:hover{transform:translateY(-3px)}
-.kq-way img{width:56px;height:56px;margin-bottom:16px}
-.kq-way .label{margin-bottom:10px}
-.kq-way h3{font-family:var(--serif);font-size:clamp(23px,1.9vw,28px);margin:0 0 12px;line-height:1.15;color:var(--cream)}
-.kq-way p{margin:0 0 .8em;line-height:1.7;font-size:16.5px;color:var(--ivory)}
-.kq-way.mentor{background:linear-gradient(160deg,rgba(46,196,176,.14),rgba(46,196,176,.02));border:1px solid rgba(46,196,176,.35)}
-.kq-way.mentor .label{color:var(--teal)}
-.kq-way.scholar{background:linear-gradient(160deg,rgba(212,168,67,.14),rgba(212,168,67,.02));border:1px solid var(--gold-line)}
-.kq-way.guarantee{border:1px dashed rgba(240,232,208,.4);background:rgba(240,232,208,.03)}
-.kq-way.guarantee .label{color:var(--cream)}
+.kq-way img{width:60px;height:60px;margin-bottom:16px}
+.kq-way .label{display:block;margin-bottom:10px}
+.kq-way h3{font-family:var(--serif);font-size:clamp(25px,2vw,30px);margin:0 0 12px;line-height:1.15}
+.kq-way p{margin:0 0 .8em;line-height:1.7;font-size:17px!important}
+.kq-way.scholar{grid-row:span 2;background:var(--forest)}
+.kq-way.scholar h3{color:var(--cream)}.kq-way.scholar p{color:var(--ivory)}.kq-way.scholar .label{color:var(--gold)}
+.kq-way.mentor{background:rgba(46,196,176,.16)}
+.kq-way.mentor .label{color:#17806f}
+.kq-way.guarantee{border:1.5px dashed rgba(19,42,30,.35)}
+.kq-way.mentor h3,.kq-way.guarantee h3{color:var(--ink)}
+.kq-way.mentor p,.kq-way.guarantee p{color:var(--ink-2)}
 
 /* application */
-.kq-apply{text-align:center;margin-top:clamp(72px,10vh,120px);scroll-margin-top:100px}
-.kq-apply h2{font-size:clamp(32px,3.6vw,54px);max-width:17em;margin:16px auto 0;line-height:1.15}
+.kq-apply{text-align:center;margin-top:clamp(80px,12vh,140px);scroll-margin-top:100px;display:flex;flex-direction:column;align-items:center}
+.kq-apply>img{width:76px;height:76px}
+.kq-apply h2{font-size:clamp(32px,3.6vw,54px);max-width:17em;margin:18px auto 0;line-height:1.15}
 
 /* next chapter */
-.kq-next p{max-width:34em;margin:24px auto 0;text-align:center;font-size:clamp(19px,1.6vw,23px);line-height:1.7;color:var(--cream)}
+.kq-wide{margin:0 0 clamp(56px,8vh,90px)}
+.kq-wide img{width:100%;display:block;aspect-ratio:16/9;max-height:80vh;object-fit:cover;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 14%,#000 80%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 14%,#000 80%,transparent)}
+.kq-next{text-align:center;display:flex;flex-direction:column;align-items:center}
+.kq-next p{max-width:34em;margin:24px auto 0;font-size:clamp(19px,1.6vw,23px)!important;line-height:1.7;color:var(--cream)}
 .kq-next .kq-quiet{color:var(--ivory)}
-.kq-next .kq-wait{font-family:var(--serif);font-size:clamp(28px,2.8vw,42px);margin-top:44px}
+.kq-close-line{font-family:var(--serif);font-size:clamp(28px,2.8vw,42px)!important;margin:0;color:var(--cream)}
 
-@media(max-width:860px){.kq-return,.kq-ways{grid-template-columns:1fr}}
+@media(max-width:900px){.kq-return{grid-template-columns:1fr}.kq-ways{grid-template-columns:1fr}.kq-way.scholar{grid-row:auto}}
 @media(max-width:760px){
-  .kq-outcomes,.kq-fit,.kq-proof,.kq-seats{grid-template-columns:1fr}
-  .kq-strip{grid-template-columns:1fr 1fr}.kq-strip figure:first-child{grid-column:1/-1}
+  .kq-split,.kq-outcomes,.kq-fit,.kq-proof,.kq-seats{grid-template-columns:1fr}
+  .kq-split.flip>:first-child{order:0}
+  .kq-split figure .back{display:none}
   .kq-week{grid-template-columns:1fr;gap:6px}
-  .kq-rows>div{grid-template-columns:40px 1fr}.kq-rows span{grid-column:2}
-  .kq-arc{grid-template-columns:1fr}.kq-arc>img{width:56px;height:56px}
+  .kq-rows>div{grid-template-columns:44px 1fr}.kq-rows span{grid-column:2}
+  .kq-guides{grid-template-columns:1fr 1fr}
 }
-@media(prefers-reduced-motion:reduce){.kq *{transition:none!important;animation:none!important}}
+@media(max-width:480px){.kq-guides{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.kq *{transition:none!important;animation:none!important}.kq-line i{transform:none}}
 </style>
 </head>
 <body class="kq">
@@ -175,43 +212,37 @@
 <div class="cue">Begin</div>
 </section>
 
-<!-- 2 · THE STORY -->
-<section class="chapter" data-screen-label="02 The Story" data-chapter="The story">
+<!-- 2 · THE STORY (split) -->
+<section class="chapter t-deep" data-screen-label="02 The Story" data-chapter="The story">
 <div class="wrap">
-<div class="kq-story narrow" style="max-width:44em;margin:0 auto">
+<div class="kq-split">
+<div class="kq-story">
 <p class="rv">Somewhere along the way, most of us forgot we were living inside a story someone else wrote: about money, work, who gets to matter. The people carrying the most fire are the most stuck in it. Alone, over-explaining, playing small, waiting for permission, paying to be lectured on Zoom.</p>
 <p class="rv">The Kinship Quest is the oldest journey there is, walked together. A band of people with fire in them gather and practice the seven arts of storytelling on the most precious story of all: their own. You reclaim the story you've been living, find the meaning buried in it, and author where it goes from here.</p>
 <p class="rv">Then the turn that makes it epic: it was never only your story. Every story in the room weaves into one. Strangers become kin. The guides change as much as anyone. What starts as fifteen weeks of rewriting your life turns out to be a collective initiation into the timeline where we fucking did it. A community of the future, and you're invited to author it with us.</p>
+</div>
+<figure class="rv"><img decoding="async" loading="lazy" src="site/img/photo-3.webp" alt="The community celebrating together"><img class="back" decoding="async" loading="lazy" src="site/img/photo-4.webp" alt="A circle of people sitting together"></figure>
+</div>
 <blockquote class="kq-quote rv"><p>"You ruined all my other communities, even the in-person ones."</p><cite>Dr. Geordan Shannon</cite></blockquote>
-</div>
-<div class="kq-strip" data-stagger=".12">
-<figure><img decoding="async" loading="lazy" src="site/img/photo-3.webp" alt="The community celebrating together"></figure>
-<figure><img decoding="async" loading="lazy" src="site/img/photo-4.webp" alt="A circle of people sitting together"></figure>
-<figure><img decoding="async" loading="lazy" src="site/img/mundo.webp" alt="People gathered in the Sierra Nevada"></figure>
-</div>
 </div>
 </section>
 
-<!-- 3 · THE PROMISE -->
-<section class="scene" data-screen-label="03 Promise image" data-chapter="The promise">
-<div class="bg" data-par="0.18" data-scale="1"><img decoding="async" loading="lazy" src="site/img/kq/council.webp" alt="The Metamyth community together" style="object-position:center 30%"></div>
+<!-- 3 · THE PROMISE (forest) -->
+<section class="chapter t-forest" data-screen-label="03 The Promise" data-chapter="The promise">
 <div class="wrap">
-<div class="chapter-head" style="margin-bottom:0">
+<div class="chapter-head" style="align-items:center;text-align:center">
 <div class="label rv">The promise</div>
 <h2 data-split="">Fifteen weeks <span class="gold">from now.</span></h2>
 </div>
-</div>
-</section>
-<section class="chapter" data-screen-label="03 The Promise" data-chapter="The promise" style="background:linear-gradient(to bottom,var(--deep),var(--forest) 55%,var(--deep))">
-<div class="wrap">
-<p class="lede rv" style="max-width:40em;margin-bottom:clamp(56px,8vh,90px)">A story isn't just something you tell people. It's the meaning that determines who you believe you are, what you attempt, and what other people believe is possible with you. When enough people believe the same story, it becomes a company, a movement, an economy, or a world.</p>
+<figure class="kq-zoom rv"><img decoding="async" loading="lazy" src="site/img/community-call.webp" alt="The Kinship crew on a community call"></figure>
+<p class="lede rv" style="max-width:38em;margin:0 auto clamp(64px,9vh,110px);text-align:center">A story isn't just something you tell people. It's the meaning that determines who you believe you are, what you attempt, and what other people believe is possible with you. When enough people believe the same story, it becomes a company, a movement, an economy, or a world.</p>
 <div class="kq-outcomes" data-stagger=".12">
 <div><img decoding="async" loading="lazy" src="offer-deck/assets/icons/scroll.webp" alt=""><div><h3>You'll know your story.</h3><p>The patterns that shaped you, the meaning hiding in the hardest things you went through, and the gift that was buried there the whole time.</p></div></div>
 <div><img decoding="async" loading="lazy" src="offer-deck/assets/icons/megaphone.webp" alt=""><div><h3>You'll tell it so people feel it.</h3><p>With clarity, power, humor and the kind of honesty nobody can fake, whether you're talking to a friend, a client or an investor.</p></div></div>
 <div><img decoding="async" loading="lazy" src="offer-deck/assets/icons/bridge.webp" alt=""><div><h3>You'll build the future it points to.</h3><p>Your gifts and everything you lived through, forged into a mission, an offer and a story other people understand, want, pay for and fund.</p></div></div>
 <div><img decoding="async" loading="lazy" src="offer-deck/assets/icons/council.webp" alt=""><div><h3>You'll find your people.</h3><p>A fellowship that sees you, challenges you, and may well become part of what you're building.</p></div></div>
 </div>
-<div class="label rv" style="margin:clamp(72px,10vh,120px) 0 28px">What you carry out</div>
+<h3 class="rv" style="font-family:var(--serif);font-size:clamp(28px,2.6vw,38px);margin:clamp(80px,11vh,130px) 0 24px">What you carry out</h3>
 <div class="cols2" style="row-gap:0">
 <div data-stagger=".1">
 <div class="item"><img decoding="async" loading="lazy" src="offer-deck/assets/icons/scroll.webp" alt=""><div><h4>Your origin story</h4><p>Rewritten from the inside and ready to tell anywhere.</p></div></div>
@@ -229,36 +260,40 @@
 </div>
 </section>
 
-<!-- 4 · THE MAGIC -->
-<section class="scene dark" data-screen-label="04 Magic image" data-chapter="The magic">
-<div class="bg" data-par="0.22" data-scale="1"><img decoding="async" loading="lazy" src="site/img/photo-2.webp" alt="A circle gathered under the trees"></div>
+<!-- 4 · THE MAGIC (split, flipped) -->
+<section class="chapter t-deep" data-screen-label="04 The Magic" data-chapter="The magic">
 <div class="wrap">
-<div class="chapter-head" style="margin-bottom:0">
+<div class="kq-split flip">
+<div>
 <div class="label rv">The magic</div>
-<h2 data-split="">The group <span class="gold">is the method.</span></h2>
+<h2 data-split="" style="margin:20px 0 28px">The group <span class="gold">is the method.</span></h2>
+<p class="lede rv">Most people assume a group means less attention than a private coach. Kinship turns that upside down. The group is the intelligence that makes the transformation possible. We bring the games and the protocols. The guides hold the space. Your fellowship crew of four or five gives you intimacy and accountability. The whole community gives you witness, insight, creativity and collaborators. Everyone gets to be both the storyteller and the audience.</p>
 </div>
+<figure class="rv"><img decoding="async" loading="lazy" src="site/img/photo-2.webp" alt="A circle gathered under the trees"></figure>
 </div>
-</section>
-<section class="chapter" data-screen-label="04 The Magic" data-chapter="The magic">
-<div class="wrap">
-<p class="lede rv" style="max-width:40em">Most people assume a group means less attention than a private coach. Kinship turns that upside down. The group is the intelligence that makes the transformation possible. We bring the games and the protocols. The guides hold the space. Your fellowship crew of four or five gives you intimacy and accountability. The whole community gives you witness, insight, creativity and collaborators. Everyone gets to be both the storyteller and the audience.</p>
-<p class="kq-thesis rv">This isn't just community teaching you story. It's story teaching you community.<small>You're learning how to run your life, your organization and your future as a story, by being inside one.</small></p>
-<div class="label rv">A few of the games we play</div>
-<div class="kq-games" data-stagger=".08">
-<div><b>01</b>Roll the trailer of your life</div>
-<div><b>02</b>Meet your demon, and decide what has to die</div>
-<div><b>03</b>Hero, victim and witness</div>
-<div><b>04</b>Time travel to the future where you already won</div>
-<div><b>05</b>Get interviewed by the press from the future</div>
-<div><b>06</b>Take advice from your future ancestors</div>
-<div><b>07</b>Deliver your own epic eulogy</div>
+<div style="margin:clamp(96px,13vh,160px) 0">
+<p class="kq-statement rv">This isn't just community teaching you story. It's story teaching you community.<small>You're learning how to run your life, your organization and your future as a story, by being inside one.</small></p>
 </div>
-<p class="lede rv" style="margin-top:clamp(40px,6vh,64px);max-width:40em">We bring in amazing guests, and we love it when the community starts building itself: members hosting sessions, giving their gifts, co-creating what comes next.</p>
+<div class="kq-split" style="align-items:start">
+<div>
+<h3 class="rv" style="font-family:var(--serif);font-size:clamp(28px,2.6vw,38px);margin:0">A few of the games we play</h3>
+<p class="rv" style="color:var(--ivory);margin-top:20px">We bring in amazing guests, and we love it when the community starts building itself: members hosting sessions, giving their gifts, co-creating what comes next.</p>
+</div>
+<ol class="kq-games" data-stagger=".07">
+<li>Roll the trailer of your life</li>
+<li>Meet your demon, and decide what has to die</li>
+<li>Hero, victim and witness</li>
+<li>Time travel to the future where you already won</li>
+<li>Get interviewed by the press from the future</li>
+<li>Take advice from your future ancestors</li>
+<li>Deliver your own epic eulogy</li>
+</ol>
+</div>
 <blockquote class="kq-quote rv"><p>"You guys actually, genuinely embody love for us, for the world, for each other… I don't think that there's any other way to do life now… you've created the conditions for kinship."</p><cite>Dr. Geordan Shannon</cite></blockquote>
 </div>
 </section>
 
-<!-- 5 · THE JOURNEY -->
+<!-- 5 · THE JOURNEY (banner + forest) -->
 <section class="scene" data-screen-label="05 Journey image" data-chapter="The journey">
 <div class="bg" data-par="0.22" data-scale="1"><img decoding="async" loading="lazy" src="site/img/kq/road.webp" alt=""></div>
 <div class="wrap">
@@ -268,29 +303,26 @@
 </div>
 </div>
 </section>
-<section class="chapter" data-screen-label="05 The Journey" data-chapter="The journey" style="background:linear-gradient(to bottom,var(--deep),var(--forest) 55%,var(--deep))">
-<div class="wrap narrow" style="margin:0 auto">
+<section class="chapter t-forest" data-screen-label="05 The Journey" data-chapter="The journey">
+<div class="wrap" style="max-width:940px">
+<div class="kq-arcs" id="arcs">
+<div class="kq-line"><i></i></div>
 <div class="kq-arc rv">
 <img decoding="async" loading="lazy" src="offer-deck/assets/icons/sprout.webp" alt="">
-<div>
-<div class="label">Weeks 1–7</div>
+<span class="label">Weeks 1–7</span>
 <h3>The Origin</h3>
 <p>You learn story through the mediums you already love (the movie, the book, the poetry, the spirit, the myth, the adventure and the return), practicing the seven arts of storytelling on the most precious story of all: yours.</p>
 <p>We rewrite and deprogram the stories that wrote us, the ones we never chose. You step far enough outside your life to see it as a story that can be rewritten, and go on an adventure into the gold buried in it. It's been described as a lifetime of therapy in a few weeks. Every one of you will reach a moment at your kitchen table, writing, in tears at the story that was always there.</p>
 </div>
-</div>
 <div class="kq-arc rv">
 <img decoding="async" loading="lazy" src="offer-deck/assets/icons/gate.webp" alt="">
-<div>
-<div class="label">Week 8</div>
+<span class="label">Week 8</span>
 <h3>The Threshold</h3>
 <p>A week to land it in your body, with your one-to-one threshold session with Zachary and your crew around you. The old story closes for good.</p>
 </div>
-</div>
 <div class="kq-arc rv">
 <img decoding="async" loading="lazy" src="offer-deck/assets/icons/fire.webp" alt="">
-<div>
-<div class="label">Weeks 9–15</div>
+<span class="label">Weeks 9–15</span>
 <h3>The Metamyth</h3>
 <p>Then we go to the future. We map the pattern of everything you went through and forge the meaning of your life into a story so much bigger than you that others will pay to be part of it. Your wound becomes the dragon the world is facing. Your purpose becomes a quest. Your transformation becomes an offer. We're going to utterly transform how you see money, and the world that story built. You walk your true story all the way into the future you author, and come back with the brand, the pitch and the fundable story, embodying the person you're becoming.</p>
 <p>And it was never only your story. By the end, every epic in the room weaves into one.</p>
@@ -302,6 +334,7 @@
 <button type="button" role="tab" id="t-origin" aria-controls="p-origin" aria-selected="true">The Origin · Weeks 1–8</button>
 <button type="button" role="tab" id="t-meta" aria-controls="p-meta" aria-selected="false">The Metamyth · Weeks 9–15</button>
 </div>
+<div class="kq-panels">
 <div class="kq-panel" role="tabpanel" id="p-origin" aria-labelledby="t-origin">
 <div class="kq-week"><span>Week 1</span><div><h4>The Movie · Roll the trailer</h4><p>Your life, cut like the film it always was. The day you hit bottom turns out to be the opening scene.</p></div></div>
 <div class="kq-week"><span>Week 2</span><div><h4>The Book · The pages you skip</h4><p>Every great story turns on tension. Yours finally gets read aloud, to people who can't put it down.</p></div></div>
@@ -321,11 +354,12 @@
 <div class="kq-week"><span>Week 14</span><div><h4>The Re-Quest · The invitation</h4><p>Tell the whole myth, origin to ask, and learn to invite people in so they lean forward and want to join.</p></div></div>
 <div class="kq-week"><span>Week 15</span><div><h4>The Legacy · Your future ancestors speak</h4><p>Write your own epic eulogy. Then the whole fellowship sends your story into the world.</p></div></div>
 </div>
+</div>
 <blockquote class="kq-quote rv"><p>"I feel like I have a new nervous system… I am a scientist. I am a doctor. If anyone with a rational analytical mind is doubting this process, stop and listen."</p><cite>Dr. Gareth Thompson</cite></blockquote>
 </div>
 </section>
 
-<!-- 6 · THE ROOM -->
+<!-- 6 · THE ROOM (banner + deep) -->
 <section class="scene dark" data-screen-label="06 Room image" data-chapter="The room">
 <div class="bg" data-par="0.22" data-scale="1"><img decoding="async" loading="lazy" src="site/img/kq/origin.webp" alt=""></div>
 <div class="wrap">
@@ -335,40 +369,45 @@
 </div>
 </div>
 </section>
-<section class="chapter" data-screen-label="06 The Room" data-chapter="The room">
+<section class="chapter t-deep" data-screen-label="06 The Room" data-chapter="The room">
 <div class="wrap">
-<div class="kq-story" style="max-width:44em">
+<div class="kq-story" style="max-width:40em;margin:0 auto">
 <p class="rv">The most powerful moments in this work have been moments of pure silence, when there's nothing left to say, because the whole room is standing in awe of our own expression, our own being. The first Kinship Quest blew my mind, and I'm the guide. Every single person walked out very different from where they started, and still the person they always were.</p>
 <p class="rv">No one changed more than me. For a guy who talked his way around the world, has transformed about seven times start to finish, and was living in a trailer a year ago and now lives his dream life in a villa in Colombia, that's saying a lot.</p>
 </div>
-<p class="kq-thesis rv" style="max-width:28em">Everyone who has gone through MetaMyth has had their world turned upside down. They've written books in weeks. They've raised tens of thousands of dollars in 90 seconds. They've turned decades of suffering into entirely new careers. They've rewritten childhood trauma into brand narratives that sell. <span class="gold">Seriously.</span></p>
-<div class="kq-proof" data-stagger=".12">
-<blockquote class="kq-quote"><img decoding="async" loading="lazy" src="site/img/jessica-arburn.webp" alt="Jessica Arburn"><p>"One of the greatest things I've ever done with my life. And I've had kids."</p><cite>Jessica Arburn · Founder, Dose of Hope</cite></blockquote>
-<blockquote class="kq-quote"><img decoding="async" loading="lazy" src="site/img/michael-haupt.webp" alt="Michael Haupt"><p>"Holy fucking guacamole. You made sense of the madness."</p><cite>Michael Haupt</cite></blockquote>
+<div style="margin:clamp(96px,13vh,160px) 0 0">
+<p class="kq-statement rv" style="font-size:clamp(26px,2.8vw,42px);max-width:24em">Everyone who has gone through MetaMyth has had their world turned upside down. They've written books in weeks. They've raised tens of thousands of dollars in 90 seconds. They've turned decades of suffering into entirely new careers. They've rewritten childhood trauma into brand narratives that sell. <span class="gold">Seriously.</span></p>
 </div>
-<p class="lede rv" style="margin-top:clamp(40px,6vh,64px);max-width:44em">We're so busy telling everyone else's story that ours is backed up, and a batch of video testimonials is on the way. Until then, if you have doubts, anyone quoted here will happily tell you why this is the thing to do. Just say the word and we'll connect you.</p>
+<div class="kq-proof" data-stagger=".14">
+<blockquote><p>"One of the greatest things I've ever done with my life. And I've had kids."</p><footer><img decoding="async" loading="lazy" src="site/img/jessica-arburn.webp" alt=""><cite>Jessica Arburn · Founder, Dose of Hope</cite></footer></blockquote>
+<blockquote><p>"Holy fucking guacamole. You made sense of the madness."</p><footer><img decoding="async" loading="lazy" src="site/img/michael-haupt.webp" alt=""><cite>Michael Haupt</cite></footer></blockquote>
+</div>
+<p class="lede rv" style="margin:clamp(64px,9vh,100px) auto 0;max-width:38em;text-align:center">We're so busy telling everyone else's story that ours is backed up, and a batch of video testimonials is on the way. Until then, if you have doubts, anyone quoted here will happily tell you why this is the thing to do. Just say the word and we'll connect you.</p>
 </div>
 </section>
 
-<!-- 7 · HOW IT WORKS -->
-<section class="chapter" data-screen-label="07 How it works" data-chapter="How it works" style="background:linear-gradient(to bottom,var(--deep),var(--forest) 55%,var(--deep))">
+<!-- 7 · HOW IT WORKS (night) -->
+<section class="chapter t-night" data-screen-label="07 How it works" data-chapter="How it works">
 <div class="wrap">
 <div class="chapter-head">
 <div class="label rv">How it works</div>
 <h2 data-split="">Your guides, your week, <span class="gold">your people.</span></h2>
 </div>
 <div class="kq-guides" data-stagger=".1">
-<article class="kq-guide"><header><img decoding="async" loading="lazy" src="site/img/zachary.webp" alt="Zachary Marlow"><div><h3>Zachary Marlow</h3><div class="label">Story Architect</div></div></header><p>Zachary has talked his way around the world on nothing but story. Making films through counterculture and indigenous nations across five continents, building movements that touched hundreds of thousands, creating media ecosystems that reached millions, working campaigns all the way up to the presidential. His superpower is seeing who you could be: he takes the smallest possibility and explodes it into an entire world, and turns even the most tragic thing that ever happened to you into the compost something alive grows from. He'll pull your golden thread all the way into the future, help you craft it into an enterprise, find the story that makes it sellable, and laugh the whole way there.</p></article>
-<article class="kq-guide"><header><img decoding="async" loading="lazy" src="site/img/cataleya.webp" alt="Cataleya Morgan"><div><h3>Cataleya Morgan</h3><div class="label">Embodiment</div></div></header><p>Cataleya will teach you to hold the silence and stand in your power, embodying your story without saying a word. She'll call you lovingly on your bullshit, hold you to your highest self and transmit the wisdom of the ages into your story, with a razor-sharp mix of sales, marketing, branding and copywriting she learned inside some of the biggest companies on earth, before hundreds of ceremonies with indigenous elders showed her it is us who need to change.</p></article>
-<article class="kq-guide"><header><img decoding="async" loading="lazy" src="site/img/kq/p-jeremy.webp" alt="Jeremy Akers"><div><h3>Jeremy Akers</h3><div class="label">Program Director &amp; Master Facilitator</div></div></header><p>A master facilitator who asks wicked questions and always seeks the truth. He teaches you to hold a room, bring your talks, workshops and meetings alive, get people solving their own problems, and turn leadership into coaching and coaching into orchestration. He will always call you on your bullshit.</p></article>
-<article class="kq-guide"><header><img decoding="async" loading="lazy" src="site/img/kq/p-anna.webp" alt="Anna Giunta"><div><h3>Anna Giunta</h3><div class="label">Community &amp; Heart</div></div></header><p>Our community manager and master space holder brings two decades of healing modalities together into an explosion of love. Anna makes sure everyone has an embodied, delicious experience: in tune with your emotions, integrating as you go, and the community itself cared for as one living organism. She hosts the heart circles.</p></article>
-<article class="kq-guide"><header><img decoding="async" loading="lazy" src="site/img/kq/p-josie.webp" alt="Josie Loner"><div><h3>Josie Loner</h3><div class="label">Star Power</div></div></header><p>Channels loss, grief, lust, pain and mania into rock star energy, the star power that commands attention. She turns performance anxiety into fluid improvisation and being too much into a superpower. Stop faking and start performing like the drama life is meant to be.</p></article>
+<article class="kq-guide"><figure><img decoding="async" loading="lazy" src="site/img/zachary.webp" alt="Zachary Marlow"></figure><h3>Zachary Marlow</h3><span class="label">Story Architect</span><p>Zachary has talked his way around the world on nothing but story. Making films through counterculture and indigenous nations across five continents, building movements that touched hundreds of thousands, creating media ecosystems that reached millions, working campaigns all the way up to the presidential. His superpower is seeing who you could be: he takes the smallest possibility and explodes it into an entire world, and turns even the most tragic thing that ever happened to you into the compost something alive grows from. He'll pull your golden thread all the way into the future, help you craft it into an enterprise, find the story that makes it sellable, and laugh the whole way there.</p></article>
+<article class="kq-guide"><figure><img decoding="async" loading="lazy" src="site/img/cataleya.webp" alt="Cataleya Morgan"></figure><h3>Cataleya Morgan</h3><span class="label">Embodiment</span><p>Cataleya will teach you to hold the silence and stand in your power, embodying your story without saying a word. She'll call you lovingly on your bullshit, hold you to your highest self and transmit the wisdom of the ages into your story, with a razor-sharp mix of sales, marketing, branding and copywriting she learned inside some of the biggest companies on earth, before hundreds of ceremonies with indigenous elders showed her it is us who need to change.</p></article>
+<article class="kq-guide"><figure><img decoding="async" loading="lazy" src="site/img/kq/p-jeremy.webp" alt="Jeremy Akers"></figure><h3>Jeremy Akers</h3><span class="label">Program Director &amp; Master Facilitator</span><p>A master facilitator who asks wicked questions and always seeks the truth. He teaches you to hold a room, bring your talks, workshops and meetings alive, get people solving their own problems, and turn leadership into coaching and coaching into orchestration. He will always call you on your bullshit.</p></article>
+<article class="kq-guide"><figure><img decoding="async" loading="lazy" src="site/img/kq/p-anna.webp" alt="Anna Giunta"></figure><h3>Anna Giunta</h3><span class="label">Community &amp; Heart</span><p>Our community manager and master space holder brings two decades of healing modalities together into an explosion of love. Anna makes sure everyone has an embodied, delicious experience: in tune with your emotions, integrating as you go, and the community itself cared for as one living organism. She hosts the heart circles.</p></article>
+<article class="kq-guide"><figure><img decoding="async" loading="lazy" src="site/img/kq/p-josie.webp" alt="Josie Loner"></figure><h3>Josie Loner</h3><span class="label">Star Power</span><p>Channels loss, grief, lust, pain and mania into rock star energy, the star power that commands attention. She turns performance anxiety into fluid improvisation and being too much into a superpower. Stop faking and start performing like the drama life is meant to be.</p></article>
 </div>
-<p class="lede rv" style="margin-top:28px">And the kinship guides: the community who've walked their own journey, back to carry the next ones across.</p>
+<p class="lede rv" style="margin-top:40px">And the kinship guides: the community who've walked their own journey, back to carry the next ones across.</p>
 
-<div class="label rv" style="margin:clamp(72px,10vh,120px) 0 20px">Your week</div>
-<p class="lede rv" style="max-width:40em">Take out your phone and look at your screen time. Now imagine thirty minutes to an hour of that, every day, spent scrolling your own story instead of other people's. Then a movie or two a week in the new story with your community.</p>
-<div class="kq-rows" style="margin-top:28px" data-stagger=".06">
+<div class="kq-split" style="align-items:start;margin-top:clamp(96px,13vh,160px)">
+<div>
+<h3 class="rv" style="font-family:var(--serif);font-size:clamp(28px,2.6vw,38px);margin:0">Your week</h3>
+<p class="rv" style="color:var(--ivory);margin-top:20px">Take out your phone and look at your screen time. Now imagine thirty minutes to an hour of that, every day, spent scrolling your own story instead of other people's. Then a movie or two a week in the new story with your community.</p>
+</div>
+<div class="kq-rows" data-stagger=".06">
 <div><img decoding="async" loading="lazy" src="offer-deck/assets/icons/fire.webp" alt=""><b>One live session a week</b><span>Two hours</span></div>
 <div><img decoding="async" loading="lazy" src="offer-deck/assets/icons/council.webp" alt=""><b>Kinship Fridays</b><span>The whole community gathers for storytelling, 11am ET</span></div>
 <div><img decoding="async" loading="lazy" src="offer-deck/assets/icons/chalice.webp" alt=""><b>A heart circle every month</b><span>With Anna</span></div>
@@ -377,9 +416,11 @@
 <div><img decoding="async" loading="lazy" src="offer-deck/assets/icons/fountain.webp" alt=""><b>Guests, pop-ups and gifts</b><span>From the community</span></div>
 <div><img decoding="async" loading="lazy" src="offer-deck/assets/icons/scroll.webp" alt=""><b>Every session recorded</b><span></span></div>
 </div>
+</div>
 
-<div class="label rv" style="margin:clamp(72px,10vh,120px) 0 20px">Who this is for</div>
-<p class="lede rv" style="max-width:40em">This is a mythical dimension most people aren't ready for, and it will legitimately shake you.</p>
+<div style="margin-top:clamp(96px,13vh,160px)">
+<h3 class="rv" style="font-family:var(--serif);font-size:clamp(28px,2.6vw,38px);margin:0">Who this is for</h3>
+<p class="lede rv" style="margin-top:16px">This is a mythical dimension most people aren't ready for, and it will legitimately shake you.</p>
 <div class="kq-fit rv" style="margin-top:36px">
 <div class="in"><div class="label">Come in if</div><ul>
 <li>You want to get paid doing what you love, or take what you already love to the next level.</li>
@@ -397,23 +438,20 @@
 <li>You're bringing negativity, bias or dogma.</li>
 </ul></div>
 </div>
-<p class="kq-thesis rv">Are you searching for your purpose, or can you not shut up about it?</p>
+</div>
+<p class="kq-statement rv" style="margin-top:clamp(96px,13vh,160px)">Are you searching for your purpose, or can you not shut up about it?</p>
 </div>
 </section>
 
-<!-- 8 · THE INVESTMENT -->
-<section class="scene dark" data-screen-label="08 Investment image" data-chapter="The investment">
-<div class="bg" data-par="0.22" data-scale="1"><img decoding="async" loading="lazy" src="site/img/kq/threshold.webp" alt=""></div>
+<!-- 8 · THE INVESTMENT (paper) -->
+<div class="seam to-paper" aria-hidden="true"></div>
+<section class="chapter t-paper" id="investment" data-screen-label="08 Investment" data-chapter="The investment" style="padding-top:clamp(40px,6vh,80px)">
 <div class="wrap">
-<div class="chapter-head" style="margin-bottom:0">
+<div class="chapter-head" style="align-items:center;text-align:center;margin-bottom:28px">
 <div class="label rv">The investment</div>
 <h2 data-split="">Let's talk about <span class="gold">the return.</span></h2>
 </div>
-</div>
-</section>
-<section class="chapter" id="investment" data-screen-label="08 Investment" data-chapter="The investment">
-<div class="wrap">
-<p class="lede rv" style="max-width:40em">Somewhere below this, there's a price. Your nervous system might flinch. Let it, and do the math with us first.</p>
+<p class="lede rv" style="max-width:34em;margin:0 auto;text-align:center">Somewhere below this, there's a price. Your nervous system might flinch. Let it, and do the math with us first.</p>
 <div class="kq-return" data-stagger=".12">
 <div>
 <img decoding="async" loading="lazy" src="offer-deck/assets/icons/dragon.webp" alt="">
@@ -434,11 +472,13 @@
 <p>This is a real community, and nobody gets in here without being awesome. The vibes are sacred to us, which is part of why it costs what it costs. The more you show up, the more you get, whatever seat you're in.</p>
 </div>
 </div>
-<p class="kq-thesis rv">Is it worth it? You tell me.<br><span class="gold">What's your story worth?</span></p>
+<div style="margin:clamp(88px,12vh,140px) 0 0">
+<p class="kq-statement rv">Is it worth it? You tell me.<br><span class="gold">What's your story worth?</span></p>
+</div>
 
 <div class="kq-seats" data-stagger=".15">
 <div class="kq-seat">
-<div class="kq-seat-top"><div class="label">Seeker</div><img decoding="async" loading="lazy" src="offer-deck/assets/icons/compass.webp" alt=""></div>
+<div class="kq-seat-top"><span class="label">Seeker</span><img decoding="async" loading="lazy" src="offer-deck/assets/icons/compass.webp" alt=""></div>
 <h3>Find your story. Find your path.</h3>
 <div class="price">$3,500</div>
 <div class="plan">or 2 payments of $2,000</div>
@@ -446,7 +486,7 @@
 <div class="kq-pay"><a class="cta fill" href="https://buy.stripe.com/4gM6oG3OE61WdFWaj4fQI0x">Pay in full <span>→</span></a><a class="cta" href="https://buy.stripe.com/8x2bJ0fxmbmgdFW1MyfQI0z">2 payments <span>→</span></a></div>
 </div>
 <div class="kq-seat builder">
-<div class="kq-seat-top"><div class="label">Builder</div><img decoding="async" loading="lazy" src="offer-deck/assets/icons/sword.webp" alt=""></div>
+<div class="kq-seat-top"><span class="label">Builder</span><img decoding="async" loading="lazy" src="offer-deck/assets/icons/sword.webp" alt=""></div>
 <h3>Turn your story into a mission people can join.</h3>
 <div class="price">$6,500</div>
 <div class="plan">or 2 payments of $3,500</div>
@@ -460,35 +500,37 @@
 <div class="kq-pay"><a class="cta fill" href="https://buy.stripe.com/5kQ4gy84UgGA31i9f0fQI0y">Pay in full <span>→</span></a><a class="cta" href="https://buy.stripe.com/8x2bJ02KA3TO45m4YKfQI0A">2 payments <span>→</span></a></div>
 </div>
 </div>
-<p class="rv" style="margin-top:22px;color:var(--mist);font-size:16px">Seekers can move up to Builder mid-quest by paying the difference.</p>
+<p class="kq-upgrade rv">Seekers can move up to Builder mid-quest by paying the difference.</p>
 
 <blockquote class="kq-quote rv"><p>"It is in all my work streams and in all my relationships. It was my highest expense for the year, and it was not expensive, because the value was infinitely more than it cost."</p><cite>Kevin Howard</cite></blockquote>
 
 <div class="kq-ways" data-stagger=".12">
-<div class="kq-way mentor">
-<img decoding="async" loading="lazy" src="offer-deck/assets/icons/flag.webp" alt="">
-<div class="label">Mentor</div>
-<h3>Bring someone with you.</h3>
-<p>At checkout, add a Seeker seat for $3,000 or a Builder seat for $6,000 for someone you know. They go through the application, and if they aren't a fit, you get it all back.</p>
-</div>
 <div class="kq-way scholar">
 <img decoding="async" loading="lazy" src="offer-deck/assets/icons/sprout.webp" alt="">
-<div class="label">Scholarships</div>
+<span class="label">Scholarships</span>
 <h3>Seven seats for stories worth betting on.</h3>
 <p>Held for people who give their genius to the mission in return. Applications open soon; for now, message us. Anyone can fund a scholarship seat at checkout for $1,500. Metamyth is a public benefit company; these gifts aren't tax-deductible yet, and a nonprofit pass-through is on the way.</p>
 <p>If the money is a real problem and you know in your bones this is for you, reach out. We'll talk.</p>
 </div>
+<div class="kq-way mentor">
+<img decoding="async" loading="lazy" src="offer-deck/assets/icons/flag.webp" alt="">
+<span class="label">Mentor</span>
+<h3>Bring someone with you.</h3>
+<p>At checkout, add a Seeker seat for $3,000 or a Builder seat for $6,000 for someone you know. They go through the application, and if they aren't a fit, you get it all back.</p>
+</div>
 <div class="kq-way guarantee">
 <img decoding="async" loading="lazy" src="offer-deck/assets/icons/shield-leaf.webp" alt="">
-<div class="label">The guarantee</div>
+<span class="label">The guarantee</span>
 <h3>Our story needs you to win.</h3>
 <p>We can't guarantee anything you don't show up for. Show up to every session, do the work, and if you still don't feel the path under your feet, we give you the one-to-one sessions the Builders get and bring you into the next Kinship Quest free.</p>
 </div>
 </div>
 </div>
 </section>
+<div class="seam from-paper" aria-hidden="true"></div>
 
-<section class="chapter" data-screen-label="08b Questions" data-chapter="Questions" style="background:linear-gradient(to bottom,var(--deep),var(--forest) 50%,var(--deep))">
+<!-- QUESTIONS + APPLY (deep) -->
+<section class="chapter t-deep" data-screen-label="08b Questions" data-chapter="Questions" style="padding-top:clamp(40px,6vh,80px)">
 <div class="wrap">
 <div class="chapter-head" style="align-items:center;text-align:center">
 <div class="label rv">Questions</div>
@@ -505,24 +547,28 @@
 <details><summary>Short on time?</summary><p>If you're a founder already in motion and time is your biggest constraint, the Metamyth Adventure time travels through this same journey at your pace, encircled by our community. Ask us about it.</p></details>
 </div>
 <div class="kq-apply" id="apply">
-<img decoding="async" loading="lazy" src="offer-deck/assets/icons/wizard-hat.webp" alt="" style="width:64px;height:64px">
-<div class="label rv" style="margin-top:16px">Your application</div>
+<img class="rv" decoding="async" loading="lazy" src="offer-deck/assets/icons/wizard-hat.webp" alt="">
 <h2 data-split="">Seven questions to start becoming the author of your story <span class="gold">and aligning to the timeline where we do it, together.</span></h2>
-<a class="cta fill rv" style="margin-top:40px" href="https://metamyth-main-landing-page.replit.app/kinship?apply=1">Begin the application <span>→</span></a>
+<a class="cta fill rv" style="margin-top:40px;align-self:center" href="https://metamyth-main-landing-page.replit.app/kinship?apply=1">Begin the application <span>→</span></a>
 </div>
 </div>
 </section>
 
 <!-- 9 · THE NEXT CHAPTER -->
-<section class="scene close" data-screen-label="09 Next chapter" data-chapter="The next chapter">
-<div class="bg" data-par="0.18" data-scale="1"><img decoding="async" loading="lazy" src="site/img/sundown.webp" alt=""></div>
+<section class="chapter t-forest" data-screen-label="09 Next chapter" data-chapter="The next chapter" style="padding-top:clamp(60px,8vh,100px)">
+<figure class="kq-wide rv"><img decoding="async" loading="lazy" src="site/img/kq/council.webp" alt="The Metamyth community together on stage"></figure>
 <div class="wrap kq-next">
 <div class="label rv">The next chapter</div>
-<h2 data-split="">Your story doesn't end <span class="gold">at week fifteen.</span></h2>
+<h2 data-split="" style="margin-top:20px">Your story doesn't end <span class="gold">at week fifteen.</span></h2>
 <p class="rv">You cross into the kinship community, where the people who walked their story guide the next ones across. Some become guides themselves. Some start building together. Some join each other's missions. The people and projects that are ready go on into Livinglegend, where we turn your story into a multi-million-dollar mission together.</p>
 <p class="rv kq-quiet">We're building a narrative intelligence system to turn the story into a living system. This is still unfolding, and you'll be co-creating it with us.</p>
-<p class="rv kq-wait">We are the ones we've been waiting for.</p>
-<h2 data-split="" style="margin-top:28px">The next season of your life <span class="teal">starts here.</span></h2>
+</div>
+</section>
+<section class="scene close" data-screen-label="10 Close" data-chapter="">
+<div class="bg" data-par="0.18" data-scale="1"><img decoding="async" loading="lazy" src="site/img/sundown.webp" alt=""></div>
+<div class="wrap">
+<p class="rv kq-close-line">We are the ones we've been waiting for.</p>
+<h2 data-split="">The next season of your life <span class="teal">starts here.</span></h2>
 <a class="cta fill rv" style="--d:.6s" href="#apply">Apply for the Kinship Quest <span>→</span></a>
 </div>
 </section>
@@ -536,6 +582,11 @@
     t.addEventListener('click',function(){show(i);});
     t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();var n=1-i;show(n);tabs[n].focus();}});
   });
+  var arcs=document.getElementById('arcs'),fill=arcs&&arcs.querySelector('.kq-line i');
+  if(fill&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var tick=function(){var r=arcs.getBoundingClientRect(),vh=innerHeight;var p=(vh*0.6-r.top)/r.height;p=Math.max(0,Math.min(1,p));fill.style.transform='scaleY('+p+')';};
+    addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);tick();
+  }
 })();
 </script>
 <script src="site/site.js"></script>
