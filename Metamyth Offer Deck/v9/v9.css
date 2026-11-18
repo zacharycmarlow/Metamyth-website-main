@@ -1,0 +1,89 @@
+/* METAMYTH v9 — "a film bound as a book". See design-system/metamyth/MASTER.md. */
+@font-face{font-family:'MM Display';src:url('../v7/fonts/instrument-serif.woff2') format('woff2');font-display:swap}
+@font-face{font-family:'MM Display';src:url('../v7/fonts/instrument-serif-italic.woff2') format('woff2');font-style:italic;font-display:swap}
+@font-face{font-family:'MM Swash';src:url('../v7/fonts/great-vibes.woff2') format('woff2');font-display:swap}
+@font-face{font-family:'MM Text';src:url('fonts/source-serif-4.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'MM Text';src:url('fonts/source-serif-4-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:'MM Text';src:url('fonts/source-serif-4-600.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Futura';src:url('../fonts/Futura%20Regular.woff2') format('woff2'),url('../fonts/Futura%20Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Futura';src:url('../fonts/Futura_Medium.woff2') format('woff2'),url('../fonts/Futura_Medium.otf') format('opentype');font-weight:500;font-display:swap}
+
+:root{
+  --night:#0B1310;--vellum:#EFE3C8;--leaf:#C9A24A;--glass:#4FB7A6;--ember:#8E2A17;--paper:#FFFFFF;
+  --vellum-dim:#BFB49B;--ink:#16211B;--ink-dim:#4A574F;
+  --display:'MM Display',Georgia,serif;--swash:'MM Swash',cursive;--text:'MM Text',Georgia,serif;--ui:'Futura','Trebuchet MS',sans-serif;
+  --s14:.875rem;--s16:1rem;--s21:1.3125rem;--s28:1.75rem;--s37:2.3125rem;--s50:3.125rem;--s67:4.1875rem;--s89:5.5625rem;--s118:7.375rem;--s158:9.875rem;
+  --pad:clamp(20px,5.5vw,96px);--margin-col:clamp(64px,11vw,190px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--night);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--night);color:var(--vellum);font-family:var(--text);font-size:clamp(1.125rem,1.05rem + .3vw,1.3125rem);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip}
+h1,h2,h3,p,figure,blockquote{margin:0}
+img{display:block;max-width:100%}
+a{color:var(--glass);text-underline-offset:.18em}
+:focus-visible{outline:2px solid var(--glass);outline-offset:4px;border-radius:2px}
+
+/* ── the recurring device: film, letterboxed ── */
+.film{position:relative;background:#000;padding-block:clamp(28px,6vw,96px)}
+.film > img{width:100%;aspect-ratio:2.39/1;object-fit:cover}
+.film figcaption{position:absolute;right:var(--pad);bottom:clamp(8px,1.6vw,26px);font-family:var(--ui);font-size:var(--s14);color:#8c8a82}
+
+/* title card: words set on the film, the way intertitles sit on a reel */
+.card{position:relative;background:#000}
+.card .film{padding-block:clamp(40px,8vw,130px)}
+.card .film > img{filter:brightness(.62) saturate(.92)}
+.card-words{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 var(--pad);pointer-events:none}
+.title{font-family:var(--display);font-weight:400;font-size:clamp(3.2rem,9vw,var(--s158));line-height:.9;letter-spacing:-.02em;max-width:12em;text-wrap:balance;text-shadow:0 0 40px rgba(0,0,0,.55)}
+.title.sm{font-size:clamp(2.6rem,6.4vw,var(--s118));max-width:14em}
+.sw{font-family:var(--swash);font-size:1.55em;line-height:0;color:var(--leaf);margin-right:-.12em;position:relative;top:.1em;font-weight:400}
+.under{display:block;margin-top:.5em;font-family:var(--display);font-style:italic;font-size:clamp(1.4rem,2.4vw,var(--s37));line-height:1.15;color:var(--vellum);letter-spacing:0}
+
+/* reading spread: a margin for the numeral and a note, a column for the text */
+.spread{display:grid;grid-template-columns:var(--margin-col) minmax(0,40rem) 1fr;column-gap:clamp(24px,4vw,72px);padding:clamp(72px,10vw,150px) var(--pad)}
+.margin{grid-column:1;position:relative}
+.numeral{position:sticky;top:96px;display:block;font-family:var(--display);font-size:clamp(3rem,6vw,var(--s89));line-height:.9;color:var(--leaf)}
+.note{margin-top:18px;font-family:var(--display);font-style:italic;font-size:var(--s21);line-height:1.3;color:var(--vellum-dim)}
+.column{grid-column:2;display:flex;flex-direction:column;gap:1.15em}
+.column .film{margin-block:1.2em;margin-inline:calc(-1 * clamp(0px,3vw,48px))}
+.lead{font-family:var(--display);font-size:clamp(1.9rem,3vw,var(--s50));line-height:1.08;letter-spacing:-.01em;color:var(--vellum)}
+.dropcap::first-letter{float:left;font-family:var(--display);font-size:4.4em;line-height:.82;padding:.06em .1em 0 0;color:var(--leaf)}
+.turn{font-family:var(--display);font-style:italic;font-size:clamp(1.5rem,2.2vw,var(--s37));line-height:1.2;color:var(--leaf)}
+
+/* chapters' grounds build in intensity */
+.ch-origin{background:var(--night)}
+.ch-calling{background:radial-gradient(120% 90% at 50% 0%,#3a0f08 0%,#1d0805 55%,#100503 100%)}
+.ch-calling .numeral,.ch-calling .sw{color:#e0b25a}
+.ch-calling .card .film > img{filter:brightness(.55) sepia(.35) saturate(1.3) hue-rotate(-12deg)}
+.ch-paper{background:var(--paper);color:var(--ink)}
+.ch-paper .numeral{color:#9a7424}
+
+/* Mission on paper: the three worlds as a table of contents, not a card grid */
+.worlds{padding:clamp(72px,10vw,150px) var(--pad);display:grid;grid-template-columns:var(--margin-col) minmax(0,1fr);column-gap:clamp(24px,4vw,72px)}
+.worlds-head{grid-column:2;max-width:46rem;display:flex;flex-direction:column;gap:.5em;margin-bottom:clamp(40px,6vw,80px)}
+.worlds-head h2{font-family:var(--display);font-weight:400;font-size:clamp(3rem,7vw,var(--s118));line-height:.9;letter-spacing:-.02em}
+.worlds-head p{font-family:var(--display);font-style:italic;font-size:var(--s28);color:var(--ink-dim)}
+.world{grid-column:1 / -1;display:grid;grid-template-columns:var(--margin-col) minmax(0,1.3fr) minmax(0,1fr);column-gap:clamp(24px,4vw,72px);padding-block:clamp(28px,4vw,48px);border-top:1px solid #d9d2c0;align-items:start}
+.world:last-child{border-bottom:1px solid #d9d2c0}
+.world .numeral{position:static;font-size:clamp(2.2rem,4vw,var(--s67));color:#9a7424}
+.world h3{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,5vw,var(--s89));line-height:.92;letter-spacing:-.015em}
+.world .head{font-family:var(--display);font-style:italic;font-size:clamp(1.4rem,2vw,var(--s37));line-height:1.15;margin-top:.35em}
+.world .desc{margin-top:.9em;color:var(--ink-dim);max-width:34em}
+.world figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.world blockquote{margin-top:1em;font-family:var(--display);font-style:italic;font-size:var(--s28);line-height:1.2}
+.world cite{display:block;margin-top:.4em;font-family:var(--ui);font-style:normal;font-size:var(--s14);color:var(--ink-dim)}
+
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:.85em 1.6em;border-radius:2px;font-family:var(--ui);font-size:var(--s16);font-weight:500;letter-spacing:.02em;text-decoration:none;background:var(--leaf);color:#1a1405;border:1px solid var(--leaf)}
+.btn.quiet{background:none;color:inherit;border-color:currentColor}
+
+@media (max-width:760px){
+  .spread,.worlds{grid-template-columns:1fr}
+  .margin,.column,.worlds-head{grid-column:1}
+  .margin{display:flex;align-items:baseline;gap:16px;margin-bottom:12px}
+  .numeral{position:static}
+  .note{margin-top:0}
+  .world{grid-template-columns:1fr;row-gap:16px}
+  .column .film{margin-inline:calc(-1 * var(--pad))}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.label{font-family:var(--ui);font-size:var(--s14);letter-spacing:.02em;color:var(--ink-dim);margin-bottom:.4em}
