@@ -81,7 +81,7 @@ function drawSpread(S, plate, star) {
   g.fillStyle = rub; g.font = '500 30px Futura, sans-serif';
   g.fillText(('PAGE ' + S.n).split('').join(' '), PW / 2, 170);
   g.fillRect(PW / 2 - 210, 158, 110, 2); g.fillRect(PW / 2 + 100, 158, 110, 2);
-  g.font = '230px Pherome'; g.fillStyle = goldFill(g, PW / 2 - 140, 200, PW / 2 + 140, 430);
+  g.font = '230px "MM Serif"'; g.fillStyle = goldFill(g, PW / 2 - 140, 200, PW / 2 + 140, 430);
   g.shadowColor = 'rgba(90,50,10,.45)'; g.shadowBlur = 8; g.shadowOffsetY = 4;
   g.fillText(S.n, PW / 2, 410); g.shadowColor = 'transparent';
   g.lineWidth = 3; g.strokeStyle = '#6b4512'; g.strokeText(S.n, PW / 2, 410);
@@ -126,36 +126,36 @@ function drawSpread(S, plate, star) {
   for (let attempt = 0; attempt < 16; attempt++) {
     s = Math.pow(.95, attempt); let y = top; ops = [];
     const fT = 96 * s, fL = 64 * s, fB = 50 * s, fC = 64 * s;
-    g.font = `${fT}px Pherome`; const tl = wrap(g, S.title, Wt); ops.push(['title', y, tl, fT]); y += tl.length * fT * 1.02 + fT * .55;
+    g.font = `${fT}px "MM Serif"`; const tl = wrap(g, S.title, Wt); ops.push(['title', y, tl, fT]); y += tl.length * fT * 1.02 + fT * .55;
     ops.push(['rule', y]); y += fB * 1.3;
-    const capF = fL * 2.9; g.font = `${capF}px Pherome`; const capW = g.measureText(S.lead[0]).width + fL * .5;
-    g.font = `${fL}px Pherome`; const ll = wrap(g, S.lead.slice(1), Wt - capW - fL * .2);
+    const capF = fL * 2.9; g.font = `${capF}px "MM Swash"`; const capW = g.measureText(S.lead[0]).width + fL * .5;
+    g.font = `${fL}px "MM Serif"`; const ll = wrap(g, S.lead.slice(1), Wt - capW - fL * .2);
     ops.push(['lead', y, ll, fL, capF, capW]); y += Math.max(ll.length * fL * 1.15, capF * .92) + fB * .8;
-    if (S.litany) { g.font = `italic ${fB * 1.05}px Pherome`; const lt = wrap(g, S.litany, Wt); ops.push(['lit', y, lt, fB * 1.05]); y += lt.length * fB * 1.4 + fB * .7; }
+    if (S.litany) { g.font = `italic ${fB * 1.05}px "MM Serif"`; const lt = wrap(g, S.litany, Wt); ops.push(['lit', y, lt, fB * 1.05]); y += lt.length * fB * 1.4 + fB * .7; }
     for (const para of S.body) {
       const em = para[0] === '§', t = em ? para.slice(1) : para;
-      g.font = `${em ? 'italic ' : ''}${fB}px Pherome`; const bl = wrap(g, t, Wt);
+      g.font = `${em ? 'italic ' : ''}${fB}px "MM Serif"`; const bl = wrap(g, t, Wt);
       ops.push(['body', y, bl, fB, em]); y += bl.length * fB * 1.38 + fB * .62;
     }
-    g.font = `${fC}px Pherome`; const cl = wrap(g, S.close, Wt); ops.push(['close', y + fB * .4, cl, fC]); y += cl.length * fC * 1.08 + fB * 1.2;
+    g.font = `${fC}px "MM Serif"`; const cl = wrap(g, S.close, Wt); ops.push(['close', y + fB * .4, cl, fC]); y += cl.length * fC * 1.08 + fB * 1.2;
     ops.push(['orn', y]);
     if (y + 40 <= bottom) break;
   }
   for (const o of ops) {
     const [t, y] = o; g.textBaseline = 'top';
-    if (t === 'title') { g.font = `${o[3]}px Pherome`; g.fillStyle = ink; g.textAlign = 'left'; o[2].forEach((l, i) => g.fillText(l, X, y + i * o[3] * 1.02)); }
+    if (t === 'title') { g.font = `${o[3]}px "MM Serif"`; g.fillStyle = ink; g.textAlign = 'left'; o[2].forEach((l, i) => g.fillText(l, X, y + i * o[3] * 1.02)); }
     if (t === 'rule') { g.fillStyle = 'rgba(140,47,27,.7)'; g.fillRect(X, y, 160 * s, 3); g.fillRect(X + 175 * s, y - 4, 10, 10); }
     if (t === 'lead') {
       const [, , lines, f, capF, capW] = o;
       g.fillStyle = 'rgba(212,168,67,.25)'; g.fillRect(X - 8, y - 4, capW - f * .25, capF * .95);
       g.strokeStyle = 'rgba(140,47,27,.5)'; g.lineWidth = 2; g.strokeRect(X - 8, y - 4, capW - f * .25, capF * .95);
-      g.font = `${capF}px Pherome`; g.fillStyle = rub; g.textAlign = 'left'; g.fillText(S.lead[0], X + 6, y - capF * .06);
-      g.font = `${f}px Pherome`; g.fillStyle = ink; lines.forEach((l, i) => g.fillText(l, X + capW, y + i * f * 1.15));
+      g.font = `${capF}px "MM Swash"`; g.fillStyle = rub; g.textAlign = 'left'; g.fillText(S.lead[0], X + 10, y + capF * .02);
+      g.font = `${f}px "MM Serif"`; g.fillStyle = ink; lines.forEach((l, i) => g.fillText(l, X + capW, y + i * f * 1.15));
     }
-    if (t === 'lit') { g.font = `italic ${o[3]}px Pherome`; g.fillStyle = rub; g.textAlign = 'left'; o[2].forEach((l, i) => g.fillText(l, X, y + i * o[3] * 1.4)); }
-    if (t === 'body') { g.font = `${o[4] ? 'italic ' : ''}${o[3]}px Pherome`; g.fillStyle = ink; g.textAlign = 'left'; o[2].forEach((l, i) => g.fillText(l, X, y + i * o[3] * 1.38)); }
-    if (t === 'close') { g.font = `${o[3]}px Pherome`; g.fillStyle = rub; g.textAlign = 'left'; o[2].forEach((l, i) => g.fillText(l, X, y + i * o[3] * 1.08)); }
-    if (t === 'orn') { g.fillStyle = 'rgba(140,47,27,.6)'; g.textAlign = 'center'; g.font = `${40 * s}px Pherome`; g.fillText('❦', PW + PW / 2, Math.min(y, bottom - 30)); }
+    if (t === 'lit') { g.font = `italic ${o[3]}px "MM Serif"`; g.fillStyle = rub; g.textAlign = 'left'; o[2].forEach((l, i) => g.fillText(l, X, y + i * o[3] * 1.4)); }
+    if (t === 'body') { g.font = `${o[4] ? 'italic ' : ''}${o[3]}px "MM Serif"`; g.fillStyle = ink; g.textAlign = 'left'; o[2].forEach((l, i) => g.fillText(l, X, y + i * o[3] * 1.38)); }
+    if (t === 'close') { g.font = `${o[3]}px "MM Serif"`; g.fillStyle = rub; g.textAlign = 'left'; o[2].forEach((l, i) => g.fillText(l, X, y + i * o[3] * 1.08)); }
+    if (t === 'orn') { g.fillStyle = 'rgba(140,47,27,.6)'; g.textAlign = 'center'; g.font = `${40 * s}px "MM Serif"`; g.fillText('❦', PW + PW / 2, Math.min(y, bottom - 30)); }
   }
   return c;
 }
@@ -188,7 +188,7 @@ function drawCover(star) {
   if (star) { const h = 330, w = h * star.width / star.height; g.shadowColor = 'rgba(255,220,150,.6)'; g.shadowBlur = 40; g.drawImage(star, 520 - w / 2, 640 - h / 2, w, h); g.shadowBlur = 0; }
   g.fillStyle = gold; g.textAlign = 'center'; g.font = '500 54px Futura, sans-serif';
   g.fillText('M E T A M Y T H', 520, 1090);
-  g.font = '40px Pherome'; g.fillText('❦', 520, 1180);
+  g.font = '40px "MM Serif"'; g.fillText('❦', 520, 1180);
   return c;
 }
 function drawEdges() {
@@ -254,7 +254,7 @@ async function start() {
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.15;
 
-  if (document.fonts) await Promise.all([document.fonts.load('80px Pherome'), document.fonts.load('italic 40px Pherome'), document.fonts.load('500 30px Futura')]).catch(() => {});
+  if (document.fonts) await Promise.all([document.fonts.load('80px "MM Serif"'), document.fonts.load('italic 40px "MM Serif"'), document.fonts.load('80px "MM Swash"'), document.fonts.load('500 30px Futura')]).catch(() => {});
   const [star, ...plates] = await Promise.all(['img/north-star.png', ...SPREADS.map(s => s.img)].map(load));
 
   const tx = (c) => { const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = renderer.capabilities.getMaxAnisotropy(); return t; };

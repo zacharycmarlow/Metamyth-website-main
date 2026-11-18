@@ -1,13 +1,17 @@
 /* METAMYTH v7 (draft 2) — one living stage, melting words, a 3D book.
    Tokens: V5 colors_and_type.css. Type: Pherome + Futura only. */
-@font-face{font-family:'Pherome';src:url('../fonts/Pherome%20Regular.woff2') format('woff2'),url('../fonts/Pherome%20Regular.otf') format('opentype');font-display:swap}
+/* Display serif + swash script, after the Zero reference (Bureau Serif + Bethany Elingston).
+   Free OFL stand-ins until licensed files arrive: swap the two src lines below. */
+@font-face{font-family:'MM Serif';src:url('fonts/instrument-serif.woff2') format('woff2');font-display:swap}
+@font-face{font-family:'MM Serif';src:url('fonts/instrument-serif-italic.woff2') format('woff2');font-style:italic;font-display:swap}
+@font-face{font-family:'MM Swash';src:url('fonts/great-vibes.woff2') format('woff2');font-display:swap}
 @font-face{font-family:'Futura';src:url('../fonts/Futura%20Regular.woff2') format('woff2'),url('../fonts/Futura%20Regular.ttf') format('truetype');font-weight:400;font-display:swap}
 @font-face{font-family:'Futura';src:url('../fonts/Futura_Medium.woff2') format('woff2'),url('../fonts/Futura_Medium.otf') format('opentype');font-weight:500;font-display:swap}
 
 :root{
   --deep:#091e14;--forest:#0d3122;--gold:#d4a843;--gold-line:rgba(212,168,67,.45);
   --teal:#2ec4b0;--cream:#f0e8d0;--ivory:#e8ddc0;--mist:#b0c4bb;--smoke:#607a6e;--ink:#15241b;
-  --serif:'Pherome',Georgia,serif;--sans:'Futura','Trebuchet MS',sans-serif;
+  --serif:'MM Serif',Georgia,serif;--swash:'MM Swash','Snell Roundhand',cursive;--sans:'Futura','Trebuchet MS',sans-serif;
   --ease:cubic-bezier(.16,1,.3,1);--pad:clamp(22px,6vw,110px);
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -29,7 +33,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* ── layers ── */
 #stage{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;background:var(--deep)}
 .scrim{position:fixed;inset:0;z-index:1;pointer-events:none;transition:opacity .8s var(--ease);
-  background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(5,14,10,.42),rgba(5,14,10,.12) 70%,transparent),
+  background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(5,14,10,.55),rgba(5,14,10,.2) 70%,rgba(5,14,10,.08)),
     linear-gradient(to bottom,rgba(5,14,10,.55),transparent 22%,transparent 72%,rgba(5,14,10,.6))}
 #book3d{position:fixed;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;opacity:0;transition:opacity .5s}
 body.book-live #book3d{opacity:1}
@@ -64,21 +68,26 @@ body.hide-pill .pill{opacity:0;pointer-events:none;transform:translate(-50%,24px
 
 /* ── type: bigger across the board ── */
 .kicker{font-size:13px;letter-spacing:.36em;text-transform:uppercase;color:var(--gold)}
-.mega{font-family:var(--serif);font-size:clamp(60px,11.5vw,210px);line-height:.9;letter-spacing:-.015em}
+.mega{font-family:var(--serif);font-size:clamp(66px,12.5vw,230px);line-height:.86;letter-spacing:-.02em}
 .giant{font-family:var(--serif);font-size:clamp(72px,13vw,240px);line-height:.9;letter-spacing:-.02em}
 .giant.xl{font-size:clamp(110px,21vw,380px)}
-.display{font-family:var(--serif);font-size:clamp(46px,6.6vw,118px);line-height:.98;letter-spacing:-.01em;text-wrap:balance;max-width:13em}
+.display{font-family:var(--serif);font-size:clamp(50px,7.2vw,128px);line-height:.92;letter-spacing:-.015em;text-wrap:balance;max-width:12em}
 .display.xl{font-size:clamp(56px,9.5vw,170px);max-width:11em}
-.statement{font-family:var(--serif);font-size:clamp(34px,4.2vw,74px);line-height:1.08;text-wrap:balance;max-width:17em}
+.statement{font-family:var(--serif);font-size:clamp(38px,4.8vw,84px);line-height:1;letter-spacing:-.01em;text-wrap:balance;max-width:15em}
 .statement.left{text-align:left}
 .huge{font-size:1.7em;line-height:.9;display:inline-block}
 .sub{font-family:var(--serif);font-size:clamp(26px,2.8vw,48px);line-height:1.15;color:var(--ivory)}
-.lede{font-size:clamp(20px,1.65vw,28px);line-height:1.5;color:var(--ivory);max-width:30em}
-.lede.big{font-family:var(--serif);font-size:clamp(28px,2.9vw,50px);line-height:1.16;color:var(--cream);max-width:19em}
-.lede.accent{font-family:var(--serif);font-size:clamp(28px,2.6vw,44px);line-height:1.14;color:var(--gold)}
+.lede{font-family:var(--serif);font-size:clamp(24px,2vw,34px);line-height:1.18;color:var(--ivory);max-width:19em}
+.lede.big{font-family:var(--serif);font-size:clamp(32px,3.4vw,60px);line-height:1.04;letter-spacing:-.008em;color:var(--cream);max-width:16em}
+.lede.accent{font-family:var(--serif);font-style:italic;font-size:clamp(30px,2.9vw,50px);line-height:1.04;color:var(--gold)}
 .lede.center{text-align:center;margin-inline:auto}
 .lede + .lede{margin-top:.9em}
-.beat :is(.mega,.giant,.display,.statement,.sub,.lede,.kicker,.corner-a,.corner-b){text-shadow:0 2px 50px rgba(5,14,10,.9),0 0 3px rgba(5,14,10,.45)}
+.beat :is(.mega,.giant,.display,.statement,.sub,.lede,.kicker,.corner-a,.corner-b){text-shadow:0 0 34px rgba(5,14,10,.75),0 0 2px rgba(5,14,10,.35),0 0 60px rgba(240,232,208,.12)}
+/* swash capital replaces the first letter; small script words lead into big serif ones */
+.sw{font-family:var(--swash);font-size:1.62em;line-height:0;font-weight:400;letter-spacing:0;margin-right:-.14em;position:relative;top:.1em;color:var(--gold)}
+.scr{font-family:var(--swash);font-size:.42em;line-height:0;letter-spacing:0;color:var(--gold);margin-right:.08em;vertical-align:.9em}
+.scr.lead{display:block;font-size:.34em;line-height:1;margin:0 0 -.18em;vertical-align:0;color:var(--cream)}
+.question .sw,.question .scr{color:#8a6620}
 
 /* ── melt: words arrive and leave like liquid (driven by stage.js) ── */
 .js .m{will-change:filter,opacity,transform}
@@ -98,13 +107,16 @@ body.hide-pill .pill{opacity:0;pointer-events:none;transform:translate(-50%,24px
 
 /* Zero-style composition: words placed across the frame at very different scales */
 .compose{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto;align-content:center;row-gap:clamp(12px,3vh,36px);min-height:120svh}
-.corner-a{grid-column:1/3;font-family:var(--serif);font-size:clamp(34px,4.4vw,78px);color:var(--ivory)}
-.corner-b{grid-column:1/3;justify-self:end;font-family:var(--serif);font-size:clamp(92px,16vw,300px);line-height:.85;letter-spacing:-.02em;text-align:right}
+.corner-a{grid-column:1/3;font-family:var(--serif);font-size:clamp(46px,6vw,110px);line-height:.9;color:var(--ivory)}
+.corner-b{grid-column:1/3;justify-self:end;font-family:var(--serif);font-size:clamp(110px,19vw,360px);line-height:.8;letter-spacing:-.025em;text-align:right}
 .corner-c{grid-column:1/2;margin-top:clamp(10px,4vh,50px)}
 /* two blocks on one screen: big line left-top, supporting text right-bottom */
-.pair{display:grid;grid-template-columns:1.1fr 1fr;grid-template-rows:auto auto;column-gap:clamp(30px,6vw,120px);row-gap:clamp(30px,7vh,90px);align-content:center;min-height:130svh}
-.pair > :first-child{grid-column:1/2}
-.pair > :last-child{grid-column:2/3;align-self:end}
+/* one block at a time: each arrives, holds, melts away (Zero reads one thought per screen) */
+.pair{display:flex;flex-direction:column;justify-content:center;gap:42svh;padding-top:30svh;padding-bottom:30svh}
+.pair > *{max-width:min(19em,88vw)}
+.pair > :nth-child(2){align-self:flex-end}
+.pair .lede:not(.big):not(.accent){font-size:clamp(28px,2.6vw,46px);line-height:1.1;max-width:17em}
+.pair .lede + .lede{margin-top:.7em}
 .rupture{min-height:90svh}
 .rupture .giant{color:var(--cream)}
 
@@ -128,12 +140,14 @@ body.book-live.is-light .book-skip{opacity:0;pointer-events:none}
 
 /* ── white page: the question as a poster (Zero) ── */
 .white-page{min-height:130svh}
-.question{display:flex;flex-direction:column;align-items:center;gap:clamp(6px,1.4vh,16px);width:min(92vw,1500px);color:var(--ink);text-shadow:none!important;font-family:var(--serif);line-height:1.02}
+.question{color:#2f5a4c;display:flex;flex-direction:column;align-items:center;gap:clamp(6px,1.4vh,16px);width:min(92vw,1500px);color:var(--ink);text-shadow:none!important;font-family:var(--serif);line-height:1.02}
 .question span{display:block;text-shadow:none!important}
 .q1{font-size:clamp(22px,2.3vw,38px);line-height:1.2;color:#3b4a40;max-width:22em}
-.q2{font-size:clamp(46px,6vw,104px);letter-spacing:-.01em}
+.q2{font-size:clamp(52px,6.8vw,120px);letter-spacing:-.015em;line-height:.92}
 .q3{font-size:clamp(22px,2.3vw,38px);font-style:italic;color:#8a6620}
-.q4{font-size:clamp(72px,11vw,200px);letter-spacing:-.02em}
+.q4{font-size:clamp(84px,13vw,240px);letter-spacing:-.025em;line-height:.86;margin-top:.12em}
+.q4 .scr{font-size:.3em;vertical-align:.5em;margin-right:.12em}
+.sw.w{font-size:1.3em;margin-right:-.05em;top:.06em}
 
 .proto-end{min-height:50svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:80px var(--pad) 140px;color:var(--mist);background:linear-gradient(to bottom,transparent,var(--deep) 40%)}
 
@@ -151,8 +165,7 @@ html:not(.js) .sr-pages,.reduced .sr-pages{position:static;width:auto;height:aut
   .nav-links{display:none}
   .dial{justify-self:end}
   .dial-track{width:90px}
-  .pair{grid-template-columns:1fr;min-height:120svh}
-  .pair > :last-child{grid-column:1/2}
+  .pair > :nth-child(2){align-self:flex-start}
   .compose{grid-template-columns:1fr}
   .corner-c{grid-column:1/2}
 }
@@ -160,6 +173,6 @@ html:not(.js) .sr-pages,.reduced .sr-pages{position:static;width:auto;height:aut
   .dial-ch{display:none}
   .beat{padding:110px 22px}
   .pill{padding:13px 22px;font-size:11px}
-  .lede{font-size:19px}
-  .lede.big{font-size:27px}
+  .lede{font-size:23px}
+  .lede.big{font-size:31px}
 }
