@@ -32,6 +32,7 @@
 .seam.to-paper{background:linear-gradient(to bottom,var(--deep),#3a4a3a 45%,var(--paper))}
 .seam.from-paper{background:linear-gradient(to bottom,var(--paper),#3a4a3a 55%,var(--deep))}
 .scene.on-black{background:#000}
+.kq .scene.on-black::after{background:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.85) 12%,rgba(0,0,0,.5) 30%,rgba(0,0,0,.5) 50%,rgba(0,0,0,.9) 82%,#000 100%)}
 .scene.on-black .bg img{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 30%,#000 70%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 30%,#000 70%,transparent 100%)}
 .scene:not(.hero) .bg img{animation:kqDrift 28s ease-in-out infinite alternate}
 @keyframes kqDrift{from{transform:scale(1)}to{transform:scale(1.07)}}
