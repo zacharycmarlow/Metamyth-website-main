@@ -28,11 +28,11 @@
 .t-night{background:linear-gradient(to bottom,#000,var(--night) 22%,var(--night) 84%,var(--deep))}
 .t-paper{background:var(--paper);color:var(--ink)}
 .seam{height:clamp(160px,24vh,280px)}
-.seam.to-black{background:linear-gradient(to bottom,var(--deep),#020604 70%,#000)}
+.seam.to-black{background:linear-gradient(to bottom,var(--deep),#020604 70%,#000);margin-bottom:-2px;position:relative;z-index:1}
 .seam.to-paper{background:linear-gradient(to bottom,var(--deep),#3a4a3a 45%,var(--paper))}
 .seam.from-paper{background:linear-gradient(to bottom,var(--paper),#3a4a3a 55%,var(--deep))}
 .scene.on-black{background:#000}
-.kq .scene.on-black::after{background:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.85) 12%,rgba(0,0,0,.5) 30%,rgba(0,0,0,.5) 50%,rgba(0,0,0,.9) 82%,#000 100%)}
+.kq .scene.on-black::after{background:linear-gradient(to bottom,#000 0%,#000 12%,rgba(0,0,0,.75) 26%,rgba(0,0,0,.45) 42%,rgba(0,0,0,.5) 50%,rgba(0,0,0,.9) 82%,#000 100%)}
 .scene.on-black .bg img{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 30%,#000 70%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 30%,#000 70%,transparent 100%)}
 .scene:not(.hero) .bg img{animation:kqDrift 28s ease-in-out infinite alternate}
 @keyframes kqDrift{from{transform:scale(1)}to{transform:scale(1.07)}}
