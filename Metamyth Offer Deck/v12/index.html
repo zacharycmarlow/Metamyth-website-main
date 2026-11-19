@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Metamyth — The world is made of stories</title>
+<meta name="description" content="The world is made of stories. Take back yours to change the world.">
+<meta name="theme-color" content="#0B1310">
+<link rel="icon" href="../v10/img/mark.webp">
+<link rel="preload" href="../fonts/Pherome%20Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../v7/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="v12.css?v=2">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the story</a>
+
+<!-- the stage: one canvas behind everything (worlds and paper), sticky -->
+<div class="stage-wrap" aria-hidden="true"><canvas class="stage"></canvas><div class="stage-fallback"></div></div>
+
+<!-- the frame -->
+<header class="bar">
+  <a class="brand" href="#main"><img src="../v10/img/mark.webp" alt="" width="22" height="22"><span>Metamyth</span></a>
+  <nav class="bar-links" aria-label="Primary">
+    <a href="https://www.metamyth.quest/legend/">Read the Metamyth Legend</a>
+    <a class="pill" href="https://www.metamyth.quest/adventure/">Begin Your Adventure</a>
+  </nav>
+</header>
+<nav class="index" aria-label="Chapters">
+  <ol>
+    <li><a href="#origin" data-ch="origin">Origin</a></li>
+    <li><a href="#calling" data-ch="calling">Calling</a></li>
+    <li><span>Quest</span></li><li><span>Vision</span></li><li><span>Mission</span></li><li><span>Request</span></li><li><span>Legacy</span></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <!-- HERO · world: nebula -->
+  <section class="opener hero" data-stage="nebula" data-tone="light">
+    <h1 class="hero-title">The world is made of stories.</h1>
+    <p class="narr-1 drop">Take back yours to change the world.</p>
+  </section>
+
+  <!-- I · ORIGIN · world: earthrise -->
+  <section class="opener" id="origin" data-stage="earthrise" data-tone="light" data-ch="origin">
+    <h2 class="ch-title">Origin</h2>
+    <p class="narr-1 drop">The old story is ending.</p>
+  </section>
+
+  <!-- Origin · on paper -->
+  <section class="sheet" data-stage="paper" data-tone="dark" data-ch="origin">
+    <h3 class="narr-1 drop block">Money, work, the economy, what a life is even for: it all runs on stories, and almost none of us chose the ones we're living in.</h3>
+
+    <article class="row">
+      <figure class="media span-5"><img src="../v10/img/refinery.webp" alt="A refinery burning at night" loading="lazy"></figure>
+      <p class="narr-2 span-5">The systems we built to serve humanity have become systems humanity serves, rewarding extraction over regeneration, spectacle over substance, and the accumulation of wealth over the creation of actual value.</p>
+    </article>
+
+    <article class="row">
+      <p class="narr-2 span-5">We live in an economy where fortunes can be made from speculation, attention and promises about futures that may never arrive, while the systems sustaining life are pushed toward collapse.</p>
+      <figure class="media span-5"><img src="../v10/img/wallst.webp" alt="A man in a leather jacket among flags on Wall Street" loading="lazy"></figure>
+    </article>
+
+    <h3 class="narr-1 drop block">And people are losing faith in the stories they've been sold.</h3>
+    <figure class="media wide"><img src="../v10/img/mascots.webp" alt="Costumed cartoon mascots crowding Times Square" loading="lazy"></figure>
+
+    <article class="row pair">
+      <figure class="media span-5"><img src="../v10/img/cash-grid.webp" alt="Banknotes repeating in shrink-wrap" loading="lazy"></figure>
+      <figure class="media span-5"><img src="../v10/img/butterfly.webp" alt="A blue butterfly resting on red earth" loading="lazy"></figure>
+      <p class="narr-1 span-5">When everything fake becomes infinite,</p>
+      <p class="narr-1 span-5 it">everything real becomes priceless.</p>
+    </article>
+
+    <article class="row">
+      <figure class="media span-5"><img src="../v10/img/women.webp" alt="Women in bright cloth sitting in a circle" loading="lazy"></figure>
+      <p class="narr-2 span-5">All over the world, people are already carrying real solutions, building things that matter, and imagining futures worth living in.</p>
+    </article>
+
+    <h3 class="narr-1 drop block last">The world is hungry for something real to believe in.</h3>
+  </section>
+
+  <!-- II · CALLING · world: the red room -->
+  <section class="opener" id="calling" data-stage="red" data-tone="light" data-ch="calling">
+    <h2 class="ch-title">Calling</h2>
+    <p class="narr-1 drop">The ones destroying the world know something most of us forgot.</p>
+  </section>
+
+  <section class="sheet" data-stage="paper" data-tone="dark" data-ch="calling">
+    <h3 class="narr-1 drop block">Fascists wield fear and capital follows. Billionaires narrate the future and the money materializes. The most powerful people on earth tell a story about what happens next.</h3>
+    <article class="row">
+      <figure class="media span-5"><img src="../v10/img/cops.webp" alt="Riot police lined up outside a corporate tower" loading="lazy"></figure>
+      <p class="narr-2 span-5">It does, because whoever controls the story controls what people believe is possible, and what people believe is possible is the only thing that has ever determined what actually happens.</p>
+    </article>
+  </section>
+
+</main>
+
+<script src="../v7/vendor/lenis.min.js"></script>
+<script src="v12.js?v=2"></script>
+</body>
+</html>
