@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Metamyth — tear test</title>
+<style>
+@font-face{font-family:'D';src:url('../v7/fonts/instrument-serif.woff2') format('woff2')}
+@font-face{font-family:'D';src:url('../v7/fonts/instrument-serif-italic.woff2') format('woff2');font-style:italic}
+@font-face{font-family:'T';src:url('../v9/fonts/source-serif-4.woff2') format('woff2')}
+@font-face{font-family:'U';src:url('../fonts/Futura%20Regular.ttf') format('truetype')}
+html,body{margin:0;background:#0B1310;color:#EFE3C8;font-family:'D',serif}
+*{box-sizing:border-box}
+/* A · the world: fixed, slow drift with scroll */
+.world{position:fixed;inset:0;z-index:0;overflow:hidden}
+.world img{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;transform:translate3d(0,calc(var(--s,0) * -40px),0) scale(calc(1 + var(--s,0) * .06))}
+.world::after{content:'';position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 45%,transparent 40%,rgba(0,0,0,.5))}
+/* D · the frame */
+.idx{position:fixed;left:28px;top:50%;translate:0 -50%;z-index:20;font:12px/1.9 'U',sans-serif;letter-spacing:.04em;color:rgba(239,227,200,.55);mix-blend-mode:difference}
+.idx span{display:block}.idx .on{color:#fff}
+/* B · narrative: the opener scrolls normally over the world */
+.opener{position:relative;z-index:2;height:150vh}
+.opener h2{position:absolute;left:180px;top:40vh;margin:0;font-size:200px;line-height:.84;letter-spacing:-.035em;font-weight:400;max-width:1100px;text-shadow:0 4px 40px rgba(0,0,0,.35)}
+/* C · the page: tears up over the world and carries its own layers */
+.sheet{position:relative;z-index:3;background:url(img/vellum.webp) center/900px;color:#1d1a14;min-height:220vh;padding:120px 0 200px}
+.sheet::before{content:'';position:absolute;left:0;right:0;top:-54px;height:56px;background:url(img/tear-top.png) center bottom/100% 100%}
+.sheet::after{content:'';position:absolute;left:0;right:0;top:0;height:40px;background:linear-gradient(rgba(60,40,10,.12),transparent)}
+.col{margin-left:300px;width:560px;font:25px/1.42 'T',serif}
+.col p{margin:0 0 1.2em}
+.col p:first-child::first-letter{font:italic 3.3em/.78 'D',serif;float:left;margin:.04em .08em 0 0;color:#B8892E}
+.layer{position:absolute;inset:0;pointer-events:none}
+.plate{position:absolute;background:#fff;padding:10px 10px 34px;box-shadow:0 1px 2px rgba(40,30,10,.18),0 18px 40px rgba(40,30,10,.18);transform:translate3d(0,calc(var(--v) * var(--sy,0) * 1px),0) rotate(var(--r))}
+.plate img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.plate i{position:absolute;left:12px;bottom:9px;font:italic 14px 'D',serif;color:#5b5446}
+.tag{position:absolute;font:italic 24px 'D',serif;color:rgba(29,26,20,.4);transform:translate3d(0,calc(var(--v) * var(--sy,0) * 1px),0)}
+.tag::before{content:'/';color:#B8892E}
+.big{margin:80px 0 0 300px;font-size:84px;line-height:.92;letter-spacing:-.02em;width:860px}
+</style></head>
+<body>
+<div class="world"><img src="../v10/img/earthrise.webp" alt="" style="object-position:50% 60%"></div>
+<nav class="idx"><span class="on">I Origin</span><span>II Calling</span><span>III Quest</span><span>IV Vision</span><span>V Mission</span><span>VI Request</span><span>VII Legacy</span></nav>
+<section class="opener"><h2>The old story is ending.</h2></section>
+<section class="sheet">
+  <div class="layer">
+    <div class="plate" style="left:960px;top:60px;width:420px;--r:1.5deg;--v:-.35"><img src="../v10/img/refinery.webp" alt=""><i>Plate i. Refinery at night</i></div>
+    <div class="plate" style="left:1040px;top:520px;width:300px;--r:-2deg;--v:-.6"><img src="../v10/img/money-tree.webp" alt=""><i>Plate ii. The inherited room</i></div>
+    <div class="plate" style="left:930px;top:1050px;width:380px;--r:2deg;--v:-.25"><img src="../v10/img/paper-rain.webp" alt=""><i>Plate iii. Promises</i></div>
+    <span class="tag" style="left:420px;top:900px;--v:-.8">extraction</span><span class="tag" style="left:700px;top:980px;font-size:32px;--v:-.45">regeneration</span>
+    <span class="tag" style="left:500px;top:1080px;font-size:18px;--v:-1">spectacle</span><span class="tag" style="left:760px;top:1160px;font-size:20px;--v:-.3">substance</span>
+  </div>
+  <div class="col">
+    <p>Money, work, the economy, what a life is even for: it all runs on stories, and almost none of us chose the ones we're living in.</p>
+    <p>The systems we built to serve humanity have become systems humanity serves, rewarding extraction over regeneration, spectacle over substance, and the accumulation of wealth over the creation of actual value.</p>
+    <p>We live in an economy where fortunes can be made from speculation, attention and promises about futures that may never arrive, while the systems sustaining life are pushed toward collapse.</p>
+  </div>
+  <p class="big">And people are losing faith in the stories they've been sold.</p>
+</section>
+<script>
+const sheet=document.querySelector('.sheet'),root=document.documentElement;
+function f(){const r=sheet.getBoundingClientRect();
+  root.style.setProperty('--s',Math.min(1,scrollY/innerHeight/2).toFixed(4));
+  sheet.style.setProperty('--sy',(-r.top).toFixed(1));requestAnimationFrame(f)}f();
+</script>
+</body></html>
