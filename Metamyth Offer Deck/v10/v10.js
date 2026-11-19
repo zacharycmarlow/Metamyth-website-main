@@ -60,6 +60,10 @@
 
   // 4 · per-frame: presence and position of every beat
   const t0 = performance.now(); let current = -1, ticking = false;
+  let mx = 0, my = 0, tmx = 0, tmy = 0;
+  if (!reduce && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    addEventListener('pointermove', e => { tmx = e.clientX / innerWidth - 0.5; tmy = e.clientY / innerHeight - 0.5; request(); }, { passive: true });
+  }
   function frame() {
     ticking = false;
     const intro = reduce ? 1 : ss(0, 1, (performance.now() - t0) / 1600);
@@ -71,7 +75,9 @@
         const c = i + 0.5;
         const a = (i === 0 ? 1 : ss(c - 0.85, c - 0.35, t)) * (i === n - 1 ? (t < n + 0.3 ? 1 : 0) : 1 - ss(c + 0.35, c + 0.85, t));
         const p = i === 0 && t < c ? 0 : clamp(t - c, -1, 1);
+        const ta = (i === 0 ? 1 : ss(c - 0.42, c - 0.12, t)) * (i === n - 1 ? (t < n + 0.3 ? 1 : 0) : 1 - ss(c + 0.3, c + 0.55, t));
         const aa = (si === 0 && i === 0) ? a * intro : a;
+        b.style.setProperty('--ta', ((si === 0 && i === 0) ? ta * intro : ta).toFixed(3));
         b.style.setProperty('--a', aa.toFixed(3));
         b.style.setProperty('--p', reduce ? 0 : p.toFixed(3));
         b.classList.toggle('live', aa > 0.002);
@@ -85,7 +91,10 @@
       fNow.textContent = String(best + 1).padStart(2, '0');
       rNum.textContent = `Chapter ${scenes[x.si].num}`; rName.textContent = scenes[x.si].name;
     }
-    if (intro < 1) request();
+    mx += (tmx - mx) * 0.08; my += (tmy - my) * 0.08;
+    document.documentElement.style.setProperty('--mx', mx.toFixed(4));
+    document.documentElement.style.setProperty('--my', my.toFixed(4));
+    if (intro < 1 || Math.abs(tmx - mx) > 0.0005 || Math.abs(tmy - my) > 0.0005) request();
   }
   function request() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
   addEventListener('scroll', request, { passive: true });
