@@ -214,6 +214,112 @@
 .kq-fuck{font-family:var(--serif);font-size:clamp(34px,3.6vw,54px)!important;color:var(--gold);margin:.6em 0 .2em!important;line-height:1.1}
 .kq-close-line{font-family:var(--serif);font-size:clamp(28px,2.8vw,42px)!important;margin:0;color:var(--cream)}
 
+
+/* seat counter */
+.kq-count{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:30px}
+.kq-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;max-width:420px}
+.kq-dots i{width:12px;height:12px;border-radius:50%;border:1.5px solid rgba(19,42,30,.35);transition:background .5s,border-color .5s,box-shadow .5s}
+.kq-dots i.on{background:var(--teal);border-color:var(--teal);box-shadow:0 0 10px rgba(46,196,176,.6)}
+.kq-dots i.taken{background:var(--ink);border-color:var(--ink);box-shadow:none}
+.kq-count p{margin:0;font-size:15px!important;letter-spacing:.06em;color:var(--ink-2)}
+.kq-count b{font-family:var(--serif);font-weight:400;font-size:22px;color:var(--ink)}
+.kq-pay-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kq-pay-row .cta{justify-content:center;font-size:12px}
+
+/* treasury */
+.kq-treasury{margin-top:clamp(110px,15vh,180px)}
+.kq-doors{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:clamp(40px,6vh,64px)}
+.kq-door{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:26px 22px 20px;border-radius:14px;background:#fbf7ec;box-shadow:0 2px 0 rgba(19,42,30,.05),0 16px 40px rgba(19,42,30,.08);transition:transform .45s var(--ease),box-shadow .45s var(--ease),background .3s;position:relative;min-height:220px}
+.kq-door img{width:58px;height:58px;margin-bottom:6px;transition:transform .6s var(--ease),filter .6s}
+.kq-door b{font-family:var(--serif);font-weight:400;font-size:clamp(22px,1.7vw,26px);color:var(--ink);line-height:1.1}
+.kq-door span{font-size:15.5px;line-height:1.5;color:var(--ink-2)}
+.kq-door i{margin-top:auto;font-style:normal;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-ink)}
+.kq-door i:after{content:" ↓";display:inline-block;transition:transform .4s var(--ease)}
+.kq-door:hover{transform:translateY(-4px);box-shadow:0 2px 0 rgba(19,42,30,.05),0 26px 54px rgba(19,42,30,.14)}
+.kq-door:hover img{transform:rotate(-6deg) scale(1.06);filter:drop-shadow(0 0 12px rgba(46,196,176,.5))}
+.kq-door:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.kq-door[aria-selected="true"]{background:var(--forest);box-shadow:0 0 0 1px rgba(46,196,176,.4),0 26px 60px rgba(19,42,30,.25),0 0 40px rgba(46,196,176,.18)}
+.kq-door[aria-selected="true"] b{color:var(--cream)}
+.kq-door[aria-selected="true"] span{color:var(--ivory)}
+.kq-door[aria-selected="true"] i{color:var(--teal)}
+.kq-door[aria-selected="true"] i:after{transform:rotate(180deg)}
+.kq-drawer{margin-top:14px;border-radius:16px;background:var(--forest);color:var(--cream);overflow:hidden;box-shadow:0 30px 70px rgba(19,42,30,.22);animation:kqOpen .55s var(--ease)}
+@keyframes kqOpen{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+.kq-drawer-in{padding:clamp(28px,4vw,52px)}
+.kq-drawer p{color:var(--ivory);line-height:1.7;margin:0 0 1em}
+.kq-dh{font-family:var(--serif);font-size:clamp(25px,2.2vw,32px);line-height:1.15;margin:0 0 14px;color:var(--cream)}
+.kq-small{font-size:15px!important;color:var(--mist)!important}
+.kq-drawer .cta{color:var(--cream);border-color:rgba(240,232,208,.35)}
+.kq-drawer .cta.fill{background:var(--gold);color:var(--deep);border-color:var(--gold)}
+
+/* calculator */
+.kq-calc{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,4vw,64px);align-items:start}
+.kq-step{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid rgba(240,232,208,.12)}
+.kq-step>span{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--mist)}
+.kq-stepper{display:flex;align-items:center;gap:6px}
+.kq-stepper button{all:unset;cursor:pointer;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:22px;color:var(--cream);border:1px solid rgba(240,232,208,.3);transition:background .25s,border-color .25s}
+.kq-stepper button:hover{border-color:var(--teal);background:rgba(46,196,176,.12)}
+.kq-stepper button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.kq-stepper output{min-width:46px;text-align:center;font-family:var(--serif);font-size:30px;color:var(--cream)}
+.kq-meter{position:relative;height:8px;border-radius:8px;background:rgba(240,232,208,.1);margin:30px 0 40px}
+.kq-meter-fill{position:absolute;inset:0 auto 0 0;width:0;border-radius:8px;background:linear-gradient(90deg,var(--teal),var(--gold));box-shadow:0 0 14px rgba(46,196,176,.5);transition:width .6s var(--ease)}
+.kq-meter span{position:absolute;top:16px;transform:translateX(-50%);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--smoke);white-space:nowrap;transition:color .4s}
+.kq-meter span:before{content:"";position:absolute;left:50%;top:-20px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--forest);border:2px solid rgba(240,232,208,.25);transition:background .4s,border-color .4s,box-shadow .4s}
+.kq-meter span.lit{color:var(--cream)}
+.kq-meter span.lit:before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 12px rgba(212,168,67,.8)}
+.kq-meter span[data-at="7"]{transform:translateX(-100%)}
+.kq-meter span[data-at="7"]:before{left:100%}
+.kq-result{background:rgba(0,0,0,.18);border-radius:14px;padding:28px;box-shadow:inset 0 0 0 1px rgba(46,196,176,.18)}
+.kq-tier{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--teal);text-shadow:0 0 12px rgba(46,196,176,.5)}
+.kq-save{margin:10px 0 18px}
+.kq-save small{display:block;font-size:13px;color:var(--mist)}
+.kq-save b{font-family:var(--serif);font-weight:400;font-size:clamp(44px,4.4vw,64px);line-height:1;color:var(--gold);text-shadow:0 0 30px rgba(212,168,67,.35);transition:transform .3s var(--ease);display:inline-block}
+.kq-save b.bump{transform:scale(1.08)}
+.kq-lines{display:grid;gap:8px;margin-bottom:16px}
+.kq-lines div{display:flex;justify-content:space-between;font-size:16px;color:var(--ivory)}
+.kq-lines b{font-weight:500;color:var(--cream)}
+.kq-lines s{color:var(--smoke)}
+.kq-tiernote{font-size:15px!important;color:var(--mist)!important;min-height:3em}
+.kq-result .cta{width:100%;justify-content:center}
+.kq-bounty{margin-top:clamp(32px,5vh,52px);padding-top:clamp(28px,4vh,40px);border-top:1px solid rgba(240,232,208,.12)}
+.kq-bounty b{color:var(--cream);font-weight:500}
+.kq-track{list-style:none;padding:0;margin:18px 0 22px;display:grid;grid-template-columns:repeat(7,1fr);gap:6px;position:relative}
+.kq-track li{text-align:center;font-size:13px;color:var(--mist);padding-top:44px;position:relative}
+.kq-track li b{position:absolute;top:0;left:50%;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-weight:400;font-size:17px;color:var(--cream);border:1.5px solid rgba(212,168,67,.55)}
+.kq-track li.free b{background:var(--gold);color:var(--deep);box-shadow:0 0 18px rgba(212,168,67,.7)}
+.kq-track li.free{color:var(--gold)}
+
+/* patron options */
+.kq-three{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,44px)}
+.kq-opt{display:flex;flex-direction:column}
+.kq-opt .cta,.kq-opt .kq-pay-row{margin-top:auto}
+
+/* screening */
+.kq-screen{margin-top:26px;max-width:46em}
+.kq-screen fieldset{border:0;padding:0;margin:0 0 24px}
+.kq-screen legend{font-family:var(--serif);font-size:clamp(20px,1.6vw,23px);color:var(--cream);margin-bottom:12px}
+.kq-screen label{display:flex;align-items:center;gap:12px;padding:12px 16px;margin-bottom:8px;border-radius:10px;border:1px solid rgba(240,232,208,.16);cursor:pointer;font-size:16.5px;color:var(--ivory);transition:border-color .25s,background .25s}
+.kq-screen label:hover{border-color:rgba(46,196,176,.5)}
+.kq-screen label:has(input:checked){border-color:var(--teal);background:rgba(46,196,176,.1);color:var(--cream)}
+.kq-screen input[type=radio]{accent-color:#2ec4b0;width:18px;height:18px}
+.kq-chips{display:flex;flex-wrap:wrap;gap:8px}
+.kq-chips label{margin:0;padding:9px 14px}
+.kq-out{padding:20px 22px;border-radius:12px;background:rgba(227,90,77,.1);box-shadow:inset 0 0 0 1px rgba(227,90,77,.35);color:var(--cream);line-height:1.65;margin-bottom:10px}
+.kq-out a{color:var(--gold)}
+.kq-pass{animation:kqOpen .5s var(--ease)}
+.kq-field{display:block!important;border:0!important;padding:0!important;margin:0 0 16px!important;font-size:13px!important;letter-spacing:.14em;text-transform:uppercase;color:var(--mist)!important;background:none!important}
+.kq-field input,.kq-field textarea{display:block;width:100%;box-sizing:border-box;margin-top:8px;padding:13px 15px;border-radius:10px;border:1px solid rgba(240,232,208,.22);background:rgba(0,0,0,.2);color:var(--cream);font-family:var(--sans);font-size:17px;letter-spacing:0;text-transform:none;resize:vertical}
+.kq-field input:focus,.kq-field textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(46,196,176,.18)}
+
+/* guarantee */
+.kq-guarantee{display:grid;grid-template-columns:72px 1fr;gap:24px;align-items:start;margin-top:clamp(64px,9vh,110px);padding:clamp(28px,3vw,40px);border-radius:14px;border:1.5px dashed rgba(19,42,30,.35)}
+.kq-guarantee img{width:72px;height:72px}
+.kq-guarantee h3{font-family:var(--serif);font-size:clamp(25px,2vw,30px);margin:8px 0 12px;color:var(--ink)}
+.kq-guarantee p{margin:0;line-height:1.7;color:var(--ink-2)}
+
+@media(max-width:1000px){.kq-doors{grid-template-columns:1fr 1fr}.kq-calc,.kq-three{grid-template-columns:1fr}}
+@media(max-width:560px){.kq-doors{grid-template-columns:1fr}.kq-door{min-height:0}.kq-track li{font-size:11px}.kq-guarantee{grid-template-columns:1fr}}
+
 @media(max-width:900px){.kq-ways{grid-template-columns:1fr}.kq-stack{grid-template-columns:1fr}}
 @media(max-width:760px){
   .kq-split,.kq-outcomes,.kq-fit,.kq-proof,.kq-seats{grid-template-columns:1fr}
@@ -543,21 +649,26 @@
 <div id="seats" style="scroll-margin-top:90px;margin-top:clamp(88px,12vh,140px)">
 <div class="label rv" style="text-align:center">Choose your seat</div>
 <p class="kq-statement rv" style="margin-top:18px">Are you searching for your purpose, or can you not shut up about it?</p>
+<div class="kq-count rv" id="kqCount" aria-live="polite">
+<div class="kq-dots" aria-hidden="true"></div>
+<p><b id="kqOpen">21</b> of <span id="kqTotal">21</span> seats open for January</p>
+</div>
 </div>
 <div class="kq-seats" data-stagger=".15">
 <div class="kq-seat">
 <div class="kq-seat-top"><span class="label">Seeker</span><img decoding="async" loading="lazy" src="offer-deck/assets/icons/compass.webp" alt=""></div>
 <h3>Find your story. Find your path.</h3>
 <div class="price">$3,500</div>
-<div class="plan">or 2 payments of $2,000</div>
+<div class="plan">or 2 × $2,000 · 3 × $1,500</div>
 <p>The full fifteen-week Kinship Quest: every live session, your fellowship crew, the heart circles, your private threshold session with Zachary, and six months in the Kinship community.</p>
-<div class="kq-pay"><a class="cta fill" href="https://buy.stripe.com/4gM6oG3OE61WdFWaj4fQI0x">Pay in full <span>→</span></a><a class="cta" href="https://buy.stripe.com/8x2bJ0fxmbmgdFW1MyfQI0z">2 payments <span>→</span></a></div>
+<div class="kq-pay"><a class="cta fill" href="https://buy.stripe.com/4gM6oG3OE61WdFWaj4fQI0x">Pay in full <span>→</span></a>
+<div class="kq-pay-row"><a class="cta" href="https://buy.stripe.com/8x2bJ0fxmbmgdFW1MyfQI0z">2 payments</a><a class="cta" href="https://buy.stripe.com/00wcN484U7601XegHsfQI0B">3 payments</a></div></div>
 </div>
 <div class="kq-seat builder">
 <div class="kq-seat-top"><span class="label">Builder</span><img decoding="async" loading="lazy" src="offer-deck/assets/icons/sword.webp" alt=""></div>
 <h3>Turn your story into a mission people can join.</h3>
 <div class="price">$6,500</div>
-<div class="plan">or 2 payments of $3,500</div>
+<div class="plan">or 2 × $3,500 · 3 × $2,500</div>
 <p>Everything in Seeker, plus:</p>
 <ul>
 <li>Two private metamyth vision quests with Zachary to walk your journey, forge your future and co-author your myth</li>
@@ -565,38 +676,144 @@
 <li>The Builders' circle at the midpoint, where we bring the work together</li>
 <li>A direct line to Zachary for the breakthroughs, questions and ideas that can't wait for the next session. Sometimes that means a voice note at midnight with the idea that changes everything. Wizards don't schedule mindfucks.</li>
 </ul>
-<div class="kq-pay"><a class="cta fill" href="https://buy.stripe.com/5kQ4gy84UgGA31i9f0fQI0y">Pay in full <span>→</span></a><a class="cta" href="https://buy.stripe.com/8x2bJ02KA3TO45m4YKfQI0A">2 payments <span>→</span></a></div>
+<div class="kq-pay"><a class="cta fill" href="https://buy.stripe.com/5kQ4gy84UgGA31i9f0fQI0y">Pay in full <span>→</span></a>
+<div class="kq-pay-row"><a class="cta" href="https://buy.stripe.com/8x2bJ02KA3TO45m4YKfQI0A">2 payments</a><a class="cta" href="https://buy.stripe.com/fZu28qfxmfCw45m4YKfQI0C">3 payments</a></div></div>
 </div>
 </div>
 <p class="kq-upgrade rv">Seekers can move up to Builder mid-quest by paying the difference.</p>
 
-<div class="kq-ways" data-stagger=".1">
-<div class="kq-way people">
-<img decoding="async" loading="lazy" src="offer-deck/assets/icons/council.webp" alt="">
-<span class="label">Bring your people</span>
-<h3>Adventures are better with your squad.</h3>
-<p>We're offering referral bounties and group discounts for bringing the right people into Kinship, and the right people means more than anyone with a pulse and a credit card. Everyone still goes through the application, because the people in the room are part of the magic.</p>
-<p>Ask us about bounties and group arrangements.</p>
+<!-- THE TREASURY -->
+<div class="kq-treasury" id="treasury">
+<div class="label rv" style="text-align:center">The Treasury</div>
+<h2 class="kq-h2 rv" style="text-align:center;margin:16px auto 18px;max-width:16em">Purpose pricing meets you <span class="gold">where you are.</span></h2>
+<p class="lede rv" style="text-align:center;max-width:36em;margin:0 auto">We work like a fund, a nonprofit and a community at once. Some come in with money, some with their people, some with their genius, and some with a share of the future they're building. Discounts stack.</p>
+
+<div class="kq-doors" role="tablist" aria-label="Every way in" data-stagger=".08">
+<button class="kq-door" type="button" role="tab" aria-selected="false" aria-controls="d-fellowship" id="b-fellowship"><img src="offer-deck/assets/icons/council.webp" alt="" loading="lazy" decoding="async"><b>The Fellowship</b><span>Bring your crew. Save up to $7,000.</span><i>Open</i></button>
+<button class="kq-door" type="button" role="tab" aria-selected="false" aria-controls="d-patron" id="b-patron"><img src="offer-deck/assets/icons/fountain.webp" alt="" loading="lazy" decoding="async"><b>The Patron</b><span>Sponsor a friend or a scholarship seat.</span><i>Open</i></button>
+<button class="kq-door" type="button" role="tab" aria-selected="false" aria-controls="d-guild" id="b-guild"><img src="offer-deck/assets/icons/scroll.webp" alt="" loading="lazy" decoding="async"><b>The Guild</b><span>Trade your genius for your seat.</span><i>Open</i></button>
+<button class="kq-door" type="button" role="tab" aria-selected="false" aria-controls="d-venture" id="b-venture"><img src="offer-deck/assets/icons/flag.webp" alt="" loading="lazy" decoding="async"><b>The Venture</b><span>For missions with a clear path to treasure.</span><i>Open</i></button>
 </div>
-<div class="kq-way mentor">
-<img decoding="async" loading="lazy" src="offer-deck/assets/icons/flag.webp" alt="">
-<span class="label">Mentor</span>
-<h3>Bring someone into the Quest.</h3>
-<p>At checkout, add a Seeker seat for $3,000 or a Builder seat for $6,000 for someone you believe belongs here. They go through the application, and if they aren't a fit, you get it all back.</p>
+
+<!-- Fellowship -->
+<div class="kq-drawer" role="tabpanel" id="d-fellowship" aria-labelledby="b-fellowship" hidden>
+<div class="kq-drawer-in">
+<div class="kq-calc">
+<div>
+<h3 class="kq-dh">Adventures are better with your squad.</h3>
+<p>Couples, crews and pods pay less, because communities take care of each other. A pod of five to seven gets its own herald, who holds the crew, runs your weekly pod call and reports back for everyone. Everyone still goes through the application.</p>
+<div class="kq-step"><span>How many of you?</span><div class="kq-stepper"><button type="button" data-k="n" data-d="-1" aria-label="Fewer people">−</button><output id="cN">1</output><button type="button" data-k="n" data-d="1" aria-label="More people">+</button></div></div>
+<div class="kq-meter" aria-hidden="true"><div class="kq-meter-fill" id="cFill"></div><span data-at="2">Couple</span><span data-at="3">Crew</span><span data-at="5">Pod</span><span data-at="7">Full ship</span></div>
+<div class="kq-step"><span>Builders among you</span><div class="kq-stepper"><button type="button" data-k="b" data-d="-1" aria-label="Fewer Builders">−</button><output id="cB">0</output><button type="button" data-k="b" data-d="1" aria-label="More Builders">+</button></div></div>
 </div>
-<div class="kq-way scholar">
-<img decoding="async" loading="lazy" src="offer-deck/assets/icons/sprout.webp" alt="">
-<span class="label">Scholarships</span>
-<h3>Seven seats for stories worth betting on.</h3>
-<p>Held for people who give their genius to the mission in return. Applications open soon; for now, message us. Anyone can fund a scholarship seat at checkout for $1,500. Metamyth is a public benefit company, so these gifts aren't tax-deductible yet, and a nonprofit pass-through is on the way.</p>
-<p>If money is a real problem and you know in your bones this is for you, reach out. We'll talk.</p>
+<div class="kq-result" aria-live="polite">
+<div class="kq-tier" id="cTier">The solo road</div>
+<div class="kq-save"><small>You save</small><b id="cSave">$0</b></div>
+<div class="kq-lines"><div><span>Together</span><b id="cTotal">$3,500</b></div><div><span>Normally</span><s id="cNorm">$3,500</s></div><div><span>About each</span><b id="cEach">$3,500</b></div></div>
+<p class="kq-tiernote" id="cNote">Bring one person and you both pay less.</p>
+<a class="cta fill" href="https://metamyth-main-landing-page.replit.app/kinship?apply=1">Start your crew's applications <span>→</span></a>
 </div>
-<div class="kq-way guarantee">
+</div>
+<div class="kq-bounty">
+<p><b>The bounty.</b> Every person you bring who joins takes $500 off your seat. Bring seven and your Seeker seat is free.</p>
+<ol class="kq-track" aria-hidden="true"><li><b>1</b>$500</li><li><b>2</b>$1,000</li><li><b>3</b>$1,500</li><li><b>4</b>$2,000</li><li><b>5</b>$2,500</li><li><b>6</b>$3,000</li><li class="free"><b>7</b>Free</li></ol>
+<p class="kq-small">Once your pod is approved, you'll get your pod's seat links and a shared pot, so everyone can pay what they can toward the total.</p>
+</div>
+</div>
+</div>
+
+<!-- Patron -->
+<div class="kq-drawer" role="tabpanel" id="d-patron" aria-labelledby="b-patron" hidden>
+<div class="kq-drawer-in kq-three">
+<div class="kq-opt">
+<h3 class="kq-dh">Bring someone into the Quest.</h3>
+<p>Buy a seat for someone you believe belongs here. They still go through the application, and if they aren't a fit, you get it all back.</p>
+<div class="kq-pay-row"><a class="cta" href="https://buy.stripe.com/9B66oGfxm3TO31ibn8fQI0D">Seeker · $3,000</a><a class="cta" href="https://buy.stripe.com/00wbJ0bh6aic1Xe0IufQI0F">Builder · $6,000</a></div>
+</div>
+<div class="kq-opt">
+<h3 class="kq-dh">Carry part of your crew.</h3>
+<p>In a pod, the people with more can cover more. Once your pod is approved, its shared pot lets you put in whatever you want toward the total.</p>
+</div>
+<div class="kq-opt">
+<h3 class="kq-dh">Fund a scholarship seat.</h3>
+<p>$1,500 helps seat someone who gives their genius to the mission in return. Metamyth is a public benefit company, so these gifts aren't tax-deductible yet; a nonprofit pass-through is on the way.</p>
+<a class="cta fill" href="https://buy.stripe.com/8x2fZg3OE3TO1XeezkfQI0H">Fund a seat · $1,500 <span>→</span></a>
+</div>
+</div>
+</div>
+
+<!-- Guild -->
+<div class="kq-drawer" role="tabpanel" id="d-guild" aria-labelledby="b-guild" hidden>
+<div class="kq-drawer-in">
+<h3 class="kq-dh">If money is the wall and you have a gift the mission needs.</h3>
+<p>Most of our scholarships happen this way. You contribute your craft to the mission, and it covers your seat. We agree on the exchange together, in writing, so everyone knows what it means. A few questions first.</p>
+<form class="kq-screen" data-door="Guild" novalidate>
+<fieldset><legend>Which fits you best?</legend>
+<label><input type="radio" name="g1" value="seats" data-out="pay"> I can pay in full or in payments</label>
+<label><input type="radio" name="g1" value="part"> I can pay part of it</label>
+<label><input type="radio" name="g1" value="none"> I can't pay now, but I have a skill the mission needs</label></fieldset>
+<fieldset><legend>How much time could you give each week, for fifteen weeks?</legend>
+<label><input type="radio" name="g2" value="lt2" data-out="time"> Under 2 hours</label>
+<label><input type="radio" name="g2" value="2-5"> 2 to 5 hours</label>
+<label><input type="radio" name="g2" value="5+"> More than 5</label></fieldset>
+<fieldset><legend>Your craft</legend>
+<div class="kq-chips">
+<label><input type="radio" name="g3" value="Design"> Design</label><label><input type="radio" name="g3" value="Video and editing"> Video and editing</label><label><input type="radio" name="g3" value="Development"> Development</label><label><input type="radio" name="g3" value="Community"> Community</label><label><input type="radio" name="g3" value="Sales and partnerships"> Sales and partnerships</label><label><input type="radio" name="g3" value="Writing"> Writing</label><label><input type="radio" name="g3" value="Operations"> Operations</label><label><input type="radio" name="g3" value="Other"> Other</label></div></fieldset>
+<fieldset><legend>Have you done this professionally?</legend>
+<label><input type="radio" name="g4" value="yes"> Yes</label>
+<label><input type="radio" name="g4" value="no" data-out="pro"> Not yet</label></fieldset>
+<div class="kq-out" hidden></div>
+<div class="kq-pass" hidden>
+<label class="kq-field">Your name<input type="text" name="name" autocomplete="name"></label>
+<label class="kq-field">Your email<input type="email" name="email" autocomplete="email"></label>
+<label class="kq-field">What would you contribute to the mission?<textarea name="a1" rows="3"></textarea></label>
+<label class="kq-field">Show us something you've made or done with it (a link is perfect)<textarea name="a2" rows="2"></textarea></label>
+<button class="cta fill" type="submit">Send it to us <span>→</span></button>
+</div>
+</form>
+</div>
+</div>
+
+<!-- Venture -->
+<div class="kq-drawer" role="tabpanel" id="d-venture" aria-labelledby="b-venture" hidden>
+<div class="kq-drawer-in">
+<h3 class="kq-dh">For missions with a clear path to treasure, massive impact, or both.</h3>
+<p>Here we work like a fund. For missions we really believe in, we sometimes take less cash, or none, and invest our work for a stake in what you're building. A few questions first.</p>
+<form class="kq-screen" data-door="Venture" novalidate>
+<fieldset><legend>Where is it?</legend>
+<label><input type="radio" name="v1" value="idea" data-out="idea"> Just an idea</label>
+<label><input type="radio" name="v1" value="traction"> Early traction</label>
+<label><input type="radio" name="v1" value="revenue"> Revenue</label>
+<label><input type="radio" name="v1" value="funded"> Funded</label></fieldset>
+<fieldset><legend>Are you on it full-time, or ready to be?</legend>
+<label><input type="radio" name="v2" value="yes"> Yes</label>
+<label><input type="radio" name="v2" value="no" data-out="time"> Not yet</label></fieldset>
+<fieldset><legend>Where does the path lead?</legend>
+<label><input type="radio" name="v3" value="treasure"> Treasure</label>
+<label><input type="radio" name="v3" value="impact"> Massive impact</label>
+<label><input type="radio" name="v3" value="both"> Both</label></fieldset>
+<fieldset><legend>Open to sharing a stake or revenue with partners who invest in you?</legend>
+<label><input type="radio" name="v4" value="yes"> Yes</label>
+<label><input type="radio" name="v4" value="no" data-out="stake"> No</label></fieldset>
+<div class="kq-out" hidden></div>
+<div class="kq-pass" hidden>
+<label class="kq-field">Your name<input type="text" name="name" autocomplete="name"></label>
+<label class="kq-field">Your email<input type="email" name="email" autocomplete="email"></label>
+<label class="kq-field">The mission, in two sentences<textarea name="a1" rows="3"></textarea></label>
+<label class="kq-field">Why now?<textarea name="a2" rows="2"></textarea></label>
+<button class="cta fill" type="submit">Send it to us <span>→</span></button>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+<div class="kq-guarantee rv">
 <img decoding="async" loading="lazy" src="offer-deck/assets/icons/shield-leaf.webp" alt="">
+<div>
 <span class="label">The guarantee</span>
 <h3>Our story needs you to win.</h3>
-<p>We can't guarantee anything you don't show up for. Show up to every live session, do the daily work with your story, and if by week fifteen you still don't feel the path under your feet, we give you the one-to-one sessions the Builders get and bring you into the next Kinship Quest free.</p>
-<p>We want to see you walk into the next story.</p>
+<p>We can't guarantee anything you don't show up for. Show up to every live session, do the daily work with your story, and if by week fifteen you still don't feel the path under your feet, we give you the one-to-one sessions the Builders get and bring you into the next Kinship Quest free. We want to see you walk into the next story.</p>
 </div>
 </div>
 </div>
@@ -634,7 +851,8 @@
 <details><summary>Do I need a business already?</summary><p>You need a story, and you've already got one. Some people come to discover their calling. Others arrive with a company, a practice, a movement, or a vision that's been keeping them awake for years.</p></details>
 <details><summary>I'm scared to be seen. Is that a problem?</summary><p>That fear may be connected to the very story you're here to help other people through. You decide what you're ready to share, and you'll watch others cross the same threshold first.</p></details>
 <details><summary>Is this therapy?</summary><p>We ain't healing it or therapizing it. We're making money off the meaning of our lives.</p></details>
-<details><summary>Can I pay over time?</summary><p>Yes. Both seats have a two-payment option. Paying in full saves you $500.</p></details>
+<details><summary>Can I pay over time?</summary><p>Yes. Both seats come in two or three monthly payments. Paying in full costs the least.</p></details>
+<details><summary>Can my friends and I come together?</summary><p>Please do. Couples, crews and pods pay less, and a pod of five to seven saves up to $7,000 together. Open the Fellowship in the Treasury to see your numbers.</p></details>
 <details><summary>Short on time?</summary><p>If you're a founder already in motion and time is your biggest constraint, the Metamyth Adventure takes you through a more personal version of this journey at your pace, with deeper one-to-one story work and a first chapter of venture-building support. Ask us about it.</p></details>
 </div>
 <div class="kq-apply" id="apply">
@@ -685,6 +903,82 @@
     var tick=function(){var r=arcs.getBoundingClientRect(),vh=innerHeight;var p=(vh*0.6-r.top)/r.height;p=Math.max(0,Math.min(1,p));fill.style.transform='scaleY('+p+')';dot.style.top=(p*100)+'%';dot.style.opacity=p>0&&p<1?1:.0;};
     addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);tick();
   } else if(dot){dot.style.display='none'}
+})();
+</script>
+<script>
+(function(){
+  /* seat counter */
+  var dots=document.querySelector('.kq-dots');
+  function paint(total,taken){
+    if(!dots)return;dots.innerHTML='';
+    for(var i=0;i<total;i++){var d=document.createElement('i');d.className=i<taken?'taken':'on';dots.appendChild(d);}
+    document.getElementById('kqOpen').textContent=Math.max(0,total-taken);
+    document.getElementById('kqTotal').textContent=total;
+  }
+  paint(21,0);
+  fetch('site/kq-seats.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(s){paint(s.total||21,s.taken||0)}).catch(function(){});
+
+  /* doors */
+  var doors=[].slice.call(document.querySelectorAll('.kq-door'));
+  doors.forEach(function(b){
+    b.addEventListener('click',function(){
+      var open=b.getAttribute('aria-selected')==='true';
+      doors.forEach(function(o){o.setAttribute('aria-selected','false');document.getElementById(o.getAttribute('aria-controls')).hidden=true;});
+      if(!open){b.setAttribute('aria-selected','true');var d=document.getElementById(b.getAttribute('aria-controls'));d.hidden=false;
+        var y=d.getBoundingClientRect().top+scrollY-140;if(d.getBoundingClientRect().top>innerHeight*.7)scrollTo({top:y,behavior:'smooth'});}
+    });
+  });
+
+  /* fellowship calculator */
+  var st={n:1,b:0},fmt=function(v){return '$'+v.toLocaleString('en-US')};
+  var tiers=[
+    {min:1,name:'The solo road',s:3500,b:6500,note:'Bring one person and you both pay less.'},
+    {min:2,name:'A couple',s:3000,b:6000,note:'Two hearts, one quest. $500 off each of you.'},
+    {min:3,name:'A small crew',s:3000,b:6000,note:'Two more and your pod unlocks.'},
+    {min:5,name:'Pod unlocked',s:2500,b:6000,note:'Your herald holds the crew, runs your pod call and reports for everyone.'},
+    {min:7,name:'Full ship',s:2500,b:6000,note:'A full pod. The biggest savings there are.'}];
+  function calc(){
+    var t=tiers[0];tiers.forEach(function(x){if(st.n>=x.min)t=x});
+    var s=st.n-st.b,total=s*t.s+st.b*t.b,norm=s*3500+st.b*6500,save=norm-total;
+    document.getElementById('cN').textContent=st.n;document.getElementById('cB').textContent=st.b;
+    document.getElementById('cTier').textContent=t.name;document.getElementById('cNote').textContent=t.note;
+    var sv=document.getElementById('cSave');sv.textContent=fmt(save);sv.classList.add('bump');setTimeout(function(){sv.classList.remove('bump')},300);
+    document.getElementById('cTotal').textContent=fmt(total);document.getElementById('cNorm').textContent=fmt(norm);
+    document.getElementById('cEach').textContent=fmt(Math.round(total/st.n/10)*10);
+    document.getElementById('cFill').style.width=((st.n-1)/6*100)+'%';
+    [].forEach.call(document.querySelectorAll('.kq-meter span'),function(sp){var a=+sp.dataset.at;sp.style.left=((a-1)/6*100)+'%';sp.classList.toggle('lit',st.n>=a)});
+  }
+  [].forEach.call(document.querySelectorAll('.kq-stepper button'),function(btn){
+    btn.addEventListener('click',function(){var k=btn.dataset.k,d=+btn.dataset.d;
+      if(k==='n'){st.n=Math.min(7,Math.max(1,st.n+d));st.b=Math.min(st.b,st.n)}else{st.b=Math.min(st.n,Math.max(0,st.b+d))}calc();});
+  });
+  calc();
+
+  /* screening */
+  var outs={
+    pay:'Then the seats are your door. The <a href="#seats">three-payment option</a> spreads it out, and bringing your people through <b>the Fellowship</b> brings it down further.',
+    time:'This door asks for real time. If that changes, come back. Meanwhile, the <a href="#seats">payment plans</a> and the Fellowship can bring the price within reach.',
+    pro:'We need a craft you can deliver at a professional level. A pod or a payment plan may be a better way in for now, and you can bring your gift to the community either way.',
+    idea:'We invest in missions already in motion. Bring the idea through the Quest as a Builder, and come back to this door once it\'s moving. That\'s exactly what the Quest is for.',
+    stake:'This door is a partnership: we invest our work and share in what it grows into. If that\'s not for you, the seats and the Fellowship are wide open.'};
+  [].forEach.call(document.querySelectorAll('.kq-screen'),function(f){
+    var out=f.querySelector('.kq-out'),pass=f.querySelector('.kq-pass'),sets=f.querySelectorAll('fieldset');
+    function check(){
+      var fail=null,done=true;
+      [].forEach.call(sets,function(fs){var c=fs.querySelector('input:checked');if(!c)done=false;else if(c.dataset.out&&!fail)fail=c.dataset.out;});
+      if(fail){out.innerHTML=outs[fail];out.hidden=false;pass.hidden=true;}
+      else{out.hidden=true;pass.hidden=!done;}
+    }
+    f.addEventListener('change',check);
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var fd=new FormData(f),lines=[];
+      [].forEach.call(sets,function(fs){var c=fs.querySelector('input:checked');lines.push(fs.querySelector('legend').textContent+' '+(c?c.parentNode.textContent.trim():''));});
+      [].forEach.call(f.querySelectorAll('.kq-field'),function(l){var i=l.querySelector('input,textarea');lines.push(l.firstChild.textContent.trim()+': '+i.value);});
+      var subj='Kinship Quest · '+f.dataset.door+' · '+(fd.get('name')||'');
+      location.href='mailto:zachary@anotherworld.earth?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(lines.join('\n\n'));
+    });
+  });
 })();
 </script>
 <script src="site/site.js"></script>
