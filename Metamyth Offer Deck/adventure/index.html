@@ -1,24 +1,1136 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#091e14" />
-    <title>The Metamyth Adventure | Metamyth</title>
-    <meta
-      name="description"
-      content="Ninety days to forge the meaning of your life into a mission others will pay to walk."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <script type="module" crossorigin src="./assets/adventure-standalone-DOrTsbZD.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/adventure-standalone-CH4T_gPV.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Metamyth Adventure · Time travel into the world where you did it · Metamyth</title>
+<meta name="description" content="Ninety days to forge the meaning of your life into a mission others will pay to walk. For founders, creators and leaders carrying something enormous.">
+<meta property="og:title" content="The Metamyth Adventure">
+<meta property="og:description" content="Ninety days to forge the meaning of your life into a mission others will pay to walk.">
+<meta property="og:image" content="https://www.metamyth.quest/site/img/cosmic-city.webp">
+<link rel="icon" href="../assets/logo-butterfly.webp">
+<link rel="preload" as="image" href="../site/img/cosmic-city.webp" fetchpriority="high">
+<link rel="stylesheet" href="../site/site.css">
+<link rel="stylesheet" href="../site/v2.css">
+<style>
+/* ── Kinship page layer on the site design system ── */
+.kq{--night:#06140e;--paper:#efe6cf;--ink:#132a1e;--ink-2:#3d5547;--gold-ink:#8a6516;--tealglow:0 0 18px rgba(46,196,176,.55)}
+.kq h3,.kq h4{font-weight:400;letter-spacing:0}
+.kq p{font-size:clamp(18px,1.3vw,20px)}
+.kq .hero h1,.kq .close h2 .teal{text-shadow:none}
+.kq-pre{font-family:var(--serif);font-size:clamp(20px,1.8vw,26px)!important;color:var(--teal);margin:0}
+.kq-hero-sub{text-align:center;max-width:34em;margin:0 auto;font-size:clamp(19px,1.6vw,24px)!important;line-height:1.5;color:var(--cream)}
+.kq-hero-p{text-align:center;max-width:36em;margin:0 auto;line-height:1.65;color:var(--ivory)}
+.kq-note{text-align:center;max-width:38em;margin:6px auto 0;font-size:16px!important;line-height:1.7;color:var(--mist)}
+.kq-ctas{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:10px}
+
+/* tones and smooth seams */
+.t-deep{background:var(--deep)}
+.t-forest{background:linear-gradient(to bottom,var(--deep),var(--forest) 18%,var(--forest) 82%,var(--deep))}
+.t-teal{background:linear-gradient(to bottom,var(--deep),#0a2b2a 18%,#0a2b2a 82%,var(--deep))}
+.t-black{background:#000}
+.t-night{background:linear-gradient(to bottom,#000,var(--night) 22%,var(--night) 84%,var(--deep))}
+.t-paper{background:var(--paper);color:var(--ink)}
+.seam{height:clamp(160px,24vh,280px)}
+.seam.to-black{background:linear-gradient(to bottom,var(--deep),#020604 70%,#000);margin-bottom:-2px;position:relative;z-index:1}
+.seam.to-paper{background:linear-gradient(to bottom,var(--deep),#3a4a3a 45%,var(--paper))}
+.seam.from-paper{background:linear-gradient(to bottom,var(--paper),#3a4a3a 55%,var(--deep))}
+.scene.on-black{background:#000}
+.kq .scene.on-black::after{background:linear-gradient(to bottom,#000 0%,#000 12%,rgba(0,0,0,.75) 26%,rgba(0,0,0,.45) 42%,rgba(0,0,0,.5) 50%,rgba(0,0,0,.9) 82%,#000 100%)}
+.scene.on-black .bg img{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 30%,#000 70%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 30%,#000 70%,transparent 100%)}
+.scene:not(.hero) .bg img{animation:kqDrift 28s ease-in-out infinite alternate}
+@keyframes kqDrift{from{transform:scale(1)}to{transform:scale(1.07)}}
+
+/* soft teal glow behind big statements */
+.kq-glow{position:relative}
+.kq-glow:before{content:"";position:absolute;left:50%;top:50%;width:min(720px,90vw);height:320px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(46,196,176,.13),transparent);pointer-events:none;animation:kqBreathe 7s ease-in-out infinite alternate}
+@keyframes kqBreathe{from{opacity:.55}to{opacity:1}}
+.t-paper .kq-glow:before{background:radial-gradient(closest-side,rgba(46,196,176,.16),transparent)}
+
+/* section heads inside text */
+.kq-h2{font-family:var(--serif);font-size:clamp(34px,4vw,60px);line-height:1.08;margin:18px 0 36px}
+.kq-h3{font-family:var(--serif);font-size:clamp(28px,2.6vw,38px);margin:0}
+
+/* split layouts */
+.kq-split{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(40px,6vw,100px);align-items:center}
+.kq-split.top{align-items:start}
+.kq-split.flip>:first-child{order:2}
+.kq-split figure{margin:0;position:relative}
+.kq-split figure.sticky{position:sticky;top:110px}
+.kq-split figure img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover;border-radius:10px}
+.kq-split figure .back{position:absolute;width:52%;aspect-ratio:1;right:-6%;bottom:-8%;object-fit:cover;border:6px solid var(--deep);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.kq-story p{font-size:clamp(19px,1.5vw,22px);line-height:1.75;margin:0 0 1.2em;color:var(--cream)}
+.kq-story .turn{font-family:var(--serif);font-size:clamp(25px,2.2vw,32px)!important;line-height:1.3;color:var(--gold);margin:1.4em 0 .8em}
+
+/* quotes */
+.kq-quote{margin:clamp(56px,8vh,96px) auto 0;max-width:30em;text-align:center}
+.kq-quote p{font-family:var(--serif);font-size:clamp(25px,2.4vw,36px)!important;line-height:1.35;margin:0;color:var(--cream)}
+.kq-quote cite{display:block;margin-top:20px;font-style:normal;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+
+/* statements */
+.kq-statement{font-family:var(--serif);font-size:clamp(30px,3.6vw,56px);line-height:1.2;text-align:center;margin:0 auto;max-width:18em;color:var(--cream);position:relative}
+.kq-statement small{display:block;margin:24px auto 0;max-width:30em;font-family:var(--sans);font-size:clamp(18px,1.4vw,21px);line-height:1.7;color:var(--ivory)}
+.kq-block{margin:clamp(96px,13vh,160px) 0}
+
+/* zoom */
+.kq-zoom{max-width:1100px;margin:0 auto clamp(64px,9vh,110px)}
+.kq-zoom img{width:100%;height:auto;display:block;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 1px rgba(46,196,176,.18)}
+
+/* outcomes */
+.kq-outcomes{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,4vw,64px) clamp(36px,5vw,80px)}
+.kq-outcomes>div{display:grid;grid-template-columns:64px 1fr;gap:20px;align-items:start}
+.kq-outcomes img{width:64px;height:64px;transition:transform .6s var(--ease),filter .6s}
+.kq-outcomes>div:hover img{transform:rotate(-6deg) scale(1.08);filter:drop-shadow(0 0 14px rgba(46,196,176,.5))}
+.kq-outcomes h3{font-family:var(--serif);font-size:clamp(25px,2.2vw,33px);margin:0 0 10px;color:var(--gold);line-height:1.1}
+.kq-outcomes p{margin:0 0 .7em;line-height:1.7;color:var(--ivory)}
+
+/* games */
+.kq-games{list-style:none;padding:0;margin:0;counter-reset:g}
+.kq-games li{display:grid;grid-template-columns:3.2em 1fr;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(212,168,67,.14);font-family:var(--serif);font-size:clamp(21px,1.7vw,26px);line-height:1.3;color:var(--cream);transition:padding .5s var(--ease),color .3s}
+.kq-games li:before{counter-increment:g;content:counter(g,decimal-leading-zero);font-family:var(--sans);font-size:13px;letter-spacing:.2em;color:var(--teal);text-shadow:var(--tealglow)}
+.kq-games li:hover{padding-left:10px;color:var(--gold)}
+
+/* journey arcs with a glowing gold thread */
+.kq-arcs{position:relative;padding-left:clamp(84px,9vw,120px)}
+.kq-line{position:absolute;left:clamp(35px,4vw,49px);top:36px;bottom:36px;width:2px;background:rgba(212,168,67,.12)}
+.kq-line i{position:absolute;inset:0;background:linear-gradient(to bottom,#f3d27a,var(--gold));transform-origin:top;transform:scaleY(0);box-shadow:0 0 10px rgba(212,168,67,.9),0 0 26px rgba(212,168,67,.45);border-radius:2px}
+.kq-line b{position:absolute;left:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#ffe7a6;box-shadow:0 0 14px 4px rgba(212,168,67,.85),0 0 30px 8px rgba(212,168,67,.35);top:0}
+.kq-arc{position:relative}
+.kq-arc>img{position:absolute;left:calc(-1 * clamp(84px,9vw,120px));top:0;width:clamp(72px,8vw,100px);height:clamp(72px,8vw,100px);background:var(--forest);border-radius:50%;padding:8px;box-shadow:0 0 0 1px rgba(212,168,67,.3),0 0 24px rgba(46,196,176,.22)}
+.kq-arc .label{display:block}
+.kq-arc h3{font-family:var(--serif);font-size:clamp(32px,3.2vw,48px);margin:8px 0 18px}
+.kq-arc p{line-height:1.75;margin:0 0 1.2em;color:var(--ivory)}
+.kq-arc .kq-hit{font-family:var(--serif);font-size:clamp(22px,1.9vw,28px)!important;line-height:1.4;color:var(--cream)}
+.kq-arc+.kq-arc{margin-top:clamp(64px,9vh,110px)}
+
+/* week tabs */
+.kq-tabbar{display:flex;border-bottom:1px solid var(--gold-faint);margin:clamp(72px,10vh,120px) 0 16px}
+.kq-tabbar button{flex:1;min-height:52px;background:none;border:0;border-bottom:2px solid transparent;color:var(--mist);font-family:var(--sans);font-size:13px;letter-spacing:.24em;text-transform:uppercase;padding:18px 10px;cursor:pointer;transition:color .3s,border-color .3s}
+.kq-tabbar button:hover{color:var(--cream)}
+.kq-tabbar button[aria-selected="true"]{color:var(--gold);border-bottom-color:var(--gold)}
+.kq-panels{perspective:1600px}
+.kq-panel{transform-origin:left center;animation:kqTurn .7s var(--ease)}
+@keyframes kqTurn{from{opacity:0;transform:rotateY(-10deg) translateX(14px)}to{opacity:1;transform:none}}
+.kq-week{display:grid;grid-template-columns:6.5em 1fr;gap:18px;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.kq-week span{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);padding-top:8px}
+.kq-week h4{font-family:var(--serif);font-weight:400;font-size:clamp(23px,1.9vw,28px);line-height:1.15;margin:0 0 6px;color:var(--cream)}
+.kq-week p{margin:0;line-height:1.65;color:var(--ivory)}
+.kq-week.kq-threshold{border:0;border-radius:10px;padding:26px 22px;margin:12px 0;background:rgba(46,196,176,.07);box-shadow:inset 0 0 0 1px rgba(46,196,176,.3),0 0 30px rgba(46,196,176,.12)}
+.kq-week.kq-threshold span{color:var(--teal)}
+
+/* proof */
+.kq-proof{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,80px);margin-top:clamp(64px,9vh,110px)}
+.kq-proof blockquote{margin:0}
+.kq-proof p{font-family:var(--serif);font-size:clamp(24px,2.1vw,32px)!important;line-height:1.35;margin:0;color:var(--cream)}
+.kq-proof footer{display:flex;align-items:center;gap:14px;margin-top:20px;padding:0;border:0;background:none;justify-content:flex-start;letter-spacing:0;text-transform:none}
+.kq-proof footer img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.kq-proof cite{font-style:normal;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+
+/* guides */
+.kq-guides{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(36px,4vw,56px) clamp(18px,2vw,28px)}
+.kq-guide figure{margin:0 0 22px;width:132px;height:132px;border-radius:50%;padding:5px;border:1.5px solid var(--gold-line);transition:border-color .4s,transform .6s var(--ease),box-shadow .6s}
+.kq-guide:hover figure{border-color:var(--teal);transform:scale(1.04);box-shadow:0 0 26px rgba(46,196,176,.35)}
+.kq-guide img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
+.kq-guide h3{font-family:var(--serif);font-size:clamp(26px,2vw,32px);margin:0;line-height:1.05}
+.kq-guide .label{margin:10px 0 14px;display:block}
+.kq-guide p{margin:0 0 .7em;line-height:1.7;font-size:17px!important;color:var(--ivory)}
+
+/* week rows */
+.kq-rows>div{display:grid;grid-template-columns:52px 14em 1fr;gap:18px;align-items:center;padding:16px 0;border-bottom:1px solid var(--gold-faint)}
+.kq-rows img{width:46px;height:46px;transition:transform .5s var(--ease),filter .5s}
+.kq-rows>div:hover img{transform:scale(1.12) rotate(-5deg);filter:drop-shadow(0 0 12px rgba(46,196,176,.5))}
+.kq-rows b{font-weight:500;color:var(--cream);font-size:18px}
+.kq-rows span{color:var(--mist);font-size:17px}
+
+/* fit */
+.kq-fit{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px)}
+.kq-fit ul{list-style:none;padding:0;margin:18px 0 0}
+.kq-fit li{position:relative;padding:0 0 16px 24px;line-height:1.6;color:var(--ivory);font-size:18px}
+.kq-fit li:before{content:"◆";position:absolute;left:0;top:.35em;font-size:9px}
+.kq-fit .in .label,.kq-fit .in li:before{color:var(--teal)}
+.kq-fit .in li:before{text-shadow:var(--tealglow)}
+.kq-fit .out .label,.kq-fit .out li:before{color:#e35a4d}
+
+/* paper (investment) */
+.t-paper .label{color:var(--gold-ink)}
+.t-paper h2,.t-paper .kq-h3{color:var(--ink)}
+.t-paper h2 .gold,.t-paper .kq-statement .gold{color:var(--gold-ink)}
+.t-paper .lede{color:var(--ink-2)}
+.t-paper .kq-statement{color:var(--ink)}
+.t-paper .kq-statement small{color:var(--ink-2)}
+.kq-value p{line-height:1.75;color:var(--ink-2);margin:0 0 1.2em}
+.kq-value p strong{font-weight:500;color:var(--ink)}
+.kq-stack{list-style:none;padding:0;margin:8px 0 28px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px}
+.kq-stack li{position:relative;padding:14px 0 14px 30px;border-bottom:1px solid rgba(19,42,30,.12);font-family:var(--serif);font-size:clamp(20px,1.6vw,24px);color:var(--ink);line-height:1.25}
+.kq-stack li:before{content:"";position:absolute;left:4px;top:50%;width:10px;height:10px;margin-top:-5px;border-radius:50%;background:var(--teal);box-shadow:0 0 12px rgba(46,196,176,.75)}
+.kq-seats{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:clamp(40px,6vh,64px)}
+.kq-seat{background:#fbf7ec;border-radius:14px;padding:clamp(30px,3vw,44px);display:flex;flex-direction:column;box-shadow:0 2px 0 rgba(19,42,30,.06),0 24px 60px rgba(19,42,30,.12);transition:transform .5s var(--ease),box-shadow .5s var(--ease);border-top:4px solid var(--gold)}
+.kq-seat:hover{transform:translateY(-5px);box-shadow:0 2px 0 rgba(19,42,30,.06),0 34px 70px rgba(19,42,30,.18)}
+.kq-seat.builder{border-top-color:var(--teal)}
+.kq-seat.builder:hover{box-shadow:0 2px 0 rgba(19,42,30,.06),0 34px 70px rgba(19,42,30,.18),0 0 40px rgba(46,196,176,.25)}
+.kq-seat-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.kq-seat-top img{width:56px;height:56px}
+.kq-seat.builder .label{color:#17806f}
+.kq-seat h3{font-family:var(--serif);font-size:clamp(23px,1.9vw,28px);margin:12px 0 20px;line-height:1.25;color:var(--ink)}
+.kq-seat .price{font-family:var(--serif);font-size:clamp(30px,2.6vw,38px);line-height:1;color:var(--ink)}
+.kq-seat .plan{font-size:15px;color:var(--ink-2);margin:8px 0 22px}
+.kq-seat p,.kq-seat li{line-height:1.65;font-size:17px!important;color:var(--ink-2)}
+.kq-seat ul{padding-left:18px;margin:6px 0 0}
+.kq-seat li{margin-bottom:10px}
+.kq-pay{display:flex;flex-direction:column;gap:10px;margin-top:auto;padding-top:28px}
+.t-paper .cta{align-self:stretch;justify-content:center;color:var(--ink);border-color:rgba(19,42,30,.35)}
+.t-paper .cta:hover{border-color:var(--ink)}
+.t-paper .cta.fill{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.kq-seat.builder .cta.fill{background:#17806f;border-color:#17806f}
+.t-paper .kq-quote p{color:var(--ink)}
+.t-paper .kq-quote cite{color:var(--gold-ink)}
+.kq-upgrade{margin-top:22px;color:var(--ink-2);font-size:16px!important;text-align:center}
+
+/* the four ways in */
+.kq-ways{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:clamp(64px,9vh,110px)}
+.kq-way{padding:clamp(28px,3vw,40px);border-radius:14px;transition:transform .5s var(--ease)}
+.kq-way:hover{transform:translateY(-3px)}
+.kq-way img{width:60px;height:60px;margin-bottom:16px}
+.kq-way .label{display:block;margin-bottom:10px}
+.kq-way h3{font-family:var(--serif);font-size:clamp(25px,2vw,30px);margin:0 0 12px;line-height:1.15;color:var(--ink)}
+.kq-way p{margin:0 0 .8em;line-height:1.7;font-size:17px!important;color:var(--ink-2)}
+.kq-way.people{background:linear-gradient(150deg,rgba(46,196,176,.22),rgba(46,196,176,.06));box-shadow:0 0 40px rgba(46,196,176,.12)}
+.kq-way.people .label{color:#17806f}
+.kq-way.mentor{background:#fbf7ec;box-shadow:0 18px 50px rgba(19,42,30,.1)}
+.kq-way.scholar{background:var(--forest)}
+.kq-way.scholar h3{color:var(--cream)}.kq-way.scholar p{color:var(--ivory)}.kq-way.scholar .label{color:var(--gold)}
+.kq-way.guarantee{border:1.5px dashed rgba(19,42,30,.35)}
+
+/* carry out */
+.kq-carry .item p{color:var(--mist)}
+
+/* application */
+.kq-apply{text-align:center;margin-top:clamp(80px,12vh,140px);scroll-margin-top:100px;display:flex;flex-direction:column;align-items:center}
+.kq-apply>img{width:76px;height:76px;filter:drop-shadow(0 0 18px rgba(46,196,176,.35))}
+.kq-apply h2{font-size:clamp(32px,3.6vw,54px);max-width:17em;margin:18px auto 0;line-height:1.15}
+
+/* next chapter */
+.kq-wide{margin:0 0 clamp(56px,8vh,90px)}
+.kq-wide img{width:100%;display:block;aspect-ratio:16/9;max-height:80vh;object-fit:cover;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 14%,#000 80%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 14%,#000 80%,transparent)}
+.kq-next{max-width:40em;margin:0 auto}
+.kq-next p{margin:0 0 1.1em;line-height:1.75;color:var(--cream)}
+.kq-next .kq-quiet{color:var(--ivory)}
+.kq-fuck{font-family:var(--serif);font-size:clamp(34px,3.6vw,54px)!important;color:var(--gold);margin:.6em 0 .2em!important;line-height:1.1}
+.kq-close-line{font-family:var(--serif);font-size:clamp(28px,2.8vw,42px)!important;margin:0;color:var(--cream)}
+
+
+/* seat counter */
+.kq-count{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:30px}
+.kq-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;max-width:420px}
+.kq-dots i{width:12px;height:12px;border-radius:50%;border:1.5px solid rgba(19,42,30,.35);transition:background .5s,border-color .5s,box-shadow .5s}
+.kq-dots i.on{background:var(--teal);border-color:var(--teal);box-shadow:0 0 10px rgba(46,196,176,.6)}
+.kq-dots i.taken{background:var(--ink);border-color:var(--ink);box-shadow:none}
+.kq-count p{margin:0;font-size:15px!important;letter-spacing:.06em;color:var(--ink-2)}
+.kq-count b{font-family:var(--serif);font-weight:400;font-size:22px;color:var(--ink)}
+.kq-pay-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kq-pay-row .cta{justify-content:center;font-size:12px}
+
+/* treasury */
+.kq-treasury{margin-top:clamp(110px,15vh,180px)}
+.kq-doors{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:clamp(40px,6vh,64px)}
+.kq-door{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:26px 22px 20px;border-radius:14px;background:#fbf7ec;box-shadow:0 2px 0 rgba(19,42,30,.05),0 16px 40px rgba(19,42,30,.08);transition:transform .45s var(--ease),box-shadow .45s var(--ease),background .3s;position:relative;min-height:220px}
+.kq-door img{width:58px;height:58px;margin-bottom:6px;transition:transform .6s var(--ease),filter .6s}
+.kq-door b{font-family:var(--serif);font-weight:400;font-size:clamp(22px,1.7vw,26px);color:var(--ink);line-height:1.1}
+.kq-door span{font-size:15.5px;line-height:1.5;color:var(--ink-2)}
+.kq-door i{margin-top:auto;font-style:normal;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-ink)}
+.kq-door i:after{content:" ↓";display:inline-block;transition:transform .4s var(--ease)}
+.kq-door:hover{transform:translateY(-4px);box-shadow:0 2px 0 rgba(19,42,30,.05),0 26px 54px rgba(19,42,30,.14)}
+.kq-door:hover img{transform:rotate(-6deg) scale(1.06);filter:drop-shadow(0 0 12px rgba(46,196,176,.5))}
+.kq-door:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.kq-door[aria-selected="true"]{background:var(--forest);box-shadow:0 0 0 1px rgba(46,196,176,.4),0 26px 60px rgba(19,42,30,.25),0 0 40px rgba(46,196,176,.18)}
+.kq-door[aria-selected="true"] b{color:var(--cream)}
+.kq-door[aria-selected="true"] span{color:var(--ivory)}
+.kq-door[aria-selected="true"] i{color:var(--teal)}
+.kq-door[aria-selected="true"] i:after{transform:rotate(180deg)}
+.kq-drawer{margin-top:14px;border-radius:16px;background:var(--forest);color:var(--cream);overflow:hidden;box-shadow:0 30px 70px rgba(19,42,30,.22);animation:kqOpen .55s var(--ease)}
+@keyframes kqOpen{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+.kq-drawer-in{padding:clamp(28px,4vw,52px)}
+.kq-drawer p{color:var(--ivory);line-height:1.7;margin:0 0 1em}
+.kq-dh{font-family:var(--serif);font-size:clamp(25px,2.2vw,32px);line-height:1.15;margin:0 0 14px;color:var(--cream)}
+.kq-small{font-size:15px!important;color:var(--mist)!important}
+.kq-drawer .cta{color:var(--cream);border-color:rgba(240,232,208,.35)}
+.kq-drawer .cta.fill{background:var(--gold);color:var(--deep);border-color:var(--gold)}
+
+/* calculator */
+.kq-calc{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,4vw,64px);align-items:start}
+.kq-step{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid rgba(240,232,208,.12)}
+.kq-step>span{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--mist)}
+.kq-stepper{display:flex;align-items:center;gap:6px}
+.kq-stepper button{all:unset;cursor:pointer;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:22px;color:var(--cream);border:1px solid rgba(240,232,208,.3);transition:background .25s,border-color .25s}
+.kq-stepper button:hover{border-color:var(--teal);background:rgba(46,196,176,.12)}
+.kq-stepper button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.kq-stepper output{min-width:46px;text-align:center;font-family:var(--serif);font-size:30px;color:var(--cream)}
+.kq-meter{position:relative;height:8px;border-radius:8px;background:rgba(240,232,208,.1);margin:30px 0 40px}
+.kq-meter-fill{position:absolute;inset:0 auto 0 0;width:0;border-radius:8px;background:linear-gradient(90deg,var(--teal),var(--gold));box-shadow:0 0 14px rgba(46,196,176,.5);transition:width .6s var(--ease)}
+.kq-meter span{position:absolute;top:16px;transform:translateX(-50%);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--smoke);white-space:nowrap;transition:color .4s}
+.kq-meter span:before{content:"";position:absolute;left:50%;top:-20px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--forest);border:2px solid rgba(240,232,208,.25);transition:background .4s,border-color .4s,box-shadow .4s}
+.kq-meter span.lit{color:var(--cream)}
+.kq-meter span.lit:before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 12px rgba(212,168,67,.8)}
+.kq-meter span[data-at="7"]{transform:translateX(-100%)}
+.kq-meter span[data-at="7"]:before{left:100%}
+.kq-result{background:rgba(0,0,0,.18);border-radius:14px;padding:28px;box-shadow:inset 0 0 0 1px rgba(46,196,176,.18)}
+.kq-tier{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--teal);text-shadow:0 0 12px rgba(46,196,176,.5)}
+.kq-save{margin:10px 0 18px}
+.kq-save small{display:block;font-size:13px;color:var(--mist)}
+.kq-save b{font-family:var(--serif);font-weight:400;font-size:clamp(44px,4.4vw,64px);line-height:1;color:var(--gold);text-shadow:0 0 30px rgba(212,168,67,.35);transition:transform .3s var(--ease);display:inline-block}
+.kq-save b.bump{transform:scale(1.08)}
+.kq-lines{display:grid;gap:8px;margin-bottom:16px}
+.kq-lines div{display:flex;justify-content:space-between;font-size:16px;color:var(--ivory)}
+.kq-lines b{font-weight:500;color:var(--cream)}
+.kq-lines s{color:var(--smoke)}
+.kq-tiernote{font-size:15px!important;color:var(--mist)!important;min-height:3em}
+.kq-result .cta{width:100%;justify-content:center}
+.kq-bounty{margin-top:clamp(32px,5vh,52px);padding-top:clamp(28px,4vh,40px);border-top:1px solid rgba(240,232,208,.12)}
+.kq-bounty b{color:var(--cream);font-weight:500}
+.kq-track{list-style:none;padding:0;margin:18px 0 22px;display:grid;grid-template-columns:repeat(7,1fr);gap:6px;position:relative}
+.kq-track li{text-align:center;font-size:13px;color:var(--mist);padding-top:44px;position:relative}
+.kq-track li b{position:absolute;top:0;left:50%;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-weight:400;font-size:17px;color:var(--cream);border:1.5px solid rgba(212,168,67,.55)}
+.kq-track li.free b{background:var(--gold);color:var(--deep);box-shadow:0 0 18px rgba(212,168,67,.7)}
+.kq-track li.free{color:var(--gold)}
+
+/* patron options */
+.kq-three{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,44px)}
+.kq-opt{display:flex;flex-direction:column}
+.kq-opt .cta,.kq-opt .kq-pay-row{margin-top:auto}
+
+/* screening */
+.kq-screen{margin-top:26px;max-width:46em}
+.kq-screen fieldset{border:0;padding:0;margin:0 0 24px}
+.kq-screen legend{font-family:var(--serif);font-size:clamp(20px,1.6vw,23px);color:var(--cream);margin-bottom:12px}
+.kq-screen label{display:flex;align-items:center;gap:12px;padding:12px 16px;margin-bottom:8px;border-radius:10px;border:1px solid rgba(240,232,208,.16);cursor:pointer;font-size:16.5px;color:var(--ivory);transition:border-color .25s,background .25s}
+.kq-screen label:hover{border-color:rgba(46,196,176,.5)}
+.kq-screen label:has(input:checked){border-color:var(--teal);background:rgba(46,196,176,.1);color:var(--cream)}
+.kq-screen input[type=radio]{accent-color:#2ec4b0;width:18px;height:18px}
+.kq-chips{display:flex;flex-wrap:wrap;gap:8px}
+.kq-chips label{margin:0;padding:9px 14px}
+.kq-out{padding:20px 22px;border-radius:12px;background:rgba(227,90,77,.1);box-shadow:inset 0 0 0 1px rgba(227,90,77,.35);color:var(--cream);line-height:1.65;margin-bottom:10px}
+.kq-out a{color:var(--gold)}
+.kq-pass{animation:kqOpen .5s var(--ease)}
+.kq-field{display:block!important;border:0!important;padding:0!important;margin:0 0 16px!important;font-size:13px!important;letter-spacing:.14em;text-transform:uppercase;color:var(--mist)!important;background:none!important}
+.kq-field input,.kq-field textarea{display:block;width:100%;box-sizing:border-box;margin-top:8px;padding:13px 15px;border-radius:10px;border:1px solid rgba(240,232,208,.22);background:rgba(0,0,0,.2);color:var(--cream);font-family:var(--sans);font-size:17px;letter-spacing:0;text-transform:none;resize:vertical}
+.kq-field input:focus,.kq-field textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(46,196,176,.18)}
+
+/* guarantee */
+.kq-guarantee{display:grid;grid-template-columns:72px 1fr;gap:24px;align-items:start;margin-top:clamp(64px,9vh,110px);padding:clamp(28px,3vw,40px);border-radius:14px;border:1.5px dashed rgba(19,42,30,.35)}
+.kq-guarantee img{width:72px;height:72px}
+.kq-guarantee h3{font-family:var(--serif);font-size:clamp(25px,2vw,30px);margin:8px 0 12px;color:var(--ink)}
+.kq-guarantee p{margin:0;line-height:1.7;color:var(--ink-2)}
+
+@media(max-width:1000px){.kq-doors{grid-template-columns:1fr 1fr}.kq-calc,.kq-three{grid-template-columns:1fr}}
+@media(max-width:560px){.kq-doors{grid-template-columns:1fr}.kq-door{min-height:0}.kq-track li{font-size:11px}.kq-guarantee{grid-template-columns:1fr}}
+
+@media(max-width:900px){.kq-ways{grid-template-columns:1fr}.kq-stack{grid-template-columns:1fr}}
+@media(max-width:760px){
+  .kq-split,.kq-outcomes,.kq-fit,.kq-proof,.kq-seats{grid-template-columns:1fr}
+  .kq-split.flip>:first-child{order:0}
+  .kq-split figure.sticky{position:relative;top:0}
+  .kq-split figure .back{display:none}
+  .kq-week{grid-template-columns:1fr;gap:6px}
+  .kq-rows>div{grid-template-columns:44px 1fr}.kq-rows span{grid-column:2}
+  .kq-guides{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){.kq-guides{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.kq *,.kq *:before{transition:none!important;animation:none!important}.kq-line i{transform:none}}
+
+/* type rhythm: no dangling words, steadier scale */
+.kq p,.kq li{text-wrap:pretty}
+.kq h1,.kq h2,.kq h3,.kq h4,.kq .lede,.kq-statement,.kq-quote p,.kq-hit,.kq-hero-sub,.kq-hero-p,.kq-note,.kq-proof p,.kq-close-line{text-wrap:balance}
+.kq .lede{font-size:clamp(19px,1.4vw,22px);line-height:1.6}
+.kq-statement{font-size:clamp(28px,3.1vw,48px)}
+.kq-h2{font-size:clamp(32px,3.6vw,54px)}
+.kq-outcomes h3{font-size:clamp(24px,2vw,30px)}
+.kq-quote p{font-size:clamp(23px,2.1vw,32px)!important}
+/* proof torrent */
+.kq-torrent{max-width:34em;margin:0 auto;text-align:center}
+.kq-torrent-lead{font-family:var(--serif);font-size:clamp(26px,2.6vw,40px)!important;line-height:1.25;color:var(--cream);margin:0 0 28px}
+.kq-torrent ul{list-style:none;padding:0;margin:0;display:grid;gap:4px}
+.kq-torrent li{font-family:var(--serif);font-size:clamp(21px,1.9vw,28px);line-height:1.35;color:var(--ivory);padding:10px 0;border-bottom:1px solid rgba(212,168,67,.14)}
+.kq-torrent li:last-child{border-bottom:0}
+.kq-torrent-end{font-family:var(--serif);font-size:clamp(30px,3vw,46px)!important;color:var(--gold);margin:22px 0 0;text-shadow:0 0 24px rgba(212,168,67,.35)}
+
+/* ── Adventure layer: sister to Kinship ── */
+.adv .t-ember{background:linear-gradient(to bottom,var(--deep),#1c140a 20%,#1c140a 80%,var(--deep))}
+.adv b.hl,.adv strong{font-weight:500;color:var(--cream)}
+.adv .kq-story strong{color:var(--gold);font-weight:400;font-family:var(--serif);font-size:1.12em}
+.adv-col{max-width:40em;margin:0 auto}
+.adv-col p{font-size:clamp(19px,1.5vw,22px);line-height:1.75;margin:0 0 1.2em;color:var(--cream)}
+.adv-col p.dim{color:var(--ivory)}
+.adv-beat{font-family:var(--serif);font-size:clamp(26px,2.4vw,36px)!important;line-height:1.28!important;color:var(--gold)!important;margin:1.5em 0 1em!important;text-wrap:balance}
+.adv-beat.cream{color:var(--cream)!important}
+.adv-mega{font-family:var(--serif);font-size:clamp(36px,4.6vw,72px);line-height:1.08;text-align:center;max-width:16em;margin:0 auto;color:var(--cream);text-wrap:balance}
+.adv-mega .gold{text-shadow:0 0 34px rgba(212,168,67,.35)}
+
+/* outcomes: ninety days */
+.adv-ninety{display:grid;gap:0;max-width:980px;margin:0 auto}
+.adv-ninety>div{display:grid;grid-template-columns:76px 1fr;gap:26px;align-items:start;padding:34px 0;border-bottom:1px solid rgba(212,168,67,.14)}
+.adv-ninety>div:last-child{border-bottom:0}
+.adv-ninety img{width:68px;height:68px;transition:transform .6s var(--ease),filter .6s}
+.adv-ninety>div:hover img{transform:rotate(-6deg) scale(1.08);filter:drop-shadow(0 0 14px rgba(46,196,176,.5))}
+.adv-ninety h3{font-family:var(--serif);font-size:clamp(26px,2.3vw,34px);margin:0 0 10px;color:var(--gold);line-height:1.12}
+.adv-ninety p{margin:0;line-height:1.72;color:var(--ivory)}
+
+/* the map: four thresholds */
+.adv-map-fig{max-width:1100px;margin:0 auto clamp(56px,8vh,90px)}
+.adv-map-fig img{width:100%;display:block;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 1px rgba(212,168,67,.22)}
+.adv-worlds{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative;counter-reset:w}
+.adv-worlds:before{content:"";position:absolute;left:6%;right:6%;top:46px;height:2px;background:linear-gradient(90deg,rgba(46,196,176,.15),var(--gold),rgba(46,196,176,.15));box-shadow:0 0 14px rgba(212,168,67,.55)}
+.adv-world{position:relative;padding:0 6px;text-align:center}
+.adv-world .orb{width:92px;height:92px;margin:0 auto 22px;border-radius:50%;background:var(--forest);display:grid;place-items:center;box-shadow:0 0 0 1px rgba(212,168,67,.35),0 0 30px rgba(46,196,176,.22);position:relative;z-index:1;transition:transform .6s var(--ease),box-shadow .6s}
+.adv-world .orb img{width:62px;height:62px}
+.adv-world:hover .orb{transform:translateY(-4px) scale(1.05);box-shadow:0 0 0 1px var(--teal),0 0 40px rgba(46,196,176,.45)}
+.adv-world .num{display:block;font-family:var(--serif);font-size:15px;letter-spacing:.3em;color:var(--teal);text-shadow:var(--tealglow)}
+.adv-world h3{font-family:var(--serif);font-size:clamp(25px,2vw,31px);margin:6px 0 4px;color:var(--cream)}
+.adv-world .does{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.adv-world p{font-size:16.5px!important;line-height:1.65;color:var(--ivory);margin:0 0 12px}
+.adv-world em{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--teal)}
+.adv-world.later .orb{background:transparent;box-shadow:0 0 0 1.5px dashed rgba(212,168,67,.5)}
+.adv-world.later .orb{border:1.5px dashed rgba(212,168,67,.55);box-shadow:0 0 30px rgba(212,168,67,.15)}
+
+/* world chapters */
+.adv-numeral{display:flex;align-items:baseline;gap:16px;justify-content:center}
+.adv-numeral b{font-family:var(--serif);font-weight:400;font-size:clamp(46px,5vw,76px);line-height:1;color:var(--gold);text-shadow:0 0 30px rgba(212,168,67,.45)}
+.adv-sub{display:block;margin-top:14px;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);text-shadow:var(--tealglow)}
+
+/* expanders */
+.adv-more{margin:1.4em 0 2em;border-radius:12px;background:rgba(46,196,176,.06);box-shadow:inset 0 0 0 1px rgba(46,196,176,.32);transition:background .4s}
+.adv-more[open]{background:rgba(46,196,176,.09)}
+.adv-more summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 24px;min-height:44px;font-family:var(--serif);font-size:clamp(20px,1.6vw,24px);color:var(--cream);line-height:1.3}
+.adv-more summary::-webkit-details-marker{display:none}
+.adv-more summary:after{content:"+";flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-family:var(--sans);font-size:22px;color:var(--teal);border:1px solid rgba(46,196,176,.55);transition:transform .45s var(--ease),background .3s}
+.adv-more summary:hover:after{background:rgba(46,196,176,.15)}
+.adv-more[open] summary:after{transform:rotate(45deg)}
+.adv-more summary:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:12px}
+.adv-more .in{padding:0 24px 8px}
+.adv-more[open] .in{animation:kqOpen .55s var(--ease)}
+.adv-more .in p{font-size:clamp(18px,1.35vw,20px)}
+
+/* runs + carry */
+.adv-runs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);margin:clamp(56px,8vh,90px) 0 0;padding-top:clamp(40px,6vh,64px);border-top:1px solid rgba(212,168,67,.18)}
+.adv-runs h3{font-family:var(--serif);font-size:clamp(25px,2vw,30px);margin:10px 0 14px;color:var(--cream)}
+.adv-runs p{line-height:1.72;color:var(--ivory);margin:0 0 1em}
+.adv-carry{list-style:none;padding:0;margin:0}
+.adv-carry li{position:relative;padding:12px 0 12px 28px;border-bottom:1px solid rgba(212,168,67,.12);line-height:1.55;color:var(--ivory);font-size:17.5px}
+.adv-carry li:before{content:"";position:absolute;left:2px;top:22px;width:9px;height:9px;border-radius:50%;background:var(--teal);box-shadow:0 0 12px rgba(46,196,176,.75)}
+.adv-carry li b{color:var(--cream);font-weight:500}
+.adv-calling{font-family:var(--serif);font-style:italic;font-size:clamp(23px,2vw,30px);line-height:1.35;text-align:center;max-width:26em;margin:clamp(64px,9vh,110px) auto 0;color:var(--teal);text-wrap:balance}
+.adv-ask{font-family:var(--serif);font-style:italic;font-size:clamp(24px,2.2vw,32px);line-height:1.35;text-align:center;max-width:24em;margin:clamp(64px,9vh,100px) auto 0;color:var(--cream);text-wrap:balance}
+
+/* proof stories */
+.adv-proofs{display:grid;gap:clamp(48px,7vh,80px);margin-top:clamp(72px,10vh,120px)}
+.adv-proof{display:grid;grid-template-columns:150px minmax(0,1fr);gap:clamp(24px,3vw,44px);align-items:start}
+.adv-proof figure{margin:0;width:150px;height:150px;border-radius:50%;padding:5px;border:1.5px solid var(--gold-line);transition:border-color .4s,box-shadow .6s}
+.adv-proof:hover figure{border-color:var(--teal);box-shadow:0 0 26px rgba(46,196,176,.35)}
+.adv-proof figure img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+.adv-proof figure.ic{display:grid;place-items:center;background:var(--forest)}
+.adv-proof figure.ic img{width:70%;height:70%;object-fit:contain;border-radius:0}
+.adv-proof .who{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.adv-proof h3{font-family:var(--serif);font-size:clamp(26px,2.2vw,34px);margin:8px 0 16px;line-height:1.15;color:var(--cream)}
+.adv-proof p{line-height:1.75;color:var(--ivory);margin:0 0 1em}
+.adv-proof blockquote{margin:22px 0 0;padding:4px 0 4px 24px;border-left:2px solid var(--teal)}
+.adv-proof blockquote p{font-family:var(--serif);font-size:clamp(21px,1.8vw,26px)!important;line-height:1.42;color:var(--cream);margin:0}
+.adv-proof blockquote cite{display:block;margin-top:12px;font-style:normal;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+
+/* storyteller figure */
+.adv-split-fig img{aspect-ratio:4/5}
+
+/* holy shit */
+.adv-holy{font-family:var(--serif);font-size:clamp(34px,4.2vw,64px);line-height:1.12;text-align:center;max-width:15em;margin:0 auto;color:var(--gold);text-shadow:0 0 40px rgba(212,168,67,.35);text-wrap:balance}
+
+/* figures */
+.adv-fig{margin:clamp(56px,8vh,96px) auto;max-width:1100px}
+.adv-fig img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+
+/* org door */
+.adv-org{margin:clamp(72px,10vh,120px) auto 0;max-width:46em;padding:clamp(28px,3vw,44px);border-radius:14px;background:linear-gradient(150deg,rgba(46,196,176,.16),rgba(46,196,176,.04));box-shadow:inset 0 0 0 1px rgba(46,196,176,.3);text-align:center}
+.adv-org p{color:var(--ivory);line-height:1.72;margin:0 0 22px}
+.adv-org b{color:var(--cream);font-weight:500}
+
+/* promise */
+.adv-promise{max-width:44em;margin:0 auto;padding:clamp(32px,4vw,56px);border-radius:16px;border:1.5px dashed rgba(212,168,67,.5);background:rgba(0,0,0,.14)}
+.adv-promise img{width:72px;height:72px;display:block;margin:0 auto 18px}
+.adv-promise p{font-size:clamp(19px,1.45vw,21px);line-height:1.75;color:var(--cream);margin:0 0 1.1em;text-align:center}
+.adv-promise .adv-beat{text-align:center;margin-bottom:0!important}
+
+/* pricing on paper */
+.adv-price-hero{background:#fbf7ec;border-radius:16px;padding:clamp(32px,4vw,60px);border-top:4px solid var(--gold);box-shadow:0 2px 0 rgba(19,42,30,.06),0 30px 70px rgba(19,42,30,.14);max-width:1000px;margin:clamp(40px,6vh,64px) auto 0}
+.adv-price-hero .label{display:block}
+.adv-price-hero h3{font-family:var(--serif);font-size:clamp(30px,2.8vw,42px);margin:12px 0 10px;color:var(--ink);line-height:1.1}
+.adv-price-hero .for{color:var(--ink-2);line-height:1.7;margin:0 0 30px}
+.adv-bignum{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;padding:24px 0;border-top:1px solid rgba(19,42,30,.12);border-bottom:1px solid rgba(19,42,30,.12)}
+.adv-bignum b{font-family:var(--serif);font-weight:400;font-size:clamp(54px,6vw,92px);line-height:1;color:var(--ink)}
+.adv-bignum span{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-ink)}
+.adv-break{display:grid;gap:0;margin:22px 0 8px}
+.adv-break div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px dotted rgba(19,42,30,.2);font-size:17.5px;color:var(--ink-2)}
+.adv-break div b{font-weight:500;color:var(--ink)}
+.adv-break .tot{border-bottom:0;color:var(--ink)}
+.adv-break .tot s{color:#8a8a7a}
+.adv-break .save{color:#17806f;font-weight:500;border-bottom:0;padding-top:0}
+.adv-plans{font-size:15px!important;color:var(--ink-2);margin:14px 0 0}
+.adv-money{max-width:40em;margin:clamp(56px,8vh,90px) auto 0}
+.adv-money p{line-height:1.78;color:var(--ink-2);margin:0 0 1.2em;font-size:clamp(18px,1.35vw,20px)}
+.adv-money p.lead{font-family:var(--serif);font-size:clamp(22px,1.9vw,28px);line-height:1.45;color:var(--ink)}
+.adv-replaces{font-family:var(--serif);font-size:clamp(21px,1.7vw,25px)!important;line-height:1.5!important;color:var(--ink)!important}
+.adv-cta-c{display:flex;flex-direction:column;align-items:center;gap:16px;margin:clamp(40px,6vh,64px) auto 0;text-align:center;max-width:36em}
+.adv-cta-c p{color:var(--ink-2);line-height:1.7;margin:0}
+.t-paper .adv-cta-c .cta{align-self:center}
+.adv-also{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:clamp(64px,9vh,100px)}
+
+/* threshold fit on dark */
+.adv-zeros{font-family:var(--serif);font-size:clamp(30px,3.4vw,52px);line-height:1.15;text-align:center;max-width:17em;margin:0 auto;color:var(--cream);text-wrap:balance}
+
+/* apply block */
+.adv-apply{text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px;max-width:36em;margin:0 auto}
+.adv-apply>img{width:80px;height:80px;filter:drop-shadow(0 0 18px rgba(46,196,176,.4))}
+.adv-apply p{font-size:clamp(19px,1.5vw,22px);line-height:1.7;color:var(--cream);margin:0}
+
+/* the call */
+.adv-dad{font-family:var(--serif);font-size:clamp(30px,3.2vw,50px)!important;line-height:1.2!important;text-align:center;color:var(--gold)!important;margin:1.4em auto!important;max-width:16em;text-shadow:0 0 30px rgba(212,168,67,.3);text-wrap:balance}
+
+/* dock */
+.adv-dock{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;justify-content:center;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(to top,rgba(6,20,14,.96),rgba(6,20,14,.82));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid rgba(212,168,67,.22);transform:translateY(110%);transition:transform .6s var(--ease)}
+.adv-dock.on{transform:none}
+.adv-dock .row{display:flex;align-items:center;justify-content:space-between;gap:18px;width:min(1100px,100%)}
+.adv-dock p{margin:0;font-size:15px!important;color:var(--ivory)}
+.adv-dock p b{font-family:var(--serif);font-weight:400;font-size:19px;color:var(--cream)}
+
+@media(max-width:1000px){
+  .adv-worlds{grid-template-columns:1fr 1fr;row-gap:48px}
+  .adv-worlds:before{display:none}
+}
+@media(max-width:760px){
+  .adv-runs,.adv-also{grid-template-columns:1fr}
+  .adv-proof{grid-template-columns:1fr}
+  .adv-proof figure{width:112px;height:112px}
+  .adv-ninety>div{grid-template-columns:52px 1fr;gap:18px}
+  .adv-ninety img{width:50px;height:50px}
+  .adv-dock p span{display:none}
+}
+@media(max-width:520px){.adv-worlds{grid-template-columns:1fr}}
+/* specificity guards: .kq p sets body size, so display lines need weight */
+.adv p.kq-statement{font-size:clamp(28px,3.1vw,48px)!important;line-height:1.2}
+.adv p.kq-statement small{font-size:clamp(18px,1.4vw,21px)}
+.adv p.adv-mega{font-size:clamp(36px,4.6vw,72px)!important;line-height:1.08}
+.adv p.adv-holy{font-size:clamp(34px,4.2vw,64px)!important;line-height:1.12}
+.adv p.adv-zeros{font-size:clamp(30px,3.4vw,52px)!important;line-height:1.15}
+.adv p.adv-ask{font-size:clamp(24px,2.2vw,32px)!important}
+.adv p.adv-calling{font-size:clamp(23px,2vw,30px)!important}
+</style>
+</head>
+<body class="kq adv">
+<div class="progress"></div>
+<nav class="nav"><a class="brand" href="/"><img decoding="async" src="../assets/logo-butterfly.webp" alt=""><span>Metamyth</span></a><div class="nav-r"><div class="nav-ch"></div><div class="nav-links"><a href="../kinship">The Kinship Quest</a><a class="apply" href="../expedition/apply/">Apply</a></div></div></nav>
+
+<!-- 0 · HERO -->
+<section class="scene hero" id="top" data-chapter="">
+<div class="bg" data-par="0.15" data-scale="1"><img decoding="async" fetchpriority="high" src="../site/img/cosmic-city.webp" alt=""></div>
+<div class="wrap">
+<div class="label rv" style="--d:.2s">The Metamyth Adventure</div>
+<h1 data-split="" style="--d:.4s">Time travel into the world <span class="gold">where you fucking did it.</span></h1>
+<p class="kq-hero-sub rv" style="--d:1.3s">Ninety days to forge the meaning of your life into a mission others will pay to walk.</p>
+<p class="kq-hero-p rv" style="--d:1.5s">For founders, creators and leaders carrying something enormous. We take you through three worlds, with our whole team around you and a fellowship that won't let you walk it alone. You come out with the story, the offer, the map, your story brought to life as an intelligence that works in your voice, and the community to build it with.</p>
+<div class="kq-ctas rv" style="--d:1.8s"><a class="cta fill" href="../expedition/apply/">Apply for the Adventure <span>→</span></a><a class="cta" href="#ninety">Show me the journey <span>↓</span></a></div>
+</div>
+<div class="cue">Begin</div>
+</section>
+
+<!-- 1 · WHAT HAPPENS IN NINETY DAYS -->
+<section class="chapter t-deep" id="ninety" data-chapter="Ninety days">
+<div class="wrap">
+<div class="chapter-head" style="align-items:center;text-align:center">
+<div class="label rv">What happens in ninety days</div>
+<h2 data-split="">Ninety days <span class="gold">from now:</span></h2>
+</div>
+<div class="adv-ninety" data-stagger=".1">
+<div><img decoding="async" loading="lazy" src="../offer-deck/assets/icons/north-star.webp" alt=""><div><h3>You'll know why you're here.</h3><p>The thread running through your whole life, the meaning in the hardest parts, and the mission it's been pointing at the entire time. Not because someone told you. Because you found it in the story you've already lived.</p></div></div>
+<div><img decoding="async" loading="lazy" src="../offer-deck/assets/icons/megaphone.webp" alt=""><div><h3>You'll say it in one breath.</h3><p>The vision you've spent years trying to explain. Told so cleanly that the investor stops scrolling, the customer reaches for their wallet and the stranger asks how they can join you. Dr. Gareth Thompson spent five years looking for the connection between personal health and planetary health. We found it in three hours. He described it as getting a new nervous system.</p></div></div>
+<div><img decoding="async" loading="lazy" src="../offer-deck/assets/icons/sword.webp" alt=""><div><h3>You'll have something people want to buy.</h3><p>Your own transformation forged into an offer with a price on it, built from what you've actually lived, priced at what it's actually worth. Something only you could sell because only you have lived it.</p></div></div>
+<div><img decoding="async" loading="lazy" src="../offer-deck/assets/icons/map.webp" alt=""><div><h3>You'll have the map.</h3><p>The route from where you stand to the future where you fucking did it: the sales, the team, the partnerships, the capital. Not a business plan. The story that makes the plan come alive.</p></div></div>
+<div><img decoding="async" loading="lazy" src="../offer-deck/assets/icons/wizard-hat.webp" alt=""><div><h3>Your story will be working for you.</h3><p>Written out whole and brought to life as the intelligence of your story, so it thinks, writes and builds in your voice. The website, the deck, the content and the investor list come out of it in hours instead of months, so you get to do the easiness.</p></div></div>
+<div><img decoding="async" loading="lazy" src="../offer-deck/assets/icons/flag.webp" alt=""><div><h3>You'll be out in the world with it.</h3><p>Making the offers. Telling the story in rooms that used to scare you. Raising the money. Inside a fellowship of visionaries building multi-million-dollar missions beside you.</p></div></div>
+</div>
+<div class="kq-block kq-glow">
+<p class="kq-statement rv">Everyone who has gone through this has had their world turned upside down.<small>They've made millions of views in ninety seconds. They've raised tens of thousands of dollars in hours. They've written books in weeks. They've turned decades of suffering into entirely new careers. They've rewritten childhood trauma into brand narratives that sell. Seriously.</small></p>
+</div>
+<p class="adv-mega rv">It works fast. <span class="gold">Would you want it to take longer?</span></p>
+<p class="lede rv" style="margin:clamp(40px,6vh,64px) auto 0;max-width:34em;text-align:center">If you want to talk to any of these people, every one of them will rave. We'll give you their number. They will be so happy to help you make this choice.</p>
+<div class="kq-ctas rv" style="margin-top:32px"><a class="cta fill" href="../expedition/apply/">Apply for the Adventure <span>→</span></a></div>
+</div>
+</section>
+
+<!-- 2 · THE MAP -->
+<section class="chapter t-forest" id="map" data-chapter="The map">
+<div class="wrap">
+<div class="chapter-head" style="align-items:center;text-align:center">
+<div class="label rv">The map</div>
+<h2 data-split="">Four thresholds. At each one, the story gets bigger <span class="gold">and the stakes get higher.</span></h2>
+</div>
+<figure class="adv-map-fig rv"><img decoding="async" loading="lazy" src="../site/img/metamap2.webp" width="1536" height="1024" alt="A painted map of mountains and kingdoms"></figure>
+<div class="adv-worlds" data-stagger=".14">
+<div class="adv-world"><div class="orb"><img decoding="async" loading="lazy" src="../offer-deck/assets/icons/sprout.webp" alt=""></div><span class="num">I</span><h3>Originstory</h3><span class="does">You face your own story</span><p>See the stories constructing your reality and become the author of what happens next.</p><em>From character to author.</em></div>
+<div class="adv-world"><div class="orb"><img decoding="async" loading="lazy" src="../offer-deck/assets/icons/crystal-ball.webp" alt=""></div><span class="num">II</span><h3>Metamyth</h3><span class="does">You architect a world</span><p>Discover the mythic architecture that turns a personal revelation into a future others can inhabit, invest in and help build.</p><em>From storyteller to architect.</em></div>
+<div class="adv-world"><div class="orb"><img decoding="async" loading="lazy" src="../offer-deck/assets/icons/flag.webp" alt=""></div><span class="num">III</span><h3>Livinglegend</h3><span class="does">You build the mission</span><p>Take the story into the real world. Make the offers. Raise the money. Build with people who won't let you do it alone.</p><em>From visionary to living legend.</em></div>
+<div class="adv-world later"><div class="orb"><img decoding="async" loading="lazy" src="../offer-deck/assets/icons/globe.webp" alt=""></div><span class="num">IV</span><h3>Anotherworld</h3><span class="does">You change the game</span><p>When enough living legends join forces, we begin rewriting the rules of the world itself.</p><em>From mission builder to worldbuilder.</em></div>
+</div>
+<p class="lede rv" style="margin:clamp(56px,8vh,90px) auto 0;max-width:32em;text-align:center">The Adventure takes you through the first three in ninety days. The fourth is the world we're building together.</p>
+</div>
+</section>
+
+<!-- 3 · THE QUEST -->
+<div class="seam to-black" aria-hidden="true"></div>
+<section class="scene dark on-black" data-chapter="The quest">
+<div class="bg" data-par="0.22" data-scale="1"><img decoding="async" loading="lazy" src="../site/img/earth-dying.webp" alt=""></div>
+<div class="wrap">
+<div class="chapter-head" style="margin-bottom:0">
+<div class="label rv">The quest</div>
+<h2 data-split="">The world is made of stories. <span class="gold">And the wrong ones are winning.</span></h2>
+</div>
+</div>
+</section>
+<section class="chapter t-black" data-chapter="The quest">
+<div class="wrap">
+<div class="adv-col">
+<p class="rv">Look around.</p>
+<p class="rv">We've built a civilization capable of miracles, and somehow made it more profitable to destroy the living world than to heal it.</p>
+<p class="rv">We can imagine artificial intelligence, colonizing Mars, and machines that reshape the planet. But ask us to imagine an economy that rewards caring for each other and the earth, and suddenly everyone wants to know who's going to pay for it.</p>
+<p class="rv">We've mistaken the rules of a game we invented for the laws of reality.</p>
+<p class="rv adv-beat">We forgot we'd made it up.</p>
+<p class="rv">Money. Markets. Corporations. Nations. Careers. The stories we tell about success, power, love, and who we're allowed to become. They're astonishing works of collective imagination. And they're real because we believe in them, organize our lives around them, and keep bringing them into existence.</p>
+<p class="rv">The same story engine that shapes your experience of being alive shapes the institutions that govern the world.</p>
+</div>
+<div class="kq-block kq-glow">
+<p class="kq-statement rv">The prison and the possibility <span class="gold">are made of the same thing.</span></p>
+</div>
+<div class="adv-col">
+<p class="rv">And somehow, in the middle of all this overwhelming evidence of our capacity to create reality, we've convinced ourselves that changing the world is unrealistic.</p>
+<p class="rv">That's the mindfuck.</p>
+<p class="rv">We made this world. We can change it.</p>
+<p class="rv">But the people who understand how to shape belief have become very good at selling us futures we don't actually want. And some of the most brilliant people on earth, people carrying real solutions to real crises, have spent their lives struggling to explain the value of work that could change everything.</p>
+<p class="rv">The old game has convinced us that making money and making a difference belong to different worlds. That the people who care should be poor, the people who prosper should be ruthless, and anyone who wants to change the rules should first learn to play by them.</p>
+<p class="rv">What a fucking story.</p>
+<p class="rv">Here's a more interesting one.</p>
+<p class="rv adv-beat">What if the very power that created this world is the power we can use to create another?</p>
+<p class="rv">Not someday, when the system changes. Now.</p>
+<p class="rv">We're not here to use the most extraordinary power in the universe to tell product stories or make money for its own sake. We're here to help people who give a damn wield the same force that built civilizations and use it to build something worth living in.</p>
+<p class="rv adv-beat cream">That's the adventure.</p>
+</div>
+</div>
+</section>
+
+<!-- 4 · THE STORYTELLER -->
+<section class="chapter t-night" data-chapter="The storyteller">
+<div class="wrap">
+<div class="kq-split top">
+<div class="kq-story">
+<div class="label rv">The storyteller</div>
+<h2 class="kq-h2" data-split="">I had to kill the character I'd become <span class="gold">to discover the story I was here to tell.</span></h2>
+<p class="rv">My old story nearly killed me. So I killed the character instead.</p>
+<p class="rv">I spent the next decade traveling across five continents, making films, building movements, working in politics up to the presidential level, and following a question I couldn't escape: <em>What would it actually take to change the world?</em></p>
+<p class="rv">I met indigenous elders, revolutionaries, entrepreneurs, artists, and people who were already living in worlds most of us had been taught were impossible.</p>
+<p class="rv">I learned to walk into rooms where I had no business being, bring strangers together around improbable missions, and make things happen without knowing where the money would come from.</p>
+<p class="rv"><strong>I didn't need a job because I had a quest.</strong> And the more powerfully I could tell its story, the more people, opportunities and resources appeared to help make it real.</p>
+<p class="rv">But there was one thing I couldn't figure out. Money. I fucking hated business. I protested it with my whole life. I had an endless supply of excuses, and every one of them sounded like a principle.</p>
+<p class="rv">Meanwhile, I'd been persuading people to believe in impossible futures for years. Traveling the planet without money, making movies, getting into politics, rich people shit. I talked my way around the world. I crowdfunded my whole existence, built movements, got millions of engagements, turned my life into adventure, all with story.</p>
+<p class="rv">Then one day I saw it.</p>
+<p class="rv turn">Business is storytelling.</p>
+<p class="rv">A sale is a story about a transformation worth paying for. An investment is a story about a future worth believing in. A movement is a story people begin to live together.</p>
+<p class="rv">And the best storyteller wins.</p>
+<p class="rv">That realization didn't make me love the old game. It showed me how to play a better one. I did not believe you could do business with love. I fought money with everything I had. And then the first person who ever paid me for this work transformed, in part because of the money he paid me. It brought him to zero. He was a banker. He proudly proclaimed it on LinkedIn. And I gave him the meaning of his life.</p>
+<p class="rv">Isn't it funny? I spent years protesting money and the first person that paid me was a fucking banker that I helped get to zero to start a podcast about how financial wealth is all breadcrumbs.</p>
+<p class="rv">I began guiding others through the same discovery. Time and time again, the magic in the story shows you that it was always there. The problem was never that people had nothing valuable to offer. They hadn't yet learned to see what they were carrying.</p>
+<p class="rv turn">The story that changes your life can become the story that changes the world.</p>
+<p class="rv">That's our quest. And it begins with yours.</p>
+</div>
+<figure class="sticky rv adv-split-fig"><img decoding="async" loading="lazy" src="../site/img/img-2.webp" alt="Zachary on stage in front of a painted mural"><img class="back" decoding="async" loading="lazy" src="../site/img/img-1.webp" alt="A street protest with handmade signs"></figure>
+</div>
+</div>
+</section>
+
+<!-- 5 · I · ORIGINSTORY -->
+<section class="scene" id="originstory" data-chapter="I · Originstory">
+<div class="bg" data-par="0.22" data-scale="1"><img decoding="async" loading="lazy" src="../site/img/forest-path.webp" alt=""></div>
+<div class="wrap">
+<div class="chapter-head" style="margin-bottom:0;align-items:center;text-align:center">
+<div class="adv-numeral rv"><b>I</b></div>
+<span class="adv-sub rv">The stories we tell · Originstory</span>
+<h2 data-split="">Master the story engine <span class="gold">of consciousness.</span></h2>
+</div>
+</div>
+</section>
+<section class="chapter t-forest" data-chapter="I · Originstory">
+<div class="wrap">
+<div class="adv-col">
+<p class="rv">Your life has been telling you a story since the day you were born. About who you are. What you're worth. What you're allowed to want. Whether money is safe. Whether your gifts are valuable. Whether the world has room for someone like you.</p>
+<p class="rv">Most of us spend our lives defending those stories without ever realizing we're the ones keeping them alive.</p>
+<p class="rv adv-beat">You cannot outwork a story you're still living inside.</p>
+<p class="rv">I know people with brilliant minds and world-changing ideas who can't bring themselves to charge for their work. People who can mobilize entire communities and cannot ask for help. People who could create millions in value and have never allowed themselves to imagine receiving a fraction of it.</p>
+<p class="rv">Their problem isn't tactics. They're trying to build a new life from inside an old identity.</p>
+<p class="rv">Originstory is where that ends. Through the seven arts of storytelling, you learn to see the architecture of your own consciousness: the characters you've played, the conflicts you've repeated, the meaning you've made, and the possibilities you've unconsciously ruled out. Things you thought were fixed melt into thresholds you can cross.</p>
+<p class="rv">It's been described as a lifetime of therapy in a few weeks. You will reach a moment, writing your story, where the golden thread you've been living becomes visible for the first time. Everyone does. And it changes everything after.</p>
+<details class="adv-more rv"><summary>What changes when you rewrite your story?</summary><div class="in">
+<p>You begin to see how the character you've been playing learned to survive, why the same patterns keep appearing, and how much of what you've called reality is a set of rules you inherited, believed and kept living.</p>
+<p>Through the seven arts, you bring the old story to an ending and write the next chapter, turning the struggles that shaped you into the material of a future you actually want to live. As the old story loosens its grip, you begin to feel like the right character in a life you're finally becoming the author of, finding your voice and learning to tell the story in a way that moves people.</p>
+<p>Because the story was always there.</p>
+</div></details>
+</div>
+<div class="adv-runs">
+<div class="rv"><span class="label">How it runs</span><h3>At your pace.</h3><p>Some people write it out over a couple of weeks, an hour a day. Some talk it into their phone in a few intense hours. Some need to sit with the hard parts and let the healing rewire their nervous system. However long it takes you, Cataleya is at the threshold challenging you and Zachary is helping you bring the old story to an ending.</p></div>
+<div class="rv" style="--d:.12s"><span class="label">What you carry out</span><ul class="adv-carry" style="margin-top:14px">
+<li><b>Your Originstory:</b> your life, told so you can finally read it</li>
+<li><b>Your origin synthesis:</b> the gifts, the wounds, the values, the thread</li>
+<li><b>Your Embodied Mission Blueprint:</b> identity and mission made structural</li>
+</ul></div>
+</div>
+<p class="adv-calling rv">What if the struggles that shaped your life have been preparing you for the problem you came here to solve?</p>
+<div class="adv-proofs">
+<article class="adv-proof rv"><figure><img decoding="async" loading="lazy" src="../site/img/jessica-arburn.webp" alt="Jessica Arburn"></figure><div>
+<span class="who">Jessica Arburn</span><h3>The giver who found her army</h3>
+<p>Jessica was an overgiving single mother and CEO who had poured herself into purposeful work until there was nothing left to give. Hours before our first call, she told the universe she needed help telling her story. On the call, she said she didn't have the money. She found the fucking money.</p>
+<p>Writing her Originstory, she found a buried trauma she never knew was there, and inside it the thread of everything: her purpose, her mission, her product, and the slogan she now runs on, turning givers into receivers. She called it the greatest thing she's ever done with her life. And she's had kids.</p>
+<p>She is now an irreplaceable part of this mission. And our stories are one.</p>
+<blockquote><p>"Looking back I am still in awe of how important it was to step into the Metamyth experience. It was the catalyst and necessary step to stepping into the fullest version of who I am today. From the very acceptance of this process, everything activated within. My cells changed and the remembrance of mission came into clarity."</p></blockquote>
+</div></article>
+<article class="adv-proof rv"><figure><img decoding="async" loading="lazy" src="../site/img/j-friday.webp" alt="J Friday"></figure><div>
+<span class="who">J Friday</span><h3>The outsider who changed the story a government told about itself</h3>
+<p>A homeless entrepreneur until she realized she was the storyteller. She found her voice, went viral again and again, became one of the top voices on Substack, landed in the national Scottish press, and the Scottish government changed its own story.</p>
+</div></article>
+</div>
+<p class="adv-ask rv">Can you find the story that turns your life into a calling?</p>
+</div>
+</section>
+
+<!-- 6 · II · METAMYTH -->
+<section class="scene" id="metamyth" data-chapter="II · Metamyth">
+<div class="bg" data-par="0.22" data-scale="1"><img decoding="async" loading="lazy" src="../site/img/mountains.webp" alt=""></div>
+<div class="wrap">
+<div class="chapter-head" style="margin-bottom:0;align-items:center;text-align:center">
+<div class="adv-numeral rv"><b>II</b></div>
+<span class="adv-sub rv">The myths we envision · Metamyth</span>
+<h2 data-split="">Master the narrative architecture <span class="gold">of collective reality.</span></h2>
+</div>
+</div>
+</section>
+<section class="chapter t-teal" data-chapter="II · Metamyth">
+<div class="wrap">
+<div class="adv-col">
+<p class="rv">Now we cross into stranger territory.</p>
+<p class="rv">You've discovered the story of your life. But your story was never only about you.</p>
+<p class="rv"><b class="hl">We're going to travel into the future where you fucking did it.</b> Where the problem that has haunted your life has been transformed. Where the people you've wanted to help are living differently. Where the things you know are possible have become ordinary.</p>
+<p class="rv">And from that future, we're going to tell the story backward.</p>
+<p class="rv">The revelation that arrives here changes the way you see everything.</p>
+</div>
+<div class="kq-block kq-glow">
+<p class="kq-statement rv">The whole fucking thing <span class="gold">is storytelling.</span></p>
+</div>
+<div class="adv-col">
+<p class="rv">The product, the brand, the marketing, the sales, the team, the investment: these aren't separate puzzles you have to solve. They're expressions of one coherent story about a future people want to help make real. The same story that gives your life meaning can give an organization its mission, a customer a reason to buy, a team a reason to care, and an investor a reason to believe.</p>
+<p class="rv adv-beat">The story becomes the strategy. <span style="color:var(--cream)">Every time you tell it, you drive the plot forward.</span></p>
+<p class="rv">Your authenticity is the most overpowered skill in the world. Corporations spend billions trying to manufacture it: belonging, purpose, identity. They know those things move people. You have a real story. A life nobody else could have lived. A perspective nobody else could manufacture. A reason to care about a problem that no agency could invent.</p>
+<p class="rv">And you've been hiding it in a story too small for your genius.</p>
+<p class="rv">Metamyth changes that. We begin with the world you're here to create, then discover the story and venture capable of bringing it to life.</p>
+<details class="adv-more rv"><summary>How does your story become a world people pay to join?</summary><div class="in">
+<p>Through the seven movements of Metamyth, Origin, Calling, Quest, Vision, Mission, Request and Legacy, we discover the architecture of the world you're building. What changes for the people who enter it? What becomes possible that wasn't possible before? What would make that transformation so valuable people would pay to experience it? What kind of organization could bring it to life?</p>
+<p>Then we bring it to life. Your Metamyth, written into the future and back, becomes the source of an intelligence that knows your story: who you are, what you're building and how you speak. It researches, writes, builds your website and decks, helps you find investors, creates content with you and helps automate the business so you get to do the easiness. Artificial intelligence was trained on everyone. This is the intelligence of your story, brought to life.</p>
+</div></details>
+</div>
+<div class="adv-runs">
+<div class="rv"><span class="label">How it runs</span><h3>A few deep sessions.</h3><p>Starting the moment your Originstory is complete. It works fast. Usually two or three sessions. If it takes more, we keep going until we hit gold. Would you want it to take longer?</p></div>
+<div class="rv" style="--d:.12s"><span class="label">What you carry out</span><ul class="adv-carry" style="margin-top:14px">
+<li><b>Your Metamyth:</b> your whole story written into the future and back, the source every pitch, page and post draws from</li>
+<li><b>The intelligence of your story:</b> your Metamyth brought to life as a guide that thinks, writes and builds with you in your voice</li>
+<li><b>Your Sword:</b> the offer you forge from your own transformation, with a price on it</li>
+<li><b>Your Mission Map:</b> the route to sales, team, partnerships and capital</li>
+</ul></div>
+</div>
+<div class="kq-block kq-glow" style="margin-bottom:0">
+<p class="kq-statement rv" style="font-size:clamp(24px,2.4vw,36px)">Something is going to happen to you in this process that we can't predict.<small>We've seen it enough times to know. We just can't tell you what it is. This system worked so well we had to learn the neuroscience behind it, and that only made it more powerful.</small></p>
+</div>
+<div class="adv-proofs">
+<article class="adv-proof rv"><figure><img decoding="async" loading="lazy" src="../site/img/gareth-thompson.webp" alt="Dr. Gareth Thompson"></figure><div>
+<span class="who">Dr. Gareth Thompson</span><h3>The healer on a sick planet</h3>
+<p>Five years searching for the connection between personal health and planetary health. In our first hour session, he read the first page of his own origin story and felt energy coursing through his body. Then he collapsed for ten hours. Then he woke up feeling like he was going nuclear. He went through a total reorganization of his personality, found his life's purpose in one word, and connected a planetary crisis to the personal breakdown he'd had to go through to get there. He found a new career and a new story for the whole field of sustainability. This is a doctor running hospital systems. He is not a baby.</p>
+<blockquote><p>"I feel like I have a new nervous system. The story is real. My story is real. I am a scientist. I am a doctor. If anyone with a rational analytical mind is doubting this process, stop and listen."</p></blockquote>
+</div></article>
+<article class="adv-proof rv"><figure><img decoding="async" loading="lazy" src="../site/img/michael-haupt.webp" alt="Michael Haupt"></figure><div>
+<span class="who">Michael Haupt</span><h3>The prophet of collapse who frames the next world</h3>
+<p>After a ninety-minute call, the time it takes to watch a bad movie on an airplane, Michael saw something he will never unsee. That he was not a loser warning about the end of civilization. He was on a hero's journey toward what comes next. Then he wrote an entire book in three weeks that made people cry. Rebuilt his brand. Launched an offer. 200x'd his YouTube views. Had seventy people show up to his webinar. After one call.</p>
+<blockquote><p>"Holy fucking guacamole. You made sense of the madness."</p></blockquote>
+</div></article>
+</div>
+<p class="adv-ask rv">Can you imagine a future worth becoming someone extraordinary to create?</p>
+</div>
+</section>
+
+<!-- 7 · THE WASTELAND -->
+<section class="scene dark" data-chapter="The wasteland">
+<div class="bg" data-par="0.22" data-scale="1"><img decoding="async" loading="lazy" src="../images/crisis-bg.webp" alt=""></div>
+<div class="wrap">
+<div class="chapter-head" style="margin-bottom:0">
+<div class="label rv">The wasteland</div>
+<h2 data-split="">Welcome to <span class="gold">the wasteland.</span></h2>
+</div>
+</div>
+</section>
+<section class="chapter t-black" data-chapter="The wasteland">
+<div class="wrap">
+<div class="adv-col">
+<p class="rv">The vision is alive, the mission is clear, and you can almost feel the future pulling you toward it.</p>
+<p class="rv">Then the investor doesn't commit. The customer loves the idea and doesn't buy. The team doesn't quite understand. The money runs thin, and the old story comes back with a thousand excellent reasons why this was all a terrible idea.</p>
+<p class="rv">This is where the most beautiful visions go to die. Most people read this as proof they lack value. Look again. The value is real. It hasn't yet become a story the world can recognize and join.</p>
+<p class="rv">Nobody crosses this place alone.</p>
+</div>
+<div class="kq-block kq-glow" style="margin-bottom:0">
+<p class="kq-statement rv">And this is where <span class="gold">the legends begin.</span></p>
+</div>
+</div>
+</section>
+
+<!-- 8 · III · LIVINGLEGEND -->
+<section class="scene" id="livinglegend" data-chapter="III · Livinglegend">
+<div class="bg" data-par="0.22" data-scale="1"><img decoding="async" loading="lazy" src="../images/mountain-bg.webp" alt=""></div>
+<div class="wrap">
+<div class="chapter-head" style="margin-bottom:0;align-items:center;text-align:center">
+<div class="adv-numeral rv"><b>III</b></div>
+<span class="adv-sub rv">The legends we live · Livinglegend</span>
+<h2 data-split="">Build your <span class="gold">multi-million-dollar mission.</span></h2>
+</div>
+</div>
+</section>
+<section class="chapter t-ember" data-chapter="III · Livinglegend">
+<div class="wrap">
+<div class="adv-col">
+<p class="rv adv-beat cream" style="margin-top:0!important">You want help with sales, fundraising, product design, branding, copywriting? Cool. That stuff is literally a game to us. <span class="gold">The real hard work is you showing up and being the person you say you are.</span></p>
+<p class="rv">We built Livinglegend because we knew we had to give people support after blowing their minds. Because we're all going someplace that's never been. We're all doing things nobody's done before. And if you're the rare person this is right for, we want to make sure you get there.</p>
+<p class="rv">You'll enter a fellowship of founders, creators, investors and visionaries deep inside their own quests, building multi-million-dollar missions, using collective intelligence to navigate toward futures none of us could build alone. The fellowship is not a network. Not a Zoom room. It's a band of people bringing the work they're afraid to bring, the asks they're afraid to make, the visions they're afraid to say out loud, into a room full of people who understand because they're doing the same thing.</p>
+<p class="rv">Imagine the business of your dreams. Every aspect of it fulfills you. Sales becomes service. Branding is creating a world. This life can be what we make it.</p>
+<p class="rv turn adv-beat">I learned this the hard way.</p>
+<p class="rv">After a decade proving another world was possible, I came home and found myself alone in a trailer trying to build a business inside the very system I'd spent my life fighting. I learned sales and marketing, followed the gurus, made the money, lost the love story I was trying to save, and discovered I'd become the lonely founder playing a game I didn't even believe in.</p>
+<p class="rv adv-beat">My own story was the problem.</p>
+<p class="rv">So I stopped trying to beat the old game and began telling the story of the world I actually wanted to live in. A company that grew by helping other people's missions succeed, surrounded by people who believed in the same future and could bring gifts I didn't have.</p>
+<details class="adv-more rv"><summary>What did it feel like in that trailer?</summary><div class="in">
+<p>At the time it felt almost ridiculous. I was alone in a trailer, dreaming of building a global community and a business that could help change the economy.</p>
+</div></details>
+<p class="rv adv-beat">Then I started living the story.</p>
+<p class="rv">I moved to a beautiful village in Colombia, found myself surrounded by family and friends, and began gathering a team of extraordinary people bringing experience from some of the biggest companies in the world to a mission we believed in together.</p>
+<p class="rv">We brought twenty-one visionaries into our first Kinship Quest, booked twenty-six calls in a single day, made $35,000 in sales, brought in nine contributors and three partner projects, and watched the community begin creating opportunities none of us could have made happen alone.</p>
+<details class="adv-more rv"><summary>What happened next?</summary><div class="in">
+<p>People started recognizing me at events and conferences because they'd already heard the story. Prospective clients showed up knowing what we were building and ready to buy. The visionaries who came looking for their own transformations were finding each other, collaborating, and becoming part of a movement taking on a life of its own.</p>
+</div></details>
+</div>
+<figure class="adv-fig rv"><img decoding="async" loading="lazy" src="../site/img/photo-3.webp" alt="The community celebrating together in the village"></figure>
+<p class="adv-holy rv">Holy shit. I told a story about a world I wanted to live in, and now I'm living in it.</p>
+<div class="adv-col" style="margin-top:clamp(56px,8vh,90px)">
+<p class="rv">Every time I take someone through this journey, it floors me. I am still in awe of the strange magic of story. And I know that my purpose is helping people like you find theirs.</p>
+<p class="rv">That's what Livinglegend is for: the stretch where most people go back to the old story, walked with people who won't let you. Not because we're holding you accountable. Because we're building together, and leaving would be crazy, because the goal isn't a transaction. The goal is that we blow your mind so completely and help you build so much that you never want to work any other way again. We're here to change the world, not make money off you. We're here to build together.</p>
+<details class="adv-more rv"><summary>What methods will I learn?</summary><div class="in">
+<p>Along the way you'll learn the methods we're using ourselves: many-to-many transformational offers that grow through the people they transform, purpose-based pricing, regenerative capital architecture, embodied leadership and organizations that operate as movements. Sales becomes service. Fundraising becomes the art of casting the right people into a story worth bringing to life.</p>
+</div></details>
+</div>
+<div class="adv-runs">
+<div class="rv"><span class="label">How it runs</span><h3>Three fires a month.</h3><p>Three fires a month for the rest of your ninety days: envision the next chapter, forge the work, celebrate what you've learned. Plus a private mission-mapping session. You will end your addictions to suffering. You will clear your money story. You will invest in yourself so completely that money can't help but follow.</p></div>
+<div class="rv" style="--d:.12s"><span class="label">What you carry out</span><ul class="adv-carry" style="margin-top:14px">
+<li>Your pitch, from origin to ask, rehearsed until it lands</li>
+<li>Your first offers out in the world</li>
+<li>Your fellowship, and the methods we use ourselves</li>
+<li>And a community of extraordinary people we have searched heaven and earth for. You should feel chosen. You should feel lucky. We do.</li>
+</ul></div>
+</div>
+<div class="adv-proofs">
+<article class="adv-proof rv"><figure><img decoding="async" loading="lazy" src="../site/img/steve-keen.webp" alt="Steve Keen"></figure><div>
+<span class="who">Steve Keen</span><h3>The renegade economist with a broken money story</h3>
+<p>The first economist to predict the 2008 collapse, a genius in exile who had grown desperate about money. He was the first person we ever took through a full Metamyth journey. The moment he told his story and asked, his audience gave him eighteen thousand dollars. He's now getting millions of views and building an institution in conversation with every political party in the United Kingdom.</p>
+</div></article>
+</div>
+</div>
+</section>
+
+<!-- guides -->
+<section class="chapter t-night" id="guides" data-chapter="Your guides">
+<div class="wrap">
+<div class="chapter-head">
+<div class="label rv">Your guides</div>
+<h2 data-split="">No one <span class="gold">transforms alone.</span></h2>
+<p class="lede rv">Every great story has guides. Every one of ours walked the path first.</p>
+</div>
+<div class="kq-guides" data-stagger=".1">
+<article class="kq-guide"><figure><img decoding="async" loading="lazy" src="../site/img/zachary.webp" alt="Zachary Marlow"></figure><h3>Zachary Marlow</h3><span class="label">Authorship</span><p>He's talked his way around the world on nothing but story. Making films through counterculture and indigenous nations across five continents, building movements that touched hundreds of thousands, creating media ecosystems that reached millions.</p><p>His superpower is seeing who you could be: he takes the smallest possibility and explodes it into an entire world, and turns even the most tragic thing that ever happened to you into the compost something alive grows from. He'll pull your golden thread all the way into the future, help you craft it into an enterprise, find the story that makes it sellable, and laugh the whole way there.</p></article>
+<article class="kq-guide"><figure><img decoding="async" loading="lazy" src="../site/img/cataleya.webp" alt="Cataleya Morgan"></figure><h3>Cataleya Morgan</h3><span class="label">Threshold Guardian &amp; Missionkeeper</span><p>She worked deep inside Tesla and the tech giants until hundreds of ceremonies with indigenous elders showed her it is us who need to change.</p><p>She'll call you lovingly on your bullshit, hold you to your highest self and transmit the wisdom of the ages into your story, with a razor-sharp mix of sales, marketing, branding and embodiment.</p></article>
+<article class="kq-guide"><figure><img decoding="async" loading="lazy" src="../site/img/kq/p-anna.webp" alt="Anna Giunta"></figure><h3>Anna Giunta</h3><span class="label">Heart Song</span><p>Two decades of healing modalities together into an explosion of love. Anna reconnects you to the deliciousness of your own authentic expression and holds the community as one living organism.</p></article>
+<article class="kq-guide"><figure><img decoding="async" loading="lazy" src="../site/img/kq/p-josie.webp" alt="Josie Loner"></figure><h3>Josie Loner</h3><span class="label">Star Power</span><p>Turns being too much into a superpower and channels it into the presence that commands a room.</p></article>
+<article class="kq-guide"><figure><img decoding="async" loading="lazy" src="../site/img/kq/p-jeremy.webp" alt="Jeremy Akers"></figure><h3>Jeremy Akers</h3><span class="label">Work into Play</span><p>Co-designs the liberating structures and games that turn every session into a masterfully participatory experience, asks wicked questions, and will always call you on your bullshit.</p></article>
+</div>
+<div class="kq-block kq-glow">
+<p class="kq-statement rv">We are going to love you and believe in you more than anyone ever has, <span class="gold">which will challenge you to the core of all your excuses.</span></p>
+</div>
+<blockquote class="kq-quote rv"><p>"You have no clue what is the magic that is going to happen with the people that are going to be in the journey with you. The constellation is gonna blow your mind."</p><cite>Anna Giunta</cite></blockquote>
+<p class="adv-ask rv">Can you build a mission that becomes more powerful the more people join it?</p>
+</div>
+</section>
+
+<!-- 9 · IV · ANOTHERWORLD -->
+<section class="scene" id="anotherworld" data-chapter="IV · Anotherworld">
+<div class="bg" data-par="0.22" data-scale="1"><img decoding="async" loading="lazy" src="../site/img/banner.webp" alt=""></div>
+<div class="wrap">
+<div class="chapter-head" style="margin-bottom:0;align-items:center;text-align:center">
+<div class="adv-numeral rv"><b>IV</b></div>
+<span class="adv-sub rv">The world we lead · Anotherworld</span>
+<h2 data-split="">What happens when you change <span class="gold">the story the world runs on?</span></h2>
+</div>
+</div>
+</section>
+<section class="chapter t-forest" data-chapter="IV · Anotherworld">
+<div class="wrap">
+<div class="adv-col">
+<p class="rv">The same power running your nervous system is running our culture, our economy and our civilization, and the stories that have been used to manipulate people, manufacture scarcity and concentrate power can become the very means by which we remember our freedom and build something better.</p>
+<p class="rv">We are realigning to our own nature as social creatures. Brands and corporations have used that nature against us to sell us shit. We're using it to reconnect people to their true value. And we're using money itself, the weirdest story system of all, to pull people into another world.</p>
+<p class="rv">When your ninety days end, you cross into the kinship community: founders, scientists, storytellers, investors and worldbuilders from every corner of the planet who know what it is to be possessed by a future that doesn't exist yet, and who are committed to helping each other make it real. Some become guides. Some build together. Some join each other's missions.</p>
+</div>
+<div class="kq-block kq-glow">
+<p class="kq-statement rv">We get the old system to pay us <span class="gold">to build the new one.</span></p>
+</div>
+<div class="adv-col">
+<details class="adv-more rv"><summary>What's the great joke at the heart of it?</summary><div class="in">
+<p>Here's the great joke at the heart of the whole thing. The people who know how to solve every problem on earth are already here, building things the old world doesn't know how to value. Meanwhile, the old economy has become extraordinarily good at making money by solving the wrong problems, manufacturing new ones and convincing us that whatever makes the most money must be the most valuable.</p>
+<p>What if the greatest opportunity on earth is everything the old system forgot how to value?</p>
+<p>That's where we're taking this: a network of missions that grows by helping each other succeed, where the people with the answers can find the resources to make them real, and where every successful venture helps make the next one possible.</p>
+</div></details>
+</div>
+<div class="adv-proofs">
+<article class="adv-proof rv"><figure class="ic"><img decoding="async" loading="lazy" src="../offer-deck/assets/icons/crystal-ball.webp" alt=""></figure><div>
+<span class="who">Dr. Geordan Shannon</span><h3>The founder whose mission is too much</h3>
+<p>Dr. Geordan Shannon spent her whole life being too much. Delivering babies in the Amazon. Working at the United Nations. Building a tech company. Reducing herself the entire time. And that was exactly the story of her business: nature is too much, and we reduce its value to money. Her system is here to change that. She came in off a drunk post, paid $6,500, and knew after the first call this was her mission. Now we're building together and raising her a billion dollars.</p>
+<blockquote><p>"You ruined all my other communities, even the in-person ones."</p></blockquote>
+</div></article>
+<article class="adv-proof rv"><figure class="ic"><img decoding="async" loading="lazy" src="../offer-deck/assets/icons/fountain.webp" alt=""></figure><div>
+<span class="who">Matthew Ross</span><h3>The one who got rich and wants it to mean something</h3>
+<p>Matthew Ross made millions inside the financial system and hated what it was doing to the world. When he escaped into nature, he discovered what he came to see as the greatest investment opportunity of all time: the living wealth of the planet itself.</p>
+<blockquote><p>"It's almost like going to church, around people who believe in the same thing, a life committed to something they can't see. Since I've joined this room, I realized it's not lonely anymore. We're all as crazy as each other."</p></blockquote>
+</div></article>
+</div>
+<div class="adv-org rv">
+<p><b>For brands, funds, initiatives and movements.</b> For organizations that need narrative architecture at the scale of the systems they're trying to change, that work is bespoke. It starts with a conversation.</p>
+<a class="cta" href="mailto:zachary@anotherworld.earth?subject=The%20world%20we%20lead%20%C2%B7%20A%20conversation">Start a conversation <span>→</span></a>
+</div>
+<p class="adv-ask rv">Can you imagine the world we'd build if the people who cared the most had the power to write what happens next?</p>
+</div>
+</section>
+
+<!-- 10 · THE PROMISE -->
+<section class="chapter t-teal" data-chapter="The promise">
+<div class="wrap">
+<div class="chapter-head" style="align-items:center;text-align:center"><div class="label rv">The promise</div></div>
+<div class="adv-promise rv">
+<img decoding="async" loading="lazy" src="../offer-deck/assets/icons/shield-leaf.webp" alt="">
+<p>We can't guarantee anything you don't show up for. Nobody honest can.</p>
+<p>Here's what we stand behind. Show up and do the work, and in ninety days you'll have your story, your offer, your map and the intelligence of your story working beside you, and you'll have taken your first real steps into the world with it.</p>
+<p>If you've done the work and it still hasn't landed, we keep working with you until it does. We don't leave anyone in the wasteland.</p>
+<p>The only people this hasn't radically transformed didn't pay, didn't sacrifice, didn't show up for themselves.</p>
+<p class="adv-beat">Our story needs you to win.</p>
+</div>
+</div>
+</section>
+
+<!-- 11 · GO TO BATTLE -->
+<section class="chapter t-night" data-chapter="We'll go to battle for you">
+<div class="wrap">
+<div class="chapter-head" style="align-items:center;text-align:center">
+<h2 data-split="">If you're one of us, <span class="gold">we'll go to battle for you.</span></h2>
+</div>
+<div class="adv-col">
+<p class="rv">I built this for the person I was when nobody knew how to bet on me.</p>
+<p class="rv">A pissed-off visionary living in a trailer with whole worlds in his head. Someone who'd traveled the planet, seen what was possible, and become so horrified by the poverty of imagination in the modern economy that he'd set out to change the entire fucking world. And yet couldn't charge two hundred dollars to save his own life and marriage.</p>
+<p class="rv">I blamed the system. I blamed money. I blamed business. I had made myself the victim of a story I didn't want to live, without realizing how much of it I was still writing.</p>
+<p class="rv">I needed someone who could see what I was carrying, challenge the bullshit I believed about myself, and help me turn that vision into something people could actually join.</p>
+<p class="rv">That's who I built this for.</p>
+<p class="rv">So if you're one of the people we're looking for, and you're willing to show up for your mission, <b class="hl">we'll do fucking backflips to help you find a way forward.</b></p>
+<p class="rv">If the complete adventure isn't possible for you yet, tell us your story. Tell us what you're building, what you're bringing, and where you need help. Maybe we begin with one chapter. Maybe there's another way to work together.</p>
+<p class="rv adv-beat">We're looking for the people we want to spend our lives building with.</p>
+</div>
+</div>
+</section>
+
+<!-- 12 · WHAT IS YOUR STORY WORTH -->
+<section class="chapter t-ember" data-chapter="What is your story worth?">
+<div class="wrap">
+<div class="chapter-head" style="align-items:center;text-align:center">
+<div class="label rv">The investment</div>
+<h2 data-split="">What is your story <span class="gold">worth?</span></h2>
+</div>
+<div class="adv-col">
+<p class="rv">Money is a story system. It gets consolidated with the meaning we collectively give it. And it can be rewritten. That's not manifestation. That's how the Federal Reserve creates money out of belief. That's how banks and investors pour billions into a story someone writes on paper.</p>
+<p class="rv adv-beat">You think you're different from those rules? You think your excuses are bigger than the Federal Reserve?</p>
+<p class="rv">The people who have paid the most for this are the most transformed. Not because the service scales with price. Because the commitment does. The act of paying IS the act of believing in your own story. And when you believe in your story that much, it works.</p>
+</div>
+<div class="adv-proofs">
+<article class="adv-proof rv"><figure><img decoding="async" loading="lazy" src="../images/julien-emile-geay.jpg" alt="Julien Emile-Geay"></figure><div>
+<span class="who">Julien Emile-Geay</span><h3>The scientist who got people dancing through climate crisis</h3>
+<p>Julien was a climate scientist putting his students to sleep with the most important story on earth. Actually a super interesting guy, trapped in the wrong story. We connected his purpose and his livelihood in three words: bodies in motion. He started getting people to dance through climate crisis. Literally. He paid $16,000 and was terrified. But the real magic was that because he paid, he believed in his story that much. And it worked almost instantly. His life, his relationships, everything. He was free.</p>
+<blockquote><p>"I was nervous about paying so much for this, and I got everything I wanted. I'm set for the next year."</p></blockquote>
+</div></article>
+<article class="adv-proof rv"><figure class="ic"><img decoding="async" loading="lazy" src="../offer-deck/assets/icons/chalice.webp" alt=""></figure><div>
+<span class="who">Kevin Howard</span><h3>The banker who achieved the dream and found it was breadcrumbs</h3>
+<p>Kevin lived the American dream: football player, military service, banker in the big house. He found it was breadcrumbs. Started a podcast called Breadcrumbs. He was my first paying client. His last money. He went to zero and announced it on LinkedIn with pride. And the meaning of his life coursed through everything.</p>
+<blockquote><p>"It is in all my work streams and in all my relationships. It was my highest expense for the year, and it was not expensive, because the value was infinitely more than it cost."</p></blockquote>
+</div></article>
+</div>
+<div class="kq-block kq-glow" style="margin-bottom:0">
+<p class="kq-statement rv">Money is magic. <span class="gold">We've been told it's about fear and greed. It's actually about awe and abundance.</span><small>We're going to blow that apart and turn it into a plot device in a much bigger story.</small></p>
+</div>
+</div>
+</section>
+
+<!-- 13 · CHOOSE YOUR PATH -->
+<div class="seam to-paper" aria-hidden="true"></div>
+<section class="chapter t-paper" id="path" data-chapter="Choose your path" style="padding-top:clamp(40px,6vh,80px)">
+<div class="wrap">
+<div class="chapter-head" style="align-items:center;text-align:center">
+<div class="label rv">Choose your path</div>
+<h2 data-split="">How do you want <span class="gold">to walk it?</span></h2>
+</div>
+<div class="adv-price-hero rv">
+<span class="label">The Metamyth Adventure · I + II + III</span>
+<h3>Ninety days, at your pace, with our whole team around you.</h3>
+<p class="for">For founders and leaders already in motion.</p>
+<div class="adv-bignum"><b>$10,000</b><span>The complete founding adventure</span></div>
+<div class="adv-break">
+<div><span>Your Originstory</span><b>$2,500</b></div>
+<div><span>Your Metamyth</span><b>$6,000</b></div>
+<div><span>Your first three months of Livinglegend</span><b>$4,500</b></div>
+<div class="tot"><span>Individual total</span><s>$13,000</s></div>
+<div class="save"><span>Save $3,000 by joining the complete journey.</span></div>
+</div>
+<p class="adv-plans">Pay in full, or in two or three payments.</p>
+</div>
+<div class="adv-money">
+<p class="lead rv">A year ago, I thought that amount of money would save my life. Then I made it in one month off one phone call.</p>
+<p class="rv">I've probably spent $50,000 this year on mistakes that I'm laughing about, because every one of them made me more powerful. Money is bullshit. The vision is real. And there is no amount of money worth the magic that you have. But it is worth exactly as much as you are willing to believe in your own story.</p>
+<p class="rv">We could be charging corporations to tell product stories and make $500,000 a year, or selling personal brands for $30K a pop, or shooting brand videos for $30K a week. We'd rather work with people like you who give a damn and help you make way more money than that together.</p>
+<p class="rv adv-replaces">This replaces therapy. Leadership development. Endless medicine retreats. Marketing agencies that reduce you to a product. Branding exercises. AI tools that outsource your creativity. And years stuck in the wrong story, blaming other people, feeling powerless.</p>
+</div>
+<div class="adv-cta-c rv">
+<a class="cta fill" href="../expedition/apply/">Apply for the Adventure <span>→</span></a>
+<p>Or begin with the chapter you're ready to enter. Originstory and Metamyth are available independently. Livinglegend is available as a founding membership at $1,500/month, beginning with a three-month commitment.</p>
+<a class="cta" href="../expedition/apply/">Find your starting point <span>→</span></a>
+</div>
+<div class="adv-also">
+<div class="kq-way people rv"><img decoding="async" loading="lazy" src="../offer-deck/assets/icons/council.webp" alt=""><span class="label">The Kinship Quest · In community</span><h3>Want to walk the path in community?</h3><p>Fifteen weeks from your Originstory into your Metamyth, with a fellowship of visionaries on the same quest.</p><a class="cta" href="../kinship">Explore the Kinship Quest <span>→</span></a></div>
+<div class="kq-way mentor rv" style="--d:.12s"><img decoding="async" loading="lazy" src="../offer-deck/assets/icons/globe.webp" alt=""><span class="label">The world we lead · For organizations</span><h3>Narrative architecture at the scale of the systems you're changing.</h3><p>For brands, funds, initiatives and movements.</p><a class="cta" href="mailto:zachary@anotherworld.earth?subject=The%20world%20we%20lead%20%C2%B7%20A%20conversation">Start a conversation <span>→</span></a></div>
+</div>
+</div>
+</section>
+<div class="seam from-paper" aria-hidden="true"></div>
+
+<!-- 14 · THE THRESHOLD -->
+<section class="chapter t-deep" data-chapter="The threshold" style="padding-top:clamp(40px,6vh,80px)">
+<div class="wrap">
+<div class="chapter-head" style="align-items:center;text-align:center"><div class="label rv">The threshold</div></div>
+<div class="adv-col">
+<p class="rv">What do you actually want to do? What's really your vision? If you don't have one, or you're not sure you'd dive in when you find it, this probably isn't for you.</p>
+</div>
+<div class="kq-block kq-glow" style="margin:clamp(56px,8vh,96px) 0">
+<p class="adv-zeros rv">This is for the 0.01%. <span class="gold">Even rarer than the 1% with a bunch of zeros.</span></p>
+</div>
+<div class="adv-col">
+<p class="rv">The ones who actually believe another world is possible and are willing to do whatever it takes. Find the resources. Make the time. Show up day after day. Evolve.</p>
+<p class="rv">Thirty minutes a day with your own story. Watch your life like a movie twice a week. It will get more epic the more you look at it. Your story will get better the more you tell it. And it will get realer and realer until the world around you is unrecognizable.</p>
+</div>
+<div class="kq-fit rv" style="margin-top:clamp(56px,8vh,90px)">
+<div class="in"><div class="label">Come in if</div><ul>
+<li>You're already in motion and you know the story is the missing piece.</li>
+<li>You can feel the size of what you're here to build, and you're done shrinking it.</li>
+<li>You're ready to face your money story and stretch your capacity for power, wealth and abundance.</li>
+<li>You're willing to end your addictions to suffering and radically prioritize your time, your vision and your life.</li>
+</ul></div>
+<div class="out"><div class="label">Walk away if</div><ul>
+<li>You want someone to hand you a formula or do the becoming for you.</li>
+<li>You want a lot of bloviating do-gooders saying they want to change the world without being willing to change themselves.</li>
+<li>You're waiting for the world to change before you do.</li>
+<li>You think you've got it all figured out. Good for you. The end.</li>
+</ul></div>
+</div>
+<p class="lede rv" style="margin:clamp(56px,8vh,90px) auto 0;max-width:34em;text-align:center">If you have doubts, talk to any of the people on this page. Every one of them will rave. We'll give you their number.</p>
+</div>
+</section>
+
+<!-- 15 · WHERE IT STARTS -->
+<section class="chapter t-forest" id="apply" data-chapter="Where it starts">
+<div class="wrap">
+<div class="adv-apply rv">
+<img decoding="async" loading="lazy" src="../offer-deck/assets/icons/gate.webp" alt="">
+<div class="label">Where it starts</div>
+<p>We're selective about the stories we take on because we want to help them become real.</p>
+<p>Apply, and if we're a fit, we'll invite you to a conversation about the adventure ahead.</p>
+<a class="cta fill" href="../expedition/apply/">Apply <span>→</span></a>
+</div>
+</div>
+</section>
+
+<!-- 16 · THE WORLD WHERE WE DID IT -->
+<section class="scene" data-chapter="The world where we did it">
+<div class="bg" data-par="0.22" data-scale="1"><img decoding="async" loading="lazy" src="../images/journey-bg.webp" alt=""></div>
+<div class="wrap">
+<div class="chapter-head" style="margin-bottom:0">
+<div class="label rv">The world where we did it</div>
+<h2 data-split="">Close your eyes for a moment. <span class="gold">Travel forward.</span></h2>
+</div>
+</div>
+</section>
+<section class="chapter t-deep" data-chapter="The world where we did it">
+<div class="wrap">
+<div class="adv-col">
+<p class="rv">Past the years of trying to explain yourself. Past the work you kept postponing because you couldn't see how to make a living doing it. Past the people who told you to be realistic.</p>
+<p class="rv adv-beat">You're standing in the world where you fucking did it.</p>
+<p class="rv">The people you once dreamed of working with are now your friends. The work you once struggled to explain is changing lives. The organization you imagined has grown beyond you, carrying a mission that others have made their own.</p>
+</div>
+<div class="kq-block kq-glow" style="margin-bottom:0">
+<p class="kq-statement rv">Can you believe we used to tell stories to escape reality, <span class="gold">instead of using them to create it?</span></p>
+</div>
+</div>
+</section>
+
+<!-- 17 · THE CALL -->
+<div class="seam to-black" aria-hidden="true"></div>
+<section class="chapter t-black" data-chapter="The call">
+<div class="wrap">
+<div class="chapter-head" style="align-items:center;text-align:center"><div class="label rv">The call</div></div>
+<div class="adv-col">
+<p class="rv">I cannot put this into words. I have rewritten this page a thousand times because even I struggle to explain this. It is that crazy, that magical.</p>
+<p class="rv">Nothing in my life made sense. I died and was reborn. I was homeless. I hitchhiked across continents. I met my heroes, built movements. Somehow got millions of engagements, found love, destroyed it, learned to love myself through the radical wonder and craziness of the metamyth. For ten years I lived an unspeakably strange life that even I didn't understand.</p>
+<p class="rv">And now, looking back through the lens of the system I built out of it, and the people I've walked through it, watching every one of them go through everything I went through in fast motion and arrive in this new world with me: I don't believe anymore. I know. I live it.</p>
+<p class="rv">And hilariously, the guy who protested money altogether is building a business on track to make a million dollars a year. Raising a fund. Creating his own AI company to make the old system obsolete. From a village in Colombia. With love.</p>
+<p class="rv">And you can do it with us.</p>
+<p class="rv">At one of the lowest moments of my life, after I'd been fired from a fucking pizza place, my old man looked at me and said:</p>
+<p class="rv adv-dad">"Son, every one of us is on a journey."</p>
+<p class="rv">I cannot wait for you to experience the power, the magic, and the insanity of your story.</p>
+</div>
+</div>
+</section>
+<section class="scene close" data-chapter="">
+<div class="bg" data-par="0.18" data-scale="1"><img decoding="async" loading="lazy" src="../site/img/estuary.webp" alt=""></div>
+<div class="wrap">
+<h2 data-split="">The future we dream is <span class="teal">one story away.</span></h2>
+<div class="kq-ctas rv" style="--d:.6s"><a class="cta fill" href="../expedition/apply/">Apply <span>→</span></a></div>
+</div>
+</section>
+<footer><span>Metamyth Story Systems</span><span>The future we dream is one story away</span><a href="https://metamyth.quest">metamyth.quest</a></footer>
+
+<div class="adv-dock" aria-hidden="true"><div class="row"><p><b>The Metamyth Adventure</b><span> · Ninety days to forge the meaning of your life into a mission</span></p><a class="cta fill" href="../expedition/apply/" tabindex="-1">Apply <span>→</span></a></div></div>
+
+<script>
+(function(){
+  var dock=document.querySelector('.adv-dock'),hero=document.getElementById('top'),path=document.getElementById('path'),ap=document.getElementById('apply');
+  function on(){var y=scrollY,vh=innerHeight;var past=hero.getBoundingClientRect().bottom<0;
+    var inPath=[path,ap].some(function(s){var r=s.getBoundingClientRect();return r.top<vh&&r.bottom>0});
+    var nearEnd=y+vh>document.documentElement.scrollHeight-vh*1.2;
+    var show=past&&!inPath&&!nearEnd;dock.classList.toggle('on',show);dock.setAttribute('aria-hidden',show?'false':'true');dock.querySelector('a').tabIndex=show?0:-1;}
+  addEventListener('scroll',on,{passive:true});addEventListener('resize',on);on();
+})();
+</script>
+<script src="../site/site.js"></script>
+</body>
+
 </html>
