@@ -18,3 +18,5 @@ There are two published sites, updated independently:
 - `www.metamyth.quest` — GitHub Pages serves the root of the `gh-pages` branch (Settings > Pages, "Deploy from a branch").
 
 Pushing to `main` or publishing on Replit does **not** update `gh-pages`. The workflow `.github/workflows/deploy-pages.yml` runs `scripts/deploy-gh-pages.sh` on every push to `main` that touches `Metamyth Offer Deck/`, rebuilding `gh-pages` to match (excluding `uploads/`, `screenshots/`, and OS junk; preserving `CNAME`, `.nojekyll`, and `.image-slots.state.json`). To publish manually, run `bash scripts/deploy-gh-pages.sh` from the repo root.
+
+**Never commit straight to `gh-pages`.** Every deploy rebuilds it from `main`, so anything that exists only on `gh-pages` is wiped. On Nov 20 the Adventure deploy erased the Nov 18–20 homepage and Kinship Quest edits that had been pushed directly to `gh-pages`; they were restored into `Metamyth Offer Deck/` on `main`. Make every site change in `Metamyth Offer Deck/` on `main` (or a branch merged into it).

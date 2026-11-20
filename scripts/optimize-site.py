@@ -20,6 +20,14 @@ import urllib.parse
 
 ROOT = os.path.abspath(sys.argv[1])
 IMG_EXTS = ('.png', '.jpg', '.jpeg')
+# Icons and social preview images must stay PNG/JPG: browsers, iOS home
+# screens and link previews don't all accept WebP for these.
+KEEP_IMG_PREFIXES = ('favicon', 'apple-touch-icon', 'og-image')
+
+
+def is_img(fn):
+    return (fn.lower().endswith(IMG_EXTS)
+            and not fn.lower().startswith(KEEP_IMG_PREFIXES))
 FONT_EXTS = ('.ttf', '.otf')
 TEXT_EXTS = ('.html', '.css', '.js', '.md')
 
@@ -41,7 +49,7 @@ try:
 except ImportError:
     print('[optimize] Pillow missing; skipping image conversion', file=sys.stderr)
 else:
-    for src in walk_files(lambda f: f.lower().endswith(IMG_EXTS)):
+    for src in walk_files(is_img):
         dst = os.path.splitext(src)[0] + '.webp'
         try:
             im = Image.open(src)
@@ -58,7 +66,7 @@ else:
         print(f'[optimize] {len(failed)} image(s) failed; keeping all originals',
               file=sys.stderr)
     else:
-        for src in walk_files(lambda f: f.lower().endswith(IMG_EXTS)):
+        for src in walk_files(is_img):
             os.remove(src)
 
 # --- 2. fonts -> woff2 ----------------------------------------------------
