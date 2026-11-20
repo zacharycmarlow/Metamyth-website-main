@@ -332,6 +332,22 @@
 }
 @media(max-width:480px){.kq-guides{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.kq *,.kq *:before{transition:none!important;animation:none!important}.kq-line i{transform:none}}
+
+/* type rhythm: no dangling words, steadier scale */
+.kq p,.kq li{text-wrap:pretty}
+.kq h1,.kq h2,.kq h3,.kq h4,.kq .lede,.kq-statement,.kq-quote p,.kq-hit,.kq-hero-sub,.kq-hero-p,.kq-note,.kq-proof p,.kq-close-line{text-wrap:balance}
+.kq .lede{font-size:clamp(19px,1.4vw,22px);line-height:1.6}
+.kq-statement{font-size:clamp(28px,3.1vw,48px)}
+.kq-h2{font-size:clamp(32px,3.6vw,54px)}
+.kq-outcomes h3{font-size:clamp(24px,2vw,30px)}
+.kq-quote p{font-size:clamp(23px,2.1vw,32px)!important}
+/* proof torrent */
+.kq-torrent{max-width:34em;margin:0 auto;text-align:center}
+.kq-torrent-lead{font-family:var(--serif);font-size:clamp(26px,2.6vw,40px)!important;line-height:1.25;color:var(--cream);margin:0 0 28px}
+.kq-torrent ul{list-style:none;padding:0;margin:0;display:grid;gap:4px}
+.kq-torrent li{font-family:var(--serif);font-size:clamp(21px,1.9vw,28px);line-height:1.35;color:var(--ivory);padding:10px 0;border-bottom:1px solid rgba(212,168,67,.14)}
+.kq-torrent li:last-child{border-bottom:0}
+.kq-torrent-end{font-family:var(--serif);font-size:clamp(30px,3vw,46px)!important;color:var(--gold);margin:22px 0 0;text-shadow:0 0 24px rgba(212,168,67,.35)}
 </style>
 </head>
 <body class="kq">
@@ -518,7 +534,7 @@
 <div class="wrap">
 <div class="chapter-head" style="margin-bottom:0">
 <div class="label rv">The room</div>
-<h2 data-split="">The silence that <span class="gold">changes everything.</span></h2>
+<h2 data-split="">The silence <span class="gold">of awe.</span></h2>
 </div>
 </div>
 </section>
@@ -540,7 +556,17 @@
 <p class="rv">The biggest risk of the whole experience is that you'll have to go back to what used to feel like ordinary life, while we build the systems, relationships and stories to transform that too. Once you've lived inside a community like this, it's hard to pretend the old way of living together is the only way.</p>
 </div>
 <div class="kq-block kq-glow" style="margin-bottom:0">
-<p class="kq-statement rv" style="font-size:clamp(26px,2.8vw,42px);max-width:24em">Everyone who has gone through Metamyth has had their world turned upside down. They've written books in weeks. They've gotten millions of views in 90 seconds. They've raised tens of thousands of dollars in hours. They've turned decades of suffering into entirely new careers. They've rewritten childhood trauma into brand narratives that sell. <span class="gold">Seriously.</span></p>
+<div class="kq-torrent rv">
+<p class="kq-torrent-lead">Everyone who has gone through Metamyth has had their world turned upside down.</p>
+<ul>
+<li>Books written in weeks.</li>
+<li>Millions of views in 90 seconds.</li>
+<li>Tens of thousands raised in hours.</li>
+<li>Decades of suffering turned into entirely new careers.</li>
+<li>Childhood trauma rewritten into brand narratives that sell.</li>
+</ul>
+<p class="kq-torrent-end">Seriously.</p>
+</div>
 </div>
 <div class="kq-proof" data-stagger=".14">
 <blockquote><p>"One of the greatest things I've ever done with my life. And I've had kids."</p><footer><img decoding="async" loading="lazy" src="site/img/jessica-arburn.webp" alt=""><cite>Jessica Arburn · Founder, Dose of Hope</cite></footer></blockquote>
